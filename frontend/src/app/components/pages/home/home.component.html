@@ -3,31 +3,33 @@
 
 <ul>
   <li *ngFor="let product of products">
-    <a routerLink="/product/{{product.id}}">
-      <img [src]="product.imageUrl" alt="{{product.name}}" />
-      <div class="content">
-        <div class="name">
-          {{product.name}}
-        </div>
-        <span class="favorite {{product.favorite?'':'not'}}">
-          ❤
-        </span>
-        <div class="stars">
-        </div>
-        <div class="product-item-footer">
-          <div class="origins">
-            <span *ngFor="let origin of product.origins">
-              {{origin}}
-            </span>
+    <div class="card">
+      <a  routerLink="/product/{{ product.id }}">
+        <img [src]="product.imageUrl" alt="{{ product.name }}" />
+        <div class="content">
+          <div class="name">
+            {{ product.name }}
           </div>
+          <span class="favorite {{ product.favorite ? '' : 'not' }}"> ❤ </span>
+          <div class="stars"></div>
+          <div class="product-item-footer">
+            <div class="origins">
+              <span *ngFor="let origin of product.origins">
+                {{ origin }}
+              </span>
+            </div>
+          </div>
+       
         </div>
-
-        <div class="price">
-          <span>
-            {{product.price | currency:'EUR'}}
-          </span>
-        </div>
+      </a>
+      <div class="price">
+        <span>
+          {{ product.price | currency : "EUR" }}
+        </span>
+        <button class="add-btn" (click)="addToCart(product)">Buy</button>
       </div>
-    </a>
+
+    </div>
+    
   </li>
 </ul>

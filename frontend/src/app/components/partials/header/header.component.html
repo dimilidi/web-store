@@ -23,7 +23,7 @@
        
             <a class="cart-btn" routerLink="/cart-page">
               <mat-icon class="custom-icon">shopping_cart</mat-icon>
-              <span class="counter">3</span>
+              <span class="counter" *ngIf="cartQuantity">{{cartQuantity}}</span>
             </a>
          
         </li>

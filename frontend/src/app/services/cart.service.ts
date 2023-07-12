@@ -15,10 +15,14 @@ export class CartService {
 
   addToCart(product: Product): void {
     let cartItem = this.cart.items.find(
-      (item) => (item.product.id = product.id)
+      (item) => (item.product.id == product.id)
     );
-    if (cartItem) return;
-    this.cart.items.push(new CartItem(product));
+    if(cartItem) {
+      cartItem.quantity++;
+    }else {
+      this.cart.items.push(new CartItem(product));
+    }
+    
     this.setCartToLocalStorage();
   }
 
@@ -51,7 +55,7 @@ export class CartService {
     this.cart.totalPrice = this.cart.items
     .reduce((prevSum, currentItem) => prevSum + currentItem.price, 0);
     this.cart.totalCount = this.cart.items
-    .reduce((prevSum, currentItem) => prevSum + currentItem.price, 0);
+    .reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0);
 
     const cartJson = JSON.stringify(this.cart);
     localStorage.setItem('Cart', cartJson);

@@ -8,7 +8,7 @@ ul{
     padding: 0;
   }
   
-  li a{
+  .card{
     height: 22.5rem;
     width: 20rem;
     border: 1px solid whitesmoke;
@@ -20,12 +20,12 @@ ul{
     color:  rgb(63, 151, 184);
   }
   
-  li a:hover{
+ .card:hover{
     opacity: 0.9;
     cursor: pointer;
   }
   
-  li a img{
+ .card img{
     object-fit: cover;
     height: 14.5rem;
   }
@@ -34,7 +34,7 @@ ul{
     margin-top: 0.3rem;
     padding: 0.5rem 1rem;
     position: relative;
-    height: 7rem;
+    height: 2.7rem;
   }
   
   .favorite{
@@ -72,15 +72,31 @@ ul{
     padding: 0 0.5rem;
     margin-top: 0.2rem;
   }
-  
-  .price{
-    position: absolute;
+
+  .price-wrapper {
+    position:absolute;
     bottom: 0;
     left: 0.9rem;
+  }
+  
+  .price{
+    height: 50px;
+    padding: 0 1rem;
     background: white;
-    padding: 0.3rem 100% 0 0;
     color: #414141;
     margin-top: 0.7rem;
     font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
   
+  .add-btn {
+    width: 4rem;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color:  rgb(63, 151, 184);
+    color: white;
+    border: none;
+  }
