@@ -17,4 +17,8 @@ export class ProductService {
   getAllProductsBySearchTerm(searchTerm: string) {
     return this.getAll().filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
+
+  getProductById(productId: string): Product {
+    return this.getAll().find(product => product.id == productId) ?? new Product(); //  '??' = nullish coalescing operator; if the result of find is undefined, it will return a new instance of the Product class
+  }
 }

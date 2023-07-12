@@ -26,5 +26,11 @@
   - add ts
   - add html
   - add css
-
+5. Product Page
+- add method to Product Service
+- generate Product Page Component
+  - add Route
+  - add ts
+  - add html
+  - add css
 

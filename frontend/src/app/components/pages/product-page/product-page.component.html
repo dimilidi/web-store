@@ -1,0 +1,35 @@
+<div *ngIf="product" class="container">
+  <img [src]="product.imageUrl" [alt]="product.name"/>
+
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{product.name}}
+      </span>
+      <span class="favorite {{product.favorite? '': 'not'}}">❤</span>
+    </div>
+    <!--!add  star-rating -->
+
+    <div class="origins">
+      <span *ngFor="let origin of product.origins">
+        {{origin}}
+      </span>
+    </div>
+
+    <div class="tags">
+      <a *ngFor="let tag of product.tags" routerLink="/tag/{{tag}}">
+        {{tag}}
+      </a>
+    </div>
+
+    <div class="price">
+      <span>
+        {{product.price | currency}}
+      </span>
+    </div>
+
+   <!-- <button (click)="addToCart()">Add To Cart</button>--> 
+
+  </div>
+</div>
+
