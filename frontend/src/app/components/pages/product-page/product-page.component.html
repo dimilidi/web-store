@@ -1,3 +1,4 @@
+
 <div *ngIf="product" class="container">
   <img [src]="product.imageUrl" [alt]="product.name"/>
 
@@ -8,7 +9,9 @@
       </span>
       <span class="favorite {{product.favorite? '': 'not'}}">❤</span>
     </div>
-    <!--!add  star-rating -->
+    <div class="rating">
+      <!-- Rating Stars to be added-->
+    </div>
 
     <div class="origins">
       <span *ngFor="let origin of product.origins">
@@ -24,12 +27,11 @@
 
     <div class="price">
       <span>
-        {{product.price | currency}}
+        {{product.price | currency:'EUR'}}
       </span>
     </div>
 
-   <!-- <button (click)="addToCart()">Add To Cart</button>--> 
+    <button (click)="addToCart()">Add To Cart</button>
 
   </div>
 </div>
-

@@ -46,5 +46,16 @@
   - add ts
   - add html
   - add css
+7. Cart Page
+- create CartItem Model
+- create Cart Model
+- generate Cart Service
+- add to cart button in Product Page
+- generate Cart Page Component
+  - add Route
+  - add ts
+  - add html
+  - add css
+
 
 
