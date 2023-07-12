@@ -65,5 +65,19 @@
   - Home Page
   - Food Page
   - Cart Page
-
+9. Connect to Backend
+- create backend folder
+- npm init
+- npm install typescript
+- create tsconfig.json
+- create gitignore
+- copy data.ts to backend/src
+- npm install express cors
+- create server.ts
+  - install @types
+  - add endpoints
+  - npm install nodemone ts-node --save-dev
+  - add urs.ts to frontend
+  - add HTTPClient Module
+  - update Product Service
 
