@@ -17,4 +17,14 @@
   - add HTML
   - add CSS
   - add ts
+4. Search
+- add method to Product Service
+- add search route
+- show rearch result in Home component
+- generate Search Comppnent
+  -  add it to Home Component
+  - add ts
+  - add html
+  - add css
+
 
