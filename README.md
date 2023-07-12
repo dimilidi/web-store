@@ -56,6 +56,14 @@
   - add ts
   - add html
   - add css
-
+8. Not Found
+- Generate Component
+  - add ts
+  - add html
+  - add css
+- Add to Pages
+  - Home Page
+  - Food Page
+  - Cart Page
 
 
