@@ -9,11 +9,11 @@ header{
   }
   
   a{
-    color:  rgb(63, 151, 184);
+    color:  rgb(14, 141, 186);
   }
   
   a:hover{
-    background:rgb(63, 151, 184);
+    background:rgb(14, 141, 186);
     color: white;
     cursor: pointer;
   }
@@ -63,7 +63,7 @@ header{
     border: transparent;
     outline: none;
     background-color: transparent;
-    color: rgb(63, 151, 184);
+    color: rgb(14, 141, 186);
     position: relative;
   }
   

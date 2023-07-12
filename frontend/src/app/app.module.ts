@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SearchComponent } from './components/partials/search/search.component';
 import { ProductPageComponent } from './components/pages/product-page/product-page.component';
+import { TagsComponent } from './components/partials/tags/tags.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, ProductPageComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, ProductPageComponent, TagsComponent],
   imports: [
     BrowserModule, 
     AppRoutingModule, 
