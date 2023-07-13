@@ -80,4 +80,9 @@
   - add urLs.ts to frontend
   - add HTTPClient Module
   - update Product Service
+10. Loading
+- add Image
+- add Component
+- add Service
+- add Interceptor
 
