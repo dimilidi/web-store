@@ -18,9 +18,11 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, ProductPageComponent, TagsComponent, CartPageComponent, TitleComponent, NotFoundComponent, LoadingComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, ProductPageComponent, TagsComponent, CartPageComponent, TitleComponent, NotFoundComponent, LoadingComponent, LoginPageComponent],
   imports: [
     BrowserModule, 
     AppRoutingModule, 
@@ -28,7 +30,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
-
+    ReactiveFormsModule
   ],
   providers: [
     {

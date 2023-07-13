@@ -85,4 +85,17 @@
 - add Component
 - add Service
 - add Interceptor
+11. Login
+- generate component
+  - add to routes
+  - add ts
+  - add html + import Reactive Forms Module
+  - add css
+- add Login Endpoint
+  - use json
+  - add jsonwebtoken
+  - test using Postman
+
+
+
 
