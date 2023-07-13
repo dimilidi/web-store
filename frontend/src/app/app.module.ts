@@ -20,24 +20,42 @@ import { LoadingComponent } from './components/partials/loading/loading.componen
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SearchComponent, ProductPageComponent, TagsComponent, CartPageComponent, TitleComponent, NotFoundComponent, LoadingComponent, LoginPageComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    SearchComponent,
+    ProductPageComponent,
+    TagsComponent,
+    CartPageComponent,
+    TitleComponent,
+    NotFoundComponent,
+    LoadingComponent,
+    LoginPageComponent,
+  ],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
-    MatIconModule, 
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      newestOnTop: false,
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

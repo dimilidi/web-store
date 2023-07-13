@@ -3,20 +3,20 @@
     <a routerLink="/" class="logo">Web Store</a>
     <nav>
       <ul>
-        <li>
+        <li *ngIf="!isAuth">
           <a routerLink="/login">Login</a>
         </li>
-        <li class="menu-container">
+        <li *ngIf="isAuth" class="menu-container">
           <a routerLink="/dashboard">
             <div class="dashboard">
-              <span>John </span>
               <mat-icon >person</mat-icon>
+              <span>{{user.name}}</span>
             </div>
           </a>
           <div class="menu">
             <a routerLink="/profile">Profile</a>
             <a routerLink="/profile">Orders</a>
-            <a>Logout</a>
+            <a (click)="logout()">Logout</a>
           </div>
         </li>
         <li>

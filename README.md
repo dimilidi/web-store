@@ -95,6 +95,19 @@
   - use json
   - add jsonwebtoken
   - test using Postman
+ - generate User Service 
+   - generate User Model
+   - add User Subject
+   - add Login Method
+     - add User Urls
+     - generate UserLogin Interface
+     - add ngx-toaster
+       - import Module
+       - import BrowserAnimationsModule
+       - add styles in angular.json
+     - add to Header
+   - add Local Storage Methods
+   - add Logout Method 
 
 
 
