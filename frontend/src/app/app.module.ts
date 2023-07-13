@@ -21,6 +21,10 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { InputContainerComponent } from './components/partials/input-container/input-container.component';
+import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
+import TextInputComponent from './components/partials/text-input/text-input.component';
+import { ButtonComponent } from './components/partials/button/button.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { ToastrModule } from 'ngx-toastr';
     NotFoundComponent,
     LoadingComponent,
     LoginPageComponent,
+    InputContainerComponent,
+    InputValidationComponent,
+    TextInputComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
