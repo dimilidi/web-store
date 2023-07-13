@@ -1,10 +1,10 @@
 <app-not-found
-  [visible]="!product.id"
+  [visible]="!product?.id"
   notFoundMessage="Product Not Found"
   resetLinkText="Back To Home"
 />
 
-<div *ngIf="product.id" class="container">
+<div *ngIf="product?.id" class="container">
   <img [src]="product.imageUrl" [alt]="product.name" />
 
   <div class="details">

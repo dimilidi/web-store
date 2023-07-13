@@ -77,7 +77,7 @@
   - install @types
   - add endpoints
   - npm install nodemone ts-node --save-dev
-  - add urs.ts to frontend
+  - add urLs.ts to frontend
   - add HTTPClient Module
   - update Product Service
 
