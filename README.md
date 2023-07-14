@@ -131,9 +131,29 @@
 15. Checkout Page
 - create Order Model
 - create Checkout Page Component and add it to router
-- add User to User Service
-- add Cart to Cart Service
-- Create Order Items List Component
+- add curent User to User Service
+- add latest Cart to Cart Service
+- create Order Items List Component
+- add Map to the Checkout Page
+  - add Leaflet npm package
+    - add @types/leaflet
+    - add CSS to angular.json
+  - add AddressLatLng to Order Model
+  - create Map Component
+    - add ts
+    - add html
+    - add css
+  - add Auth Guard
+  16. Save Order
+  - add Order Model
+  - add Order Status Enum
+  - add Auth Middleware
+  - add Order Router
+    - add Create Api
+  - add Order Urls to urls.ts
+  - add Order Service
+    - add Create Method
+  - add Auth Interceptor
 
 
 
