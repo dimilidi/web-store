@@ -7,7 +7,7 @@ export const sample_products: any[] = [
     origins: ['italy'],
     stars: 4.5,
     imageUrl: 'assets/flower.jpg',
-    tags: ['Flowers', 'Pot', 'Garden'],
+    tags: ['Flowers'],
   },
   {
     id:'2',
@@ -17,7 +17,7 @@ export const sample_products: any[] = [
     origins: ['persia', 'middle east', 'china'],
     stars: 4.7,
     imageUrl: 'assets/watch.jpg',
-    tags: ['Jewelry', 'Watch'],
+    tags: ['Jewelry', 'Electronics'],
   },
   {
     id:'3',
@@ -27,7 +27,7 @@ export const sample_products: any[] = [
     origins: ['germany', 'us'],
     stars: 3.5,
     imageUrl: 'assets/shoes2.jpg',
-    tags: ['Shoes', 'Nike'],
+    tags: ['Shoes'],
   },
   {
     id:'4',
@@ -37,7 +37,7 @@ export const sample_products: any[] = [
     origins: ['belgium', 'france'],
     stars: 3.3,
     imageUrl: 'assets/camera.jpg',
-    tags: ['Electronics', 'Photo'],
+    tags: ['Electronics'],
   },
   {
     id:'5',
@@ -47,7 +47,7 @@ export const sample_products: any[] = [
     origins: ['india', 'asia'],
     stars: 3.0,
     imageUrl: 'assets/headset.jpg',
-    tags: ['Electronics', 'Music'],
+    tags: ['Electronics'],
   },
   {
     id:'6',
@@ -57,20 +57,16 @@ export const sample_products: any[] = [
     origins: ['italy'],
     stars: 4.0,
     imageUrl: 'assets/shoes3.jpg',
-    tags: ['Shoes', 'Puma'],
+    tags: ['Shoes'],
   },
 ]
 
 
 export const sample_tags:any[] = [
   { name: 'All', count: 6 },
-  { name: 'Electronics', count: 2 },
+  { name: 'Electronics', count: 3 },
   { name: 'Shoes', count: 2 },
-  { name: 'Flowers', count: 1 },
-  { name: 'Puma', count: 1 },
-  { name: 'Nike', count: 1 },
-  { name: 'Music', count: 1 },
-  { name: 'Photo', count: 1 },
+  { name: 'Flowers', count: 1 }
 ]
 
 export const sample_users: any[] = [
