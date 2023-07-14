@@ -35,9 +35,11 @@ export class LoginPageComponent implements OnInit {
     this.isSubmitted = true;
     if (this.loginForm.invalid) return;
 
+    const fv = this.loginForm.value;
+
     this.userService.login({
-      email: this.fc.email.value,
-      password: this.fc.password.value,
+      email: fv.email,
+      password: fv.password,
     }).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);
     });

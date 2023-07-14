@@ -16,7 +16,14 @@
         label="Password"
       ></app-text-input>
 
-     <app-button text="Login"></app-button>
+      <app-button text="Login"></app-button>
+
+      <div class="register">
+        No account? &nbsp;
+        <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }">
+          Register here
+        </a>
+      </div>
     </form>
   </div>
 </div>

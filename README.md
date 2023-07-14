@@ -108,6 +108,26 @@
      - add to Header
    - add Local Storage Methods
    - add Logout Method 
+12. Make Components for Login Page
+- Input Container
+- Input Validation
+- Text Input
+- Default Button
+13. Connect Login Api to MongoDB Atlas
+- move Endpoints into routers
+- create .env.file
+- install
+  - mongoose
+  - dotenv
+  - bcryptjs
+  - express-async-handler
+- connect to MongoDB Atlas
+- use MongoDB instead of data.ts in apis
+14. Register User
+- add Register Api
+- add Register Service method
+- add Register link
+- add Register Component
 
 
 
