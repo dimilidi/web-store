@@ -26,6 +26,8 @@ import { InputValidationComponent } from './components/partials/input-validation
 import TextInputComponent from './components/partials/text-input/text-input.component';
 import { ButtonComponent } from './components/partials/button/button.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
+import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {RegisterPageComponent} from './components/pages/register-page/register-p
     TextInputComponent,
     ButtonComponent,
     RegisterPageComponent,
+    CheckoutPageComponent,
+    OrderItemsListComponent,
   ],
   imports: [
     BrowserModule,

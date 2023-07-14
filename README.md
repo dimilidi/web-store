@@ -128,6 +128,12 @@
 - add Register Service method
 - add Register link
 - add Register Component
+15. Checkout Page
+- create Order Model
+- create Checkout Page Component and add it to router
+- add User to User Service
+- add Cart to Cart Service
+- Create Order Items List Component
 
 
 

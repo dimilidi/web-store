@@ -15,25 +15,29 @@ export class CartService {
 
   addToCart(product: Product): void {
     let cartItem = this.cart.items.find(
-      (item) => (item.product.id == product.id)
+      (item) => item.product.id == product.id
     );
-    if(cartItem) {
+    if (cartItem) {
       cartItem.quantity++;
-    }else {
+    } else {
       this.cart.items.push(new CartItem(product));
     }
-    
+
     this.setCartToLocalStorage();
   }
 
   removeFromCart(productId: string): void {
-    this.cart.items = this.cart.items.filter(item => item.product.id != productId);
+    this.cart.items = this.cart.items.filter(
+      (item) => item.product.id != productId
+    );
     this.setCartToLocalStorage();
   }
 
   changeQuantity(productId: string, quantity: number) {
-    let cartItem = this.cart.items.find(item => item.product.id === productId);
-    if(!cartItem) return;
+    let cartItem = this.cart.items.find(
+      (item) => item.product.id === productId
+    );
+    if (!cartItem) return;
 
     cartItem.quantity = quantity;
     cartItem.price = quantity * cartItem.product.price;
@@ -47,24 +51,31 @@ export class CartService {
 
   // send Observable from the cart NOT Subject BECAUSE
   // if send Subject, changing the value of the Subject from outside of the CART SERVICE would be possible
-  getCartObservable(): Observable<Cart>{
+  getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
+  }
+// get the latest value ot the cart subject
+  getCart(): Cart {
+    return this.cartSubject.value;
   }
 
   private setCartToLocalStorage(): void {
-    this.cart.totalPrice = this.cart.items
-    .reduce((prevSum, currentItem) => prevSum + currentItem.price, 0);
-    this.cart.totalCount = this.cart.items
-    .reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0);
+    this.cart.totalPrice = this.cart.items.reduce(
+      (prevSum, currentItem) => prevSum + currentItem.price,
+      0
+    );
+    this.cart.totalCount = this.cart.items.reduce(
+      (prevSum, currentItem) => prevSum + currentItem.quantity,
+      0
+    );
 
     const cartJson = JSON.stringify(this.cart);
     localStorage.setItem('Cart', cartJson);
     this.cartSubject.next(this.cart);
   }
 
-
   private getCartFromLocalStorage(): Cart {
     const cartJson = localStorage.getItem('Cart');
-    return cartJson ? JSON.parse(cartJson): new Cart();
+    return cartJson ? JSON.parse(cartJson) : new Cart();
   }
 }
