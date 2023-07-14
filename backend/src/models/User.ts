@@ -9,7 +9,7 @@ export interface IUser {
   isAdmin: boolean;
 }
 
-const SCHEMA = new Schema<IUser>({
+export const UserSchema = new Schema<IUser>({
     name: {type:String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
@@ -26,6 +26,6 @@ const SCHEMA = new Schema<IUser>({
     }
 });
 
-const User = model<IUser>("User", SCHEMA);
+const User = model<IUser>("User", UserSchema);
 
 export default User;

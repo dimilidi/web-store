@@ -11,7 +11,7 @@ export interface Product {
   origins: string[];
 }
 
-const SCHEMA = new Schema<Product>(
+export const ProductSchema = new Schema<Product>(
   {
     name: { type: String, required: true },
     price: { type: Number, required: true },
@@ -33,6 +33,6 @@ const SCHEMA = new Schema<Product>(
 );
 
 
-const Product = model<Product>("Product", SCHEMA);
+const Product = model<Product>("Product", ProductSchema);
 
 export default Product;
