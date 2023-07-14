@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { UserRegister } from '../shared/interfaces/UserRegister';
+import { Router } from '@angular/router';
 
 const USER_KEY = 'User';
 
@@ -18,8 +19,9 @@ export class UserService {
   );
   public userObservable: Observable<User>;
 
+
   // userObservable is the readOnly version of the userSubject
-  constructor(private http: HttpClient, private toastrService: ToastrService) {
+  constructor(private http: HttpClient, private toastrService: ToastrService, private router:Router) {
     this.userObservable = this.userSubject.asObservable();
   }
 

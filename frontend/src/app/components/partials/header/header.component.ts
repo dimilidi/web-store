@@ -12,6 +12,7 @@ export class HeaderComponent {
   cartQuantity = 0;
   user!: User;
   capitalizedName = '';
+  router: any;
 
   constructor(cartService: CartService, private userService: UserService) {
     cartService.getCartObservable().subscribe((newCart) => {

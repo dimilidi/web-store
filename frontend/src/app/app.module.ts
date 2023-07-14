@@ -28,6 +28,8 @@ import { ButtonComponent } from './components/partials/button/button.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
+import { MapComponent } from './components/partials/map/map.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { OrderItemsListComponent } from './components/partials/order-items-list/
     RegisterPageComponent,
     CheckoutPageComponent,
     OrderItemsListComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
