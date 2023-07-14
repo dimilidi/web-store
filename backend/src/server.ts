@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import productRouter from './routers/productRouter'
 import userRouter from "./routers/userRouter";
+import orderRouter from "./routers/orderRouter";
 import { dbConnect } from './configs/database_config';
 
 // DB CONNECT
@@ -23,6 +24,8 @@ app.use(express.static('public'));
 // ROUTERS
 app.use('/products', productRouter);
 app.use('/users', userRouter);
+app.use('/orders', orderRouter);
+
 
 
 const port = process.env.PORT || 5000;

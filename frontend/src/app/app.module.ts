@@ -25,11 +25,12 @@ import { InputContainerComponent } from './components/partials/input-container/i
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import TextInputComponent from './components/partials/text-input/text-input.component';
 import { ButtonComponent } from './components/partials/button/button.component';
-import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
 import { authGuard } from './auth/guards/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,11 @@ import { authGuard } from './auth/guards/auth.guard';
     }),
   ],
   providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptor, 
+      multi: true 
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
