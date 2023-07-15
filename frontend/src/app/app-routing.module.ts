@@ -11,7 +11,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '/', component: HomeComponent },
   { path: 'search/:searchTerm', component: HomeComponent },
   { path: 'tag/:tag', component: HomeComponent },
   { path: 'product/:id', component: ProductPageComponent },
