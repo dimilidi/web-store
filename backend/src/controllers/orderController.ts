@@ -43,6 +43,13 @@ export async function payOrder(req: any, res: any) {
     res.send(order._id);
 }
 
+// TRACK ORDER
+export async function trackOrder(req: any, res: any) {
+    const order = await Order.findById(req.params.id);
+    res.send(order);
+}
+
+
 
 
 async function getNewOrderForCurrentUser(req: any) {

@@ -34,6 +34,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { StarRatingComponent } from './components/partials/star-rating/star-rating.component';
+import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { StarRatingComponent } from './components/partials/star-rating/star-rati
     PaymentPageComponent,
     PaypalButtonComponent,
     StarRatingComponent,
+    OrderTrackPageComponent,
   ],
   imports: [
     BrowserModule,

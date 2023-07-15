@@ -168,4 +168,11 @@
 - set up Paypal Button
 - add Pay Api to Order Router
 - get Paypal Sandbox Account
-
+19. Order Track Page
+- generate Component
+  - add it to routes
+- add api
+ - add it to url.ts
+- add method to Order Service
+- add html
+- add css
