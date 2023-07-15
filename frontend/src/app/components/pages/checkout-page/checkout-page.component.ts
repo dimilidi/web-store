@@ -64,9 +64,6 @@ export class CheckoutPageComponent implements OnInit {
         this.toastrService.error(errorResponse.error, 'Cart');
       }
     })
-
-
-    console.log(this.order);
     
   }
 }
