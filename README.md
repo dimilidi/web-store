@@ -144,7 +144,7 @@
     - add html
     - add css
   - add Auth Guard
-  16. Save Order
+16. Save Order
   - add Order Model
   - add Order Status Enum
   - add Auth Middleware
@@ -154,7 +154,18 @@
   - add Order Service
     - add Create Method
   - add Auth Interceptor
-
-
-
+17. Payment Page
+  - generate Component
+  - add getOrderForCurrentUser api
+  - add Order Service method
+  - connect Component to Service
+  - make Map readonly
+18. Paypal
+- generate Component 
+   - add it to Payment Page
+- get Paypal Client Id
+- add Paypayl JS to index.html
+- set up Paypal Button
+- add Pay Api to Order Router
+- get Paypal Sandbox Account
 

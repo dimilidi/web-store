@@ -19,3 +19,32 @@ export async function createOrder(req: any, res: any) {
     await newOrder.save();
     res.send(newOrder);
 }
+
+// GET ORDER
+export async function getOrder(req: any, res: any) {
+    const order= await getNewOrderForCurrentUser(req);
+    if(order) res.send(order);
+    else res.status(400).send();
+}
+
+// PAY ORDER
+export async function payOrder(req: any, res: any) {
+    const {paymentId} = req.body;
+    const order = await getNewOrderForCurrentUser(req);
+    if(!order){
+        res.status(400).send('Order Not Found!');
+        return;
+    }
+
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAYED;
+    await order.save();
+
+    res.send(order._id);
+}
+
+
+
+async function getNewOrderForCurrentUser(req: any) {
+    return await Order.findOne({ user: req.user.id, status: OrderStatus.NEW });
+}
