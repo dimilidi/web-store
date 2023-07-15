@@ -11,7 +11,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 
 const routes: Routes = [
-  { path: '/', component: HomeComponent },
+  { path: 'store', component: HomeComponent },
   { path: 'search/:searchTerm', component: HomeComponent },
   { path: 'tag/:tag', component: HomeComponent },
   { path: 'product/:id', component: ProductPageComponent },
@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutPageComponent, canActivate:[authGuard]},
   { path: 'payment', component: PaymentPageComponent, canActivate:[authGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[authGuard]},
+  { path: '', redirectTo: 'store', pathMatch:'full' }  
+
 ];
 
 @NgModule({
