@@ -23,8 +23,6 @@ app.use(cors({
 //app.use('/', express.static('/build'))
 
 
-
-
 // ROUTERS
 app.use('/products', productRouter);
 app.use('/users', userRouter);
