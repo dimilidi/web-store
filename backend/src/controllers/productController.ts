@@ -1,6 +1,6 @@
-import { sample_products } from "../data.ts";
-import Product from "../models/Product.ts";
-import mongoose from "mongoose";
+import { sample_products } from "../data";
+import Product from "../models/Product";
+
 
 // SEED PRODUCTS DATA INTO DB
 /** @type {import("express").RequestHandler} */
