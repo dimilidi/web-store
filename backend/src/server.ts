@@ -26,12 +26,12 @@ app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
 }));
-app.use('/', express.static('/build'))
-//app.use(express.static('public'));
+//app.use('/', express.static('/build'))
+app.use(express.static('public'));
 //catch-all route handler 
-/*app.get('*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname,'public', 'index.html'))
-})*/
+})
 
 
 const port = process.env.PORT || 5000;
