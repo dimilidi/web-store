@@ -15,7 +15,9 @@
       <span class="favorite {{ product.favorite ? '' : 'not' }}">❤</span>
     </div>
     <div class="rating">
-      <!-- Rating Stars to be added-->
+      <div class="stars">
+        <app-star-rating [stars]="product.stars" [size]="1.8" />
+      </div>
     </div>
 
     <div class="origins">

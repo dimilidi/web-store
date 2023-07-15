@@ -33,6 +33,7 @@ import { authGuard } from './auth/guards/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
+import { StarRatingComponent } from './components/partials/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { PaypalButtonComponent } from './components/partials/paypal-button/paypa
     MapComponent,
     PaymentPageComponent,
     PaypalButtonComponent,
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,9 @@
             <span class="favorite {{ product.favorite ? '' : 'not' }}">
               ❤
             </span>
-            <div class="stars"></div>
+            <div class="stars">
+              <app-star-rating [stars]="product.stars" />
+            </div>
             <div class="product-item-footer">
               <div class="origins">
                 <span *ngFor="let origin of product.origins">
