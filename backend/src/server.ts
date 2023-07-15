@@ -14,12 +14,6 @@ dbConnect();
 // CREATE EXPRESS SERVER 
 const app = express();
 
-
-// ROUTERS
-app.use('/products', productRouter);
-app.use('/users', userRouter);
-app.use('/orders', orderRouter);
-
 // MIDDLEWARES
 app.use(express.json());
 app.use(cors({
@@ -27,6 +21,15 @@ app.use(cors({
     origin:["http://localhost:4200"]
 }));
 //app.use('/', express.static('/build'))
+
+
+
+
+// ROUTERS
+app.use('/products', productRouter);
+app.use('/users', userRouter);
+app.use('/orders', orderRouter);
+
 app.use(express.static('public'));
 //catch-all route handler 
 app.get('*', (req, res) => {
