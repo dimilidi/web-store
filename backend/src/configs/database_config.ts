@@ -1,9 +1,11 @@
-import mongoose from "mongoose";
+import {connect, ConnectOptions} from 'mongoose';
 
 export const dbConnect = () => {
-  mongoose.set("strictQuery", false);
-  mongoose
-    .connect(process.env.DB_CONN!)
-    .then(() => console.log("Database connected"))
-    .catch(() => console.log("Failed to connect to the database"));
-};
+    connect(process.env.MONGO_URI!, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    } as ConnectOptions).then(
+        () => console.log("connect successfully"),
+        (error) => console.log(error)
+    )
+}
