@@ -28,8 +28,9 @@ app.use('/products', productRouter);
 app.use('/users', userRouter);
 app.use('/orders', orderRouter);
 
+// set the public folder that represents the frontend to static
 app.use(express.static('public'));
-//catch-all route handler 
+//catch-all route handler redirecting to the frontend rounts
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname,'public', 'index.html'))
 })

@@ -27,8 +27,9 @@ app.use((0, cors_1.default)({
 app.use('/products', productRouter_1.default);
 app.use('/users', userRouter_1.default);
 app.use('/orders', orderRouter_1.default);
+// set the public folder that represents the frontend to static
 app.use(express_1.default.static('public'));
-//catch-all route handler 
+//catch-all route handler redirecting to the frontend rounts
 app.get('*', function (req, res) {
     res.sendFile(path_1.default.join(__dirname, 'public', 'index.html'));
 });
