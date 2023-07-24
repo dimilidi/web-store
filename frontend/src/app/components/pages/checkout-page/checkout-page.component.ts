@@ -17,16 +17,22 @@ export class CheckoutPageComponent implements OnInit {
   checkoutForm!: FormGroup;
 
   constructor(
-    cartService: CartService,
+    private cartService: CartService,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
   ) {
-    const cart = cartService.getCart();
-    this.order.items = cart.items;
-    this.order.totalPrice = cart.totalPrice;
+    this.cartService.getCartObservable().subscribe((cart) => {
+      if (cart) {
+        this.order.items = cart.items;
+        this.order.totalPrice = cart.totalPrice;
+      } else {
+        this.order.items = [];
+        this.order.totalPrice = 0;
+      }
+    });
   }
 
   ngOnInit(): void {

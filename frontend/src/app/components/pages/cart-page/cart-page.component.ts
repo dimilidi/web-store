@@ -9,7 +9,7 @@ import { CartItem } from 'src/app/shared/models/CartItem';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent {
-  cart!:Cart;
+  cart!:Cart | null;
 
   constructor(private cartService: CartService){
     this.cartService.getCartObservable().subscribe((cart)=> {

@@ -14,9 +14,13 @@ export class HeaderComponent {
   capitalizedName = '';
   router: any;
 
-  constructor(cartService: CartService, private userService: UserService) {
-    cartService.getCartObservable().subscribe((newCart) => {
-      this.cartQuantity = newCart.totalCount;
+  constructor(private cartService: CartService, private userService: UserService) {
+    this.cartService.getCartObservable().subscribe((newCart) => {
+      if (newCart) {
+        this.cartQuantity = newCart.totalCount;
+      } else {
+        this.cartQuantity = 0;
+      }
     });
 
     userService.userObservable.subscribe((newUser) => {
