@@ -11,6 +11,9 @@ export const PRODUCTS_BY_ID_URL = PRODUCTS_URL + '/';
 
 export const USER_LOGIN_URL = BASE_URL + '/users/login';
 export const USER_REGISTER_URL = BASE_URL + '/users/register';
+export const USER_UPDATE_URL = BASE_URL + '/users/edit-account';
+export const USER_ORDERS_URL = BASE_URL + '/users/orders';
+
 
 export const ORDERS_URL = BASE_URL + '/orders';
 export const ORDER_CREATE_URL = ORDERS_URL + '/create';

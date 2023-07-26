@@ -48,6 +48,14 @@
   li div{
     padding: 1rem;
   }
+
+  li div img {
+    cursor: pointer;
+  }
+
+  li div img:hover {
+    opacity: 0.8;
+  }
   
   li div:not(:first-child){
     flex-basis: 18%;
@@ -63,7 +71,7 @@
   }
   
   li .remove-button{
-    border-radius: 1rem;
+    background: none;
     border: none;
     padding: 0.5rem;
     color: rgb(63, 151, 184);

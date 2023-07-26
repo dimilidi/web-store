@@ -1,0 +1,39 @@
+app-title {
+    text-align: center;
+}
+
+.container{
+    margin: 1rem auto;
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    border-radius: 5px;
+
+  }
+  
+  .content{
+    width: 35rem;
+    margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .summary > div{
+    margin-top: 0.7rem;
+  }
+  
+  .summary span {
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+  
+  h3{
+    margin-top: 0.6rem;
+  }
+  
+  
+
+  

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { UserLogin } from '../shared/interfaces/UserLogin';
-import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { USER_LOGIN_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { UserRegister } from '../shared/interfaces/UserRegister';
 import { Router } from '@angular/router';
+import { EditInput } from '../shared/interfaces/EditInput';
 
 const USER_KEY = 'User';
 
@@ -14,6 +15,7 @@ const USER_KEY = 'User';
   providedIn: 'root',
 })
 export class UserService {
+
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
   );
@@ -66,18 +68,48 @@ export class UserService {
     );
   }
 
+  editAccount(userUpdate: EditInput): Observable<User> {
+    return this.http.put<User>(USER_UPDATE_URL, userUpdate).pipe(
+      tap({
+        next: (user) => {
+          console.log('Updated User:', user);
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+            `Edit Profile ${user.name}`,
+            'Update Successful'
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Update Failed');
+        },
+      })
+    );
+  }
+  
+
+  
+
   logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
-    window.location.reload;
+    this.router.navigate(['/'])
   }
 
+
   private setUserToLocalStorage(user: User) {
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    const currentUser = this.getUserFromLocalStorage();
+    const updatedUser = { ...currentUser, ...user };
+     // Add or update the token property
+     updatedUser.token = user.token || currentUser.token;
+    localStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
+    
   }
+  
 
   private getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
+        
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
   }

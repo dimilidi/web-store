@@ -1,0 +1,102 @@
+app-title {
+    padding: 1rem;
+    text-align: center;
+}
+
+.form {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    height: 210px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+input {
+    display: block;
+}
+
+.icon {
+    color: rgb(63, 151, 184);
+    cursor: pointer;
+}
+
+.edit-icon {
+ margin-top: -40px;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ color: white;
+ background-color: rgb(63, 151, 184);
+ border: 2px solid rgb(63, 151, 184);
+ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ align-self: flex-end;
+ transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.edit-icon mat-icon:hover {
+    color: rgb(63, 151, 184);
+
+}
+
+.edit-icon:hover {
+    background-color: white;
+    color: rgb(63, 151, 184);
+    border: 2px solid rgb(63, 151, 184);
+}
+
+.icon:hover {
+ opacity: 0.8;
+}
+
+
+
+.file-input-container {
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+
+}
+
+.file-input-label {
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .file-input-label input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-input-label mat-icon {
+    margin-right: 8px; 
+  }
+
+ 
+  

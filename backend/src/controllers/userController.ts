@@ -1,12 +1,18 @@
 import { sample_users } from "../data";
 import User, { IUser } from "../models/User";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import { Request, Response } from "express";
+import { v2 as cloudinary } from "cloudinary";
 import { log } from "console";
+
+interface TokenPayload extends JwtPayload {
+  id: string;
+}
 
 // SEED USERS DATA INTO DB
 /** @type {import("express").RequestHandler} */
-export async function seedUsers(req: any, res: any) {
+export async function seedUsers(req: Request, res: Response) {
   const foodsCount = await User.countDocuments();
   if (foodsCount > 0) {
     res.send("Seed is already done!");
@@ -18,7 +24,7 @@ export async function seedUsers(req: any, res: any) {
 }
 
 // LOGIN
-export async function login(req: any, res: any) {
+export async function login(req: Request, res: Response) {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
@@ -30,8 +36,8 @@ export async function login(req: any, res: any) {
 }
 
 // REGISTER
-export async function register(req: any, res: any) {
-  const { name, email, password, address } = req.body;
+export async function register(req: Request, res: Response) {
+  const { name, email, password, address, phone, avatar } = req.body;
   const user = await User.findOne({ email });
   if (user) {
     res.status(400).send("User is already exist, please login!");
@@ -46,6 +52,8 @@ export async function register(req: any, res: any) {
     email: email.toLowerCase(),
     password: encryptedPassword,
     address,
+    phone,
+    avatar,
     isAdmin: false,
   };
 
@@ -53,8 +61,7 @@ export async function register(req: any, res: any) {
   res.send(generateTokenResponse(dbUser));
 }
 
-
-// TOKEN 
+// TOKEN
 const generateTokenResponse = (user: IUser) => {
   const token = jwt.sign(
     {
@@ -73,7 +80,81 @@ const generateTokenResponse = (user: IUser) => {
     email: user.email,
     name: user.name,
     address: user.address,
+    avatar: user.avatar,
+    phone: user.phone,
     isAdmin: user.isAdmin,
     token: token,
   };
 };
+
+// CHECK PASSWORD
+async function checkPassword(password: string, user: IUser) {
+  return await bcrypt.compare(password, user.password);
+}
+
+// EDIT ACCOUNT
+export async function editAccount(req: any, res: Response) {
+  const user = await User.findById(req.user.id);
+
+  const { password, newPassword, avatar, ...others } = req.body;
+
+  // Change password
+  if (user) {
+    if (password && newPassword) {
+      const correctPassword = await checkPassword(password, user);
+      if (correctPassword) {
+        user.password = newPassword;
+      }
+    }
+  }
+
+  // cloudinary configuration
+  cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_KEY,
+    api_secret: process.env.CLOUD_SECRET,
+  });
+
+ 
+ // Change avatar
+ if (user && avatar) {
+  const upload = await cloudinary.uploader.upload(avatar);
+  user.avatar = upload.secure_url;
+} else if (user && avatar === '') {
+  // If avatar is an empty string, delete the avatar
+  user.avatar = '';
+}
+
+ 
+  // Change other items
+  if (user) {
+    for (const key in others) {
+      (user as IUser)[key] = others[key];
+    }
+
+    
+    await user.save();
+
+    // Send the updated user object with the token back to the client
+    const updatedUser = user.toObject();
+    updatedUser.token = req.headers.access_token;
+    res.status(200).json(updatedUser);
+  } else {
+    res.status(404).send("User not found.");
+  }
+  
+}
+
+
+// GET ALL ORDERS
+export async function getAllOrders(req: any, res: any) {
+  const userId = req.user.id;  
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const userOrders = await user.getAllOrders();
+  res.status(200).json(userOrders);
+}

@@ -9,13 +9,14 @@
         <li *ngIf="isAuth" class="menu-container">
           <a >
             <div class="dashboard">
-              <mat-icon>person</mat-icon>
-              <span>{{capitalizedName }}</span>
+              <img src="{{user.avatar}}"/>
+              <mat-icon *ngIf="user.avatar === ''">person</mat-icon>
+              <span>{{ capitalizedName }}</span>
             </div>
           </a>
           <div class="menu">
-            <a routerLink="/profile">Profile</a>
-            <a routerLink="/profile">Orders</a>
+            <a routerLink="/edit-account">Profile</a>
+            <a routerLink="/orders">Orders</a>
             <a (click)="logout()">Logout</a>
           </div>
         </li>

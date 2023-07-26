@@ -1,0 +1,66 @@
+<div>
+  <app-title title="Edit Profile" margin="0 auto" />
+
+  <div>
+    <form class="form" [formGroup]="editAccountForm">
+      <div class="image-container">
+        <img
+          *ngIf="user.avatar !== ''"
+          src="{{ user.avatar }}"
+          alt="profile picture"
+        />
+        <img
+          *ngIf="user.avatar === ''"
+          src="/assets/default_avatar.png"
+          alt="profile picture"
+        />
+
+        <div class="edit-icon">
+          <mat-icon *ngIf="!editImageIsOpen"  (click)="toggleEditAvatar()">edit</mat-icon>
+          <mat-icon *ngIf="editImageIsOpen"  (click)="toggleEditAvatar()">close</mat-icon>
+
+        </div>
+
+        <div class="file-input-container" *ngIf="editImageIsOpen">
+          <label class="file-input-label">
+            <input
+              type="file"
+              (change)="handleFileChange($event)"
+              accept=".jpg, .jpeg, .png"
+            />
+            <mat-icon class="icon">add_a_photo</mat-icon>
+          </label>
+          <mat-icon class="icon" (click)="deleteAvatar()">delete</mat-icon>
+        </div>
+      </div>
+
+      <div class="text-input">
+        <app-text-input
+          [control]="fc.name"
+          [showErrorsWhen]="isSubmitted"
+          type="text"
+          label="Username"
+          value="{{ user.name }}"
+        ></app-text-input>
+        <app-text-input
+          [control]="fc.address"
+          [showErrorsWhen]="isSubmitted"
+          type="text"
+          label="Address"
+          value="{{ user.address }}"
+        ></app-text-input>
+        <app-text-input
+          [control]="fc.phone"
+          [showErrorsWhen]="isSubmitted"
+          type="number"
+          label="Phone"
+          value="{{ user.phone }}"
+        ></app-text-input>
+
+        <app-button [widthRem]="15" text="Save Changes" (click)="saveChanges()"
+          >Save Changes</app-button
+        >
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<app-title title="{{ user.name }}'s Orders"></app-title>
+
+<div class="container">
+  <div class="content">
+    <div *ngIf="userOrders && userOrders.length > 0" class="summary">
+      <div *ngFor="let order of userOrders">
+        <h2>
+          Order: {{ order.id }}
+        </h2>
+        <h3>
+          Total Price: <span>{{ order.totalPrice | currency : "EUR" }}</span>
+        </h3>
+
+        <h3>
+          Status: <span>{{ order.status }}</span>
+        </h3>
+
+        <h3>
+          Created At: <span>{{ order.createdAt | date }}</span>
+        </h3>
+
+        <app-order-items-list [order]="order" />
+      </div>
+    </div>
+  </div>
+</div>
