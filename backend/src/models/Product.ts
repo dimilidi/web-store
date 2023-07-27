@@ -7,6 +7,8 @@ export interface Product {
   tags: string[];
   favorite: boolean;
   stars: number;
+  numRatings: number;
+  averageRating: number; 
   imageUrl: string;
   origins: string[];
 }
@@ -17,7 +19,9 @@ export const ProductSchema = new Schema<Product>(
     price: { type: Number, required: true },
     tags: { type: [String] },
     favorite: { type: Boolean, default: false },
-    stars: { type: Number, required: true },
+    stars: { type: Number, default: 0 },
+    numRatings: { type: Number, default: 0 }, // Add this field
+    averageRating: { type: Number, default: 0 }, 
     imageUrl: { type: String, required: true },
     origins: { type: [String], required: true },
   },

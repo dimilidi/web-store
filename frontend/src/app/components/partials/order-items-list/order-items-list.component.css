@@ -27,3 +27,12 @@ table{
     border-radius: 100rem;
   }
   
+
+  
+  @media screen and (max-width: 440px) {
+    tr {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+  }

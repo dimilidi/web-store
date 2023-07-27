@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SearchComponent } from './components/partials/search/search.component';
@@ -70,6 +71,7 @@ import { OrdersPageComponent } from './components/pages/orders-page/orders-page.
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,

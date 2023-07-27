@@ -24,7 +24,7 @@ export const UserSchema = new Schema<IUser>({
     email: {type: String, required: true, unique: true},
     password: {type:String, required: true},
     address: {type:String, required: true},
-    phone: {type:String, required: true},
+    phone: {type:String, required: false},
     avatar: { type: String, default: 'https://freesvg./img/abstract-user-flat-4.png' },
     isAdmin: {type:Boolean, required: true}
 },

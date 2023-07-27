@@ -12,11 +12,46 @@
       <span class="name">
         {{ product.name }}
       </span>
-      <span class="favorite {{ product.favorite ? '' : 'not' }}">❤</span>
+      <span
+        class="favorite {{ product.favorite ? '' : 'not' }}"
+        (click)="toggleFavourite(product)"
+      >
+        ❤
+      </span>
     </div>
     <div class="rating">
       <div class="stars">
-        <app-star-rating [stars]="product.stars" [size]="1.8" />
+        <!-- In "rate" mode, show stars given by the current user -->
+        <div *ngIf="selectedMode === 'Rate'">
+          <app-star-rating
+            [stars]="product.stars"
+            [productId]="product.id"
+            (starClicked)="updateStars($event.stars, $event.productId)"
+          ></app-star-rating>
+        </div>
+
+        <!-- In "view" mode, show the average rating -->
+        <div *ngIf="selectedMode === 'View'">
+          <app-star-rating
+            [averageRating]="product.averageRating"
+            [productId]="product.id"
+          ></app-star-rating>
+        </div>
+
+        <!-- Dropdown menu for mode selection using mat-select -->
+        <div class="mode-select">
+          <label [style.display]="isOptionSelected() ? 'none' : 'block'">
+            Mode</label
+          >
+          <mat-select (selectionChange)="onModeSelectionChange($event)">
+            <mat-option
+              *ngFor="let option of modeOptions"
+              [value]="option.value"
+            >
+              {{ option.label }}
+            </mat-option>
+          </mat-select>
+        </div>
       </div>
     </div>
 

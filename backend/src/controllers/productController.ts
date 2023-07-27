@@ -1,7 +1,6 @@
 import { sample_products } from "../data";
 import Product from "../models/Product";
 
-
 // SEED PRODUCTS DATA INTO DB
 /** @type {import("express").RequestHandler} */
 export async function seedProducts(req: any, res: any) {
@@ -27,6 +26,47 @@ export async function getProductsBySearchTerm(req: any, res: any) {
   const searchRegex = new RegExp(req.params.searchTerm, "i");
   const products = await Product.find({ name: { $regex: searchRegex } });
   res.send(products);
+}
+
+// UPDATE PRODUCT STARS
+export async function submitUserRating(req: any, res: any) {
+  const { stars, productId } = req.body;
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found." });
+  }
+
+  // Calculate the updated average rating and number of ratings
+  const newNumRatings = product.numRatings + 1;
+  const newAverageRating =
+    (product.averageRating * product.numRatings + stars) / newNumRatings;
+
+  // Update the product's stars, numRatings, and averageRating
+  product.stars = stars;
+  product.numRatings = newNumRatings;
+  product.averageRating = newAverageRating;
+
+  await product.save();
+
+  return res.status(200).json(product);
+}
+
+//
+
+export async function updateProductStars(req: any, res: any) {
+  const { stars, productId } = req.body;
+  const product = await Product.findById(productId);
+  //console.log(req.body);
+
+  if (!product) {
+    res.status(404).json({ message: "Product not found" });
+  } else {
+    product.stars = stars;
+    await product.save();
+    res.status(200).json({ message: "Product stars updated successfully" });
+  }
 }
 
 // GET TAGS

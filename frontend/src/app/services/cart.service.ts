@@ -40,6 +40,7 @@ export class CartService {
     );
     if (cartItem) {
       cartItem.quantity++;
+      cartItem.price = cartItem.quantity * cartItem.product.price;
     } else {
       this.cart.items.push(new CartItem(product));
     }

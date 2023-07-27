@@ -8,6 +8,7 @@
   .map{
     width: 100%;
     height: 100%;
+    z-index: -1;
   }
   
   .find-location{
@@ -22,9 +23,23 @@
     z-index: 1000;
     background-color: #ffffff7c;
     cursor: pointer;
+    z-index: 0;
   }
   
   .find-location:hover{
     background-color: white;
   }
   
+  @media screen and (max-width: 760px) {
+    .container {
+      width: 400px;
+    }
+  }
+
+  
+  @media screen and (max-width: 440px) {
+    .container {
+      width: 300px;
+      margin: 0 auto;
+    }
+  }

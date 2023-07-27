@@ -5,6 +5,8 @@ export class Product {
     tags?: string[];
     favorite!: boolean;
     stars!: number;
+    numRatings!: number;
+    averageRating!: number;
     imageUrl!: string;
     origins!: string[];
 }

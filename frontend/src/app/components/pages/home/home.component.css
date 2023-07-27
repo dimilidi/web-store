@@ -19,15 +19,22 @@ ul{
     overflow: hidden;
     color:  rgb(63, 151, 184);
   }
-  
- .card:hover{
-    opacity: 0.9;
-    cursor: pointer;
+
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
   }
   
+
  .card img{
     object-fit: cover;
     height: 14.5rem;
+  }
+
+  .card img:hover{
+    opacity: 0.9;
+    cursor: pointer;
   }
   
   .content{
@@ -36,6 +43,12 @@ ul{
     padding: 0.5rem 1rem;
     position: relative;
     height: 2.7rem;
+    width: 100%;
+  }
+
+  .content .name:hover {
+    opacity: 0.8;
+    cursor: pointer;
   }
   
   .favorite{
@@ -43,6 +56,11 @@ ul{
     top: 0.5rem;
     right: 1rem;
     font-size: 1.2rem;
+  }
+
+  .favorite:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
   
   .favorite.not{
@@ -91,11 +109,15 @@ ul{
   
   .add-btn {
     width: 4rem;
-    padding: 10px;
+    padding:  10px;
     border-radius: 5px;
     background-color:  rgb(63, 151, 184);
     color: white;
     border: none;
     cursor: pointer;
+  }
+
+  .add-btn:hover {
+    opacity: 0.8;
   }
 

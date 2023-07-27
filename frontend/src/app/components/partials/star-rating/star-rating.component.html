@@ -3,6 +3,7 @@
     *ngFor="let current of [1, 2, 3, 4, 5]"
     [src]="getStarImage(current)"
     [ngStyle]="styles"
+    (click)="onStarClick(current)"
     />
 </div>
 

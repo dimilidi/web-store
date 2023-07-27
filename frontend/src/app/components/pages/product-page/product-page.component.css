@@ -39,9 +39,34 @@ img{
   font-weight: bold;
 }
 
+.stars {
+  width: 200px;
+  display: flex;
+  gap: 29px;
+}
+
+.mode-select {
+
+  display: flex;
+  align-items: center;
+}
+
+.mode-select label {
+  margin-right:-40px;
+}
+
+.mode-select mat-select {
+  min-width: 5.7rem;
+}
+
+
 .favorite{
   color: rgb(63, 151, 184);
   font-size: 2.5rem;
+}
+
+.favorite:hover {
+  cursor: pointer;
 }
 
 .favorite.not{
@@ -65,6 +90,11 @@ img{
 .tags{
   display: flex;
   flex-wrap: wrap;
+}
+
+.tags a:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
 }
 
 .tags a{
