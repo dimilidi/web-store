@@ -1,193 +1,119 @@
-## Workflow
-1. Create Angular App
-- create projects folder
-- create app as frontend
-2. Add Header
-- generate component (ng g c header)
-- install angular material (ng add @angular/material)
-- add HTML
-- add CSS
-3. List Products
-- create Product Model
-- create data.ts
- - add sample produccts
-- add images to assets
-- create Product Service
-- create Home Component
-  - add HTML
-  - add CSS
-  - add ts
-4. Search
-- add method to Product Service
-- add search route
-- show rearch result in Home component
-- generate Search Comppnent
-  -  add it to Home Component
-  - add ts
-  - add html
-  - add css
-5. Product Page
-- add method to Product Service
-- generate Product Page Component
-  - add Route
-  - add ts
-  - add html
-  - add css
-6. Tags Bar
-- create Tag Model
-- add sample tags to data.ts
-- Food Service
-  - add get all tags method
-  - add get all foods by tag method
-- add Tags Route
-- show Tags in Home Component
-- generate Tag Component
-  - add to Home Component
-  - add ts
-  - add html
-  - add css
-7. Cart Page
-- create CartItem Model
-- create Cart Model
-- generate Cart Service
-- add to cart button in Product Page
-- generate Cart Page Component
-  - add Route
-  - add ts
-  - add html
-  - add css
-8. Not Found
-- Generate Component
-  - add ts
-  - add html
-  - add css
-- Add to Pages
-  - Home Page
-  - Food Page
-  - Cart Page
-9. Connect to Backend
-- create backend folder
-- npm init
-- npm install typescript
-- create tsconfig.json
-- create gitignore
-- copy data.ts to backend/src
-- npm install express cors
-- create server.ts
-  - install @types
-  - add endpoints
-  - npm install nodemone ts-node --save-dev
-  - add urLs.ts to frontend
-  - add HTTPClient Module
-  - update Product Service
-10. Loading
-- add Image
-- add Component
-- add Service
-- add Interceptor
-11. Login
-- generate component
-  - add to routes
-  - add ts
-  - add html + import Reactive Forms Module
-  - add css
-- add Login Endpoint
-  - use json
-  - add jsonwebtoken
-  - test using Postman
- - generate User Service 
-   - generate User Model
-   - add User Subject
-   - add Login Method
-     - add User Urls
-     - generate UserLogin Interface
-     - add ngx-toaster
-       - import Module
-       - import BrowserAnimationsModule
-       - add styles in angular.json
-     - add to Header
-   - add Local Storage Methods
-   - add Logout Method 
-12. Make Components for Login Page
-- Input Container
-- Input Validation
-- Text Input
-- Default Button
-13. Connect Login Api to MongoDB Atlas
-- move Endpoints into routers
-- create .env.file
-- install
-  - mongoose
-  - dotenv
-  - bcryptjs
-  - express-async-handler
-- connect to MongoDB Atlas
-- use MongoDB instead of data.ts in apis
-14. Register User
-- add Register Api
-- add Register Service method
-- add Register link
-- add Register Component
-15. Checkout Page
-- create Order Model
-- create Checkout Page Component and add it to router
-- add curent User to User Service
-- add latest Cart to Cart Service
-- create Order Items List Component
-- add Map to the Checkout Page
-  - add Leaflet npm package
-    - add @types/leaflet
-    - add CSS to angular.json
-  - add AddressLatLng to Order Model
-  - create Map Component
-    - add ts
-    - add html
-    - add css
-  - add Auth Guard
-16. Save Order
-  - add Order Model
-  - add Order Status Enum
-  - add Auth Middleware
-  - add Order Router
-    - add Create Api
-  - add Order Urls to urls.ts
-  - add Order Service
-    - add Create Method
-  - add Auth Interceptor
-17. Payment Page
-  - generate Component
-  - add getOrderForCurrentUser api
-  - add Order Service method
-  - connect Component to Service
-  - make Map readonly
-18. Paypal
-- generate Component 
-   - add it to Payment Page
-- get Paypal Client Id
-- add Paypayl JS to index.html
-- set up Paypal Button
-- add Pay Api to Order Router
-- get Paypal Sandbox Account
-19. Order Track Page
-- generate Component
-  - add it to routes
-- add api
- - add it to url.ts
-- add method to Order Service
-- add html
-- add css
-20. Deploy on Render
-21. Edit-account
-22. Orders Page
-23. Favourites
-24. Star Rating
+# Web Store - A Web Store Website
+
+ <br/>
 
 
-## TODO:
-- add phone validation -> done
-- Admin Dashboard
-  - CRUD Product
-  - manage users
+**Web Store** is a modern, user-friendly web store that provides a variaty of products from different categories. The website is built with the latest technologies, including MEAN Stack and is designed to be accessible to all. 
+ <br/>
+ <br/>
+ This project is a result of my efforts during a 1-month Angular Course. This course has been a valuable learning experience that has prepared me for future projects and opportunities.
+ <br/>
 
-## BUGS
-- redirect to login page when user not logged in and want to buy a product -> done
+> Visit the website: [Web Store Website](https://web-store-85da.onrender.com/)<br/> <br/>
+
+
+## Table of Contents
+
+1. [Project Status](#1-project-status)
+2. [Features](#2-features)
+3. [Technologies Used](#3-technologies-used)
+4. [Screenshots](#4-screenshots)
+5. [Room for Improvement](#5-room-for-improvement)
+6. [Setup](#7-setup)
+
+<br/>
+
+## 1. Project Status
+
+Project is: _in progress_ 
+The project is currently in progress and actively being developed. I am continuously adding new features and fixing any bugs to ensure a seamless user experience.
+
+This project is the final project of a one-month MEAN Stack course by SoftUni. It is going to be officially presented on 13.08.2023. 
+<br/>
+
+## 2. Features
+
+## Web Store provides several key features to users who prefer shopping from home. 
+
+**For Not Logged In Users:**
+
+- View products without the need to log in
+- Filter and search products
+- Opportunity to Sign Up
+
+
+**For Logged In Users:**
+
+- Browse products and view the product details 
+- Mark products as favourite
+- Rate a product
+- Buy a product
+- Monitor made orders and their status
+- Manage a user profile, including the ability to provide contact information (phone) and add a profile photo 
+ <br />
+
+
+## 3. Technologies Used
+ Some of the key technologies used in the project include:
+
+**General:**
+- Node.js (v16.20.0)
+- Package Manager: npm 8.19.4
+
+**Frontend:**
+- Angular ( 16.1.4)
+- Leaflet (1.9.4) 
+- Ngx Toastr (^17.0.2)
+- Rxjs (~7.8.0)
+- TypeScript (~5.1.3)
+
+**Backend**
+- Express (^4.18.2)
+- Mongoose (^7.3.4)
+- Bcryptjs (^2.4.3)
+- JsonWebToken (^9.0.1)
+- Cloudinary (^1.39.0)
+- TypeScript (~5.1.6)
+
+**Data base:**
+- MongoDB
+
+**Deployment:**
+-  Render.com
+
+## 4. Screenshots
+
+<img src='./frontend//dist/frontend/assets/screen_1.jpg' width='430' height='250' />
+<img src='./frontend//dist/frontend/assets/screen_2.jpg' width='430' height='250' />
+<img src='./frontend//dist/frontend/assets/screen_3.jpg' width='430' height='250' />
+<img src='./frontend//dist/frontend/assets/screen_4.jpg' width='430' height='250' />
+<img src='./frontend//dist/frontend/assets/screen_5.jpg' width='430' height='250' />
+
+
+## 6. Room for Improvement
+
+ Improvements for future development to provide better user expierence:
+
+- [ ] Confirmation process during sign-up, which can be enhanced by implementing a confirmation link.
+- [ ] Add new feature for reviewing a product
+- [ ] Implement cancel order functionality
+- [ ] Improve mobile version layout.
+- [ ] Ability to reset passwords
+- [ ] Add Admin Dashboard and implement more CRUD operations on Products and Users
+
+
+## 7. Setup
+
+To run this project, install it locally using npm:
+
+```
+$ git clone git@github.com:dimilidi/web-store.git
+$ cd backend
+$ npm install
+$ npm start
+$ cd frontend
+$ npm install
+$ npm start
+```
+
+
