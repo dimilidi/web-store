@@ -3,7 +3,7 @@
  <br/>
 
 
-**Web Store** is a modern, user-friendly web store that provides a variaty of products from different categories. The website is built with the latest technologies, including MEAN Stack and is designed to be accessible to all. 
+**Web Store** is a modern, user-friendly web store that provides a variety of products from different categories. The website is built with the latest technologies, including MEAN Stack and is designed to be accessible to all. 
  <br/>
  <br/>
  This project is a result of my efforts during a 1-month Angular Course. This course has been a valuable learning experience that has prepared me for future projects and opportunities.
