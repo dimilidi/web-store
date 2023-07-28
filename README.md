@@ -83,7 +83,7 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 
 ## 4. Screenshots
 
-<img src='./frontend/dist/frontend/assets/screen_1.jpg' width='430' height='250' />
+<img src='./frontend/assets/screen_1.jpg' width='430' height='250' />
 <img src='./frontend/dist/frontend/assets/screen_2.jpg' width='430' height='250' />
 <img src='./frontend/dist/frontend/assets/screen_3.jpg' width='430' height='250' />
 <img src='./frontend/dist/frontend/assets/screen_4.jpg' width='430' height='250' />
