@@ -177,3 +177,17 @@
 - add html
 - add css
 20. Deploy on Render
+21. Edit-account
+22. Orders Page
+23. Favourites
+24. Star Rating
+
+
+## TODO:
+- add phone validation
+- Admin Dashboard
+  - CRUD Product
+  - manage users
+
+## BUGS
+- redirect to login page when user not logged in and want to buy a product

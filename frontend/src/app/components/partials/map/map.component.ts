@@ -35,7 +35,7 @@ export class MapComponent implements OnChanges{
     if(!this.order) return;
     this.initializeMap();
     if(this.readonly && this.addressLatLng){
-      this.showLocationOnReadonlyMode();
+     // this.showLocationOnReadonlyMode();
     }
   }
 
