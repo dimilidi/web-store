@@ -19,7 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials:true,
-    origin:["https://web-store-85da.onrender.com"]
+    origin:["http://localhost:4200"]
 }));
 //app.use('/', express.static('/build'))
 
