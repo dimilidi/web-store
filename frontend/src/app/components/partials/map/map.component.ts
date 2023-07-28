@@ -16,7 +16,7 @@ export class MapComponent implements OnChanges{
   private readonly MARKER_ZOOM_LEVEL = 16;
   private readonly MARKER_ICON = icon({
     iconUrl:
-      'https://res.cloudinary.com/foodmine/image/upload/v1638842791/map/marker_kbua9q.png',
+      'https://res.cloudinary.com/dv3g1lcnc/image/upload/v1690508304/marker_loc.png',
     iconSize: [42, 42],
     iconAnchor: [21, 42],
   });
@@ -35,7 +35,7 @@ export class MapComponent implements OnChanges{
     if(!this.order) return;
     this.initializeMap();
     if(this.readonly && this.addressLatLng){
-     // this.showLocationOnReadonlyMode();
+      this.showLocationOnReadonlyMode();
     }
   }
 
@@ -111,8 +111,5 @@ export class MapComponent implements OnChanges{
   get addressLatLng(){
     return this.order.addressLatLng!;
   }
-
-
-
 
 }
