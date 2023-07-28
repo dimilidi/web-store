@@ -1,5 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aside{
+  width: 300px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  }
+
 ul{
     height: 100%;
+    width: 1100px;
+  
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +36,7 @@ ul{
     flex-direction: column;
     overflow: hidden;
     color:  rgb(63, 151, 184);
+    background-color: white;
   }
 
   .card:hover {

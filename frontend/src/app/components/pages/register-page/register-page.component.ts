@@ -61,6 +61,4 @@ export  class RegisterPageComponent implements OnInit {
     });
   }
 }
-function PasswordsMatchValidator(arg0: string, arg1: string): any {
-  throw new Error('Function not implemented.');
-}
+

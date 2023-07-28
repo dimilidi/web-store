@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
+import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
 
 @Component({
@@ -15,8 +16,9 @@ import { User } from 'src/app/shared/models/User';
 export class HomeComponent {
   products: Product[] = [];
   user: User = this.userService.currentUser;
+  tag!: Tag;
  
-  constructor(private userService: UserService, private productService: ProductService, activatedRoute: ActivatedRoute, private cartService: CartService){
+  constructor(private userService: UserService, private productService: ProductService, activatedRoute: ActivatedRoute, private cartService: CartService, private route: Router){
     let productsObservable:Observable<Product[]>;
     activatedRoute.params.subscribe((params)=> {
       if(params.searchTerm)
@@ -36,8 +38,10 @@ export class HomeComponent {
 
  
   addToCart(product: Product) {
+    if(!this.user.id) {
+      this.route.navigateByUrl('/login');
+    }
     this.cartService.addToCart(product);
-    //this.router.navigateByUrl('/cart-page');
   }
 
 
@@ -58,6 +62,12 @@ export class HomeComponent {
         console.log('Failed to update product favorite status on the backend.');
       }}
     );
+  }
+
+  onShowCategory(event:any): void {
+    this.tag = event;
+    console.log(this.tag);
+    
   }
 
   

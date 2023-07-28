@@ -1,11 +1,13 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { phoneNumberValidator } from '../../../shared/validators/phone_number_validator'; 
 
 const VALIDATORS_MESSAGES:any = {
   required: 'Input required.',
   email: 'Email is not valid.',
   minlength: 'Input is too short.',
-  noMatch: 'Confirm Password does not match.'
+  noMatch: 'Confirm Password does not match.',
+  phone: 'Invalid format.'
 }
 
 @Component({

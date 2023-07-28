@@ -184,10 +184,10 @@
 
 
 ## TODO:
-- add phone validation
+- add phone validation -> done
 - Admin Dashboard
   - CRUD Product
   - manage users
 
 ## BUGS
-- redirect to login page when user not logged in and want to buy a product
+- redirect to login page when user not logged in and want to buy a product -> done

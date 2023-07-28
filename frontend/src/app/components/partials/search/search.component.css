@@ -1,16 +1,15 @@
 .search-container {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
     margin-bottom: 1.5rem;
-  
+    width: 100%;
 }
 
   input{
-    border-radius: 10rem 0 0 10rem;
+    border-radius: 5px 0 0 5px;
     border: none;
     height: 3rem;
-    width: 20rem;
+    width: 200px;
     background-color: #f1f1f1;
     padding: 1.2rem;
     font-size: 1.1rem;
@@ -21,11 +20,11 @@
   div button{
     color: grey;
     height: 3rem;
-    width: 4rem;
+    width: 3rem;
     font-size: 1rem;
-    border-radius: 0 10rem 10rem 0;
+    border-radius: 0 5px 5px 0;
     border: none;
-    background-color: #e72929;
+    background-color: rgb(63, 151, 184);
     color: white;
     opacity: 0.8;
     outline: none;

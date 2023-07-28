@@ -50,9 +50,12 @@ export class ProductPageComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.product);
-    console.log(this.product);
-    this.router.navigateByUrl('/cart-page');
+    if (!this.user.id) {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.cartService.addToCart(this.product);
+      this.router.navigateByUrl('/cart-page');
+    }
   }
 
   updateStars(stars: number, productId: string) {

@@ -5,24 +5,32 @@ app-title {
 .container{
     margin: 1rem auto;
     padding: 2rem 1rem;
-    max-width: 1000px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    border-radius: 5px;
-
   }
   
   .content{
-    width: 35rem;
     margin-right: 3rem;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
   }
   
   .summary > div{
-    margin-top: 0.7rem;
+    padding: 2rem;
+    margin: 0.7rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    border-radius: 5px;
+    background-color: white;
+
   }
   
   .summary span {

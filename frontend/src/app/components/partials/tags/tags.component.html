@@ -1,6 +1,14 @@
-<div *ngIf="tags">
-    <a *ngFor="let tag of tags" routerLink="/tag/{{tag.name}}">
-      {{tag.name}}({{tag.count}})
-    </a>
-  </div>
-  
+
+
+<mat-expansion-panel *ngIf="tags">
+  <mat-expansion-panel-header>
+    <mat-panel-title>CATEGORIES</mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-selection-list [multiple]="false">
+    <mat-list-option class="custom-radio-button" *ngFor="let tag of tags" [value]="tag" routerLink="/tag/{{ tag.name }}" >
+      <span (click)="onShowCategory(tag)" routerLink="/tag/{{ tag.name }}">
+        {{ tag.name }}({{ tag.count }})
+      </span>
+    </mat-list-option>
+  </mat-selection-list>
+</mat-expansion-panel>

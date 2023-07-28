@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
+import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
 
 @Component({
@@ -12,7 +13,7 @@ export class HeaderComponent {
   cartQuantity = 0;
   user!: User;
   capitalizedName = '';
-  router: any;
+
 
   constructor(private cartService: CartService, private userService: UserService) {
     this.cartService.getCartObservable().subscribe((newCart) => {
@@ -41,4 +42,5 @@ export class HeaderComponent {
   get isAuth() {
     return this.user.token;
   }
+
 }
