@@ -37,7 +37,6 @@ header{
   
   a.logo{
     font-weight: bold;
-   /* padding: 1.5rem;*/
   }
   
   ul{
@@ -69,6 +68,7 @@ header{
 
   .dashboard img {
     width: 30px;
+    padding: 0.08rem;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 2px rgb(185, 185, 185);
@@ -102,10 +102,6 @@ header{
   
   .menu-container{
     position: relative;
-  }
-
-  .menu-container a{
-   /* padding: 1.3rem;*/
   }
   
   .menu{

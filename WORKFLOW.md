@@ -185,7 +185,7 @@
 
 ## TODO:
 - Delete  profile option
-- Add favicon
+- Add favicon -> done
 - Password reset option
 - add phone validation -> done
 - Admin Dashboard
