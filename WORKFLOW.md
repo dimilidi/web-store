@@ -168,6 +168,14 @@
 - set up Paypal Button
 - add Pay Api to Order Router
 - get Paypal Sandbox Account
+  <!-- 
+  https://developer.paypal.com/dashboard/accounts/edit/5340612346208803333?accountName=sb-g5uzq26620194@personal.example.com
+
+  sb-g5uzq26620194@personal.example.com
+
+  v0Zg/>9Q
+  -->
+
 19. Order Track Page
 - generate Component
   - add it to routes
