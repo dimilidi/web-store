@@ -16,6 +16,12 @@
     font-weight: 500;
     outline: none;
   }
+
+  input:focus {
+    background-color: white;
+    border: 2px solid #f1f1f1;
+
+  }
   
   div button{
     color: grey;
@@ -34,4 +40,3 @@
     opacity: 1;
     cursor: pointer;
   }
-  

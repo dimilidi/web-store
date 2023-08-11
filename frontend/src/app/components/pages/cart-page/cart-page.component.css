@@ -1,6 +1,10 @@
 .wrapper {
   width: 80%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container{
@@ -8,9 +12,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    width: 80%;
-    margin: 1.5rem auto;
-    margin-top: 0.5rem;
+    width: 100%;
+   
+    margin: 0.5rem auto;
   }
   
   ul{
@@ -165,6 +169,9 @@
   }
 
   @media screen and (max-width: 440px) {
+    .wrapper {
+      width: 100%;
+    }
     ul li {
       flex-direction: column;
       gap: 5px;

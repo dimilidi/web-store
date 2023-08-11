@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { UserLogin } from '../shared/interfaces/UserLogin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { USER_LOGIN_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
+import { USER_ACCOUNT_URL, USER_LOGIN_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { UserRegister } from '../shared/interfaces/UserRegister';
 import { Router } from '@angular/router';
@@ -86,9 +86,7 @@ export class UserService {
       })
     );
   }
-  
 
-  
 
   logout() {
     this.userSubject.next(new User());

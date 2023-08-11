@@ -1,0 +1,51 @@
+app-title {
+    padding: 1rem;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-bottom: 0 solid grey;
+    transition: border-bottom 0.15s ease-out;
+    background-color: rgba(255, 255, 255, 0.096);
+    color: #616161;
+    font-weight: bold;
+    font-size: 1.1rem;
+    outline: none;
+    z-index: 1;
+  }
+  
+.form {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    height: 210px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgb(185, 185, 185);
+    border: 2px solid #e5e5e5;
+    object-fit: cover;
+}
+
+input {
+    display: block;
+}
+
+
+
+
+ 
+  

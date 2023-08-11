@@ -184,7 +184,9 @@
 
 
 ## TODO:
-- Delete  profile 
+- Delete  profile option
+- Add favicon
+- Password reset option
 - add phone validation -> done
 - Admin Dashboard
   - CRUD Product

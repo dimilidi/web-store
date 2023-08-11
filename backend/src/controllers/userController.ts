@@ -23,6 +23,7 @@ export async function seedUsers(req: Request, res: Response) {
   res.send("Seed Is Done!");
 }
 
+
 // LOGIN
 export async function login(req: Request, res: Response) {
   const { email, password } = req.body;

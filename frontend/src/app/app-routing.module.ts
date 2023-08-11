@@ -11,6 +11,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
+import { AccountPageComponent } from './components/pages/account-page/account-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'cart-page', component: CartPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
+  { path: 'account', component: AccountPageComponent,  canActivate:[authGuard]},
   { path: 'edit-account', component: EditAccountPageComponent,  canActivate:[authGuard]},
   { path: 'checkout', component: CheckoutPageComponent, canActivate:[authGuard]},
   { path: 'payment', component: PaymentPageComponent, canActivate:[authGuard]},

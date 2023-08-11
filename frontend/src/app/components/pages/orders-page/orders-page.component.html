@@ -2,6 +2,13 @@
 
 <div class="container">
   <div class="content">
+    <app-not-found
+    [visible]="!userOrders || userOrders.length <= 0"
+    notFoundMessage="You have no orders placed."
+    resetLinkText="Back to Store"
+  />
+
+
     <div *ngIf="userOrders && userOrders.length > 0" class="summary">
       <div *ngFor="let order of userOrders">
         <h2>

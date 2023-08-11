@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { phoneNumberValidator } from '../../../shared/validators/phone_number_validator'; 
+import { phoneNumberValidator } from '../../../shared/validators/phone_number_validator';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -41,7 +41,7 @@ export class EditAccountPageComponent {
         this.user.address,
         [Validators.required, Validators.minLength(10)],
       ],
-      phone: [this.user.phone,[Validators.required, phoneNumberValidator()]],
+      phone: [this.user.phone, [Validators.required, phoneNumberValidator()]],
       avatar: avatarFormControl,
     });
   }
@@ -88,7 +88,7 @@ export class EditAccountPageComponent {
   saveChanges() {
     this.editImageIsOpen = false;
     this.isSubmitted = true;
-
+    
     if (this.editAccountForm.invalid) return;
 
     const editedData = this.editAccountForm.value;
@@ -100,9 +100,10 @@ export class EditAccountPageComponent {
         avatar: this.user.avatar,
       })
       .subscribe(() => {
-        this.router.navigateByUrl(this.returnUrl);
+        this.router.navigate(['account']);
       });
+  
+
+    
   }
 }
-
-
