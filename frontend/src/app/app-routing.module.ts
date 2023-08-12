@@ -13,6 +13,7 @@ import { EditAccountPageComponent } from './components/pages/edit-account-page/e
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
 import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
+import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'payment', component: PaymentPageComponent, canActivate:[authGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[authGuard]},
   {path:'orders', component: OrdersPageComponent, canActivate:[authGuard]},
+  { path: '**', component: NotFoundComponent },
 
 ];
 

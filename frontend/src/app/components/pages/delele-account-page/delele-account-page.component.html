@@ -1,4 +1,19 @@
-<div *ngIf="user">
-    <!-- Display user data here -->
-    <button (click)="deleteUserAccount()">Delete Account</button>
-  </div>
+<div class="wrapper" *ngIf="user" [@fadeInOut]>
+  <section>
+    <app-title title="Delete Account" fontSize="2.6rem" />
+    <mat-icon>warning</mat-icon>
+    <h4>Are you sure you want to delete your account?</h4>
+    <app-button
+      type="button"
+      text="Delete"
+      bgColor="tomato"
+      color="white"
+      (click)="deleteUserAccount()"
+    ></app-button>
+    <app-button
+      type="button"
+      text="Back to Account"
+      (click)="backToAccount()"
+    ></app-button>
+  </section>
+</div>
