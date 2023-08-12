@@ -52,8 +52,6 @@ export async function trackOrder(req: any, res: any) {
 }
 
 
-
-
 async function getNewOrderForCurrentUser(req: any) {
     return await Order.findOne({ user: req.user.id, status: OrderStatus.NEW });
 }
