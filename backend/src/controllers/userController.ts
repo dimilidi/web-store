@@ -5,6 +5,7 @@ import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 import { Request, Response } from "express";
 import { v2 as cloudinary } from "cloudinary";
 import { log } from "console";
+import { Order } from "../models/Order";
 
 interface TokenPayload extends JwtPayload {
   id: string;
@@ -143,7 +144,23 @@ export async function editAccount(req: any, res: Response) {
   } else {
     res.status(404).send("User not found.");
   }
-  
+}
+
+// LOGOUT
+export const logout = async (req:any, res:any) => {
+  res.status(204).json();
+}
+
+// DELETE ACCOUNT
+export const deleteAccount = async (req:any, res:any) => {
+  const userId = await User.findById(req.user.id);
+
+  await Order.deleteMany({ user: userId });
+
+  // Delete the user
+  await User.deleteOne({ _id: userId });
+
+  res.status(204).json();
 }
 
 

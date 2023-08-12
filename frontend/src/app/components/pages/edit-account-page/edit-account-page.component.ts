@@ -41,7 +41,7 @@ export class EditAccountPageComponent {
         this.user.address,
         [Validators.required, Validators.minLength(10)],
       ],
-      phone: [this.user.phone, [Validators.required, phoneNumberValidator()]],
+      phone: [this.user.phone, [ phoneNumberValidator()]],
       avatar: avatarFormControl,
     });
   }

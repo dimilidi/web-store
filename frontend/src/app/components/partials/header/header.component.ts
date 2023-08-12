@@ -36,7 +36,7 @@ export class HeaderComponent {
 
 
   logout() {
-    this.userService.logout();
+    this.userService.logout().subscribe();
   }
 
   get isAuth() {

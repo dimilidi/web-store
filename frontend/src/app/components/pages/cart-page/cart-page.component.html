@@ -1,5 +1,6 @@
 <div class="wrapper">
-  <app-title title="{{ user.name }}'s Cart" />
+  <app-title [title]="user.name ? user.name + '\'s Cart' : 'Your Cart'" />
+
   <app-not-found
     [visible]="!cart || !cart.items.length"
     notFoundMessage="Your Cart is empty."

@@ -13,7 +13,9 @@
         {{ product.name }}
       </span>
       <span
-        class="favorite {{ product.favorite ? '' : 'not' }}"
+        class="favorite {{
+          user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
+        }}"
         (click)="toggleFavourite(product)"
       >
         ❤
@@ -39,7 +41,7 @@
         </div>
 
         <!-- Dropdown menu for mode selection using mat-select -->
-        <div class="mode-select">
+        <div *ngIf="user.id" class="mode-select">
           <label [style.display]="isOptionSelected() ? 'none' : 'block'">
             Mode</label
           >

@@ -3,12 +3,12 @@
     <app-search />
     <app-tags (showCategory)="onShowCategory($event)" />
   </div>
-  
+
   <app-not-found
     [visible]="!products || !products.length"
     resetLinkText="Reset Search"
   />
-  
+
   <ul>
     <li *ngFor="let product of products">
       <div class="card">
@@ -18,12 +18,16 @@
         <div class="content">
           <a routerLink="/product/{{ product.id }}" class="name">
             <span>
-              {{ product.name }}
+              {{ product.id }}
             </span>
           </a>
-  
+
           <span
-            class="favorite {{ product.favorite ? '' : 'not' }}"
+            class="favorite {{
+              user.id && favoriteProductsSet.has(product.id)
+                ? 'favorite'
+                : 'not'
+            }}"
             (click)="toggleFavourite(product)"
           >
             ❤
@@ -42,7 +46,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="price">
           <span>
             {{ product.price | currency : "EUR" }}
@@ -53,4 +57,3 @@
     </li>
   </ul>
 </div>
-

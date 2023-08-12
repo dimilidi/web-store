@@ -16,9 +16,12 @@
         />
 
         <div class="edit-icon">
-          <mat-icon *ngIf="!editImageIsOpen"  (click)="toggleEditAvatar()">edit</mat-icon>
-          <mat-icon *ngIf="editImageIsOpen"  (click)="toggleEditAvatar()">close</mat-icon>
-
+          <mat-icon *ngIf="!editImageIsOpen" (click)="toggleEditAvatar()"
+            >edit</mat-icon
+          >
+          <mat-icon *ngIf="editImageIsOpen" (click)="toggleEditAvatar()"
+            >close</mat-icon
+          >
         </div>
 
         <div class="file-input-container" *ngIf="editImageIsOpen">
@@ -57,10 +60,19 @@
           value="{{ user.phone }}"
         ></app-text-input>
 
-        <app-button [widthRem]="15"  [text]="'Save Changes'" (click)="saveChanges()"
-          >Save Changes</app-button
-        >
+        <app-button
+          [widthRem]="15"
+          [text]="'Save Changes'"
+          (click)="saveChanges()"
+        />
       </div>
+
+
+      <div class="delete-account-container">
+        <a routerLink="/delete-account">Delete Account</a>
+      </div>
+
     </form>
+
   </div>
 </div>

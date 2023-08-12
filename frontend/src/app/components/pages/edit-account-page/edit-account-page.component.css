@@ -3,6 +3,7 @@ app-title {
     text-align: center;
 }
 
+
 .form {
     margin: 0px auto;
     display: flex;
@@ -96,6 +97,12 @@ input {
   
   .file-input-label mat-icon {
     margin-right: 8px; 
+  }
+
+  .delete-account-container a {
+    font-size: 14px;
+    color: gray;
+    text-decoration: underline;
   }
 
  

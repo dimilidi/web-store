@@ -53,21 +53,7 @@ export async function submitUserRating(req: any, res: any) {
   return res.status(200).json(product);
 }
 
-//
 
-export async function updateProductStars(req: any, res: any) {
-  const { stars, productId } = req.body;
-  const product = await Product.findById(productId);
-  //console.log(req.body);
-
-  if (!product) {
-    res.status(404).json({ message: "Product not found" });
-  } else {
-    product.stars = stars;
-    await product.save();
-    res.status(200).json({ message: "Product stars updated successfully" });
-  }
-}
 
 // GET TAGS
 

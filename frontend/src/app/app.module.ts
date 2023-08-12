@@ -41,6 +41,7 @@ import { OrderTrackPageComponent } from './components/pages/order-track-page/ord
 import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
+import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AccountPageComponent } from './components/pages/account-page/account-pa
     AccountPageComponent,
     EditAccountPageComponent,
     OrdersPageComponent,
+    DeleleAccountPageComponent,
   ],
   imports: [
     BrowserModule,

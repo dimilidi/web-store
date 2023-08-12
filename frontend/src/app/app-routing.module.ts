@@ -12,6 +12,7 @@ import { OrderTrackPageComponent } from './components/pages/order-track-page/ord
 import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
+import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterPageComponent },
   { path: 'account', component: AccountPageComponent,  canActivate:[authGuard]},
   { path: 'edit-account', component: EditAccountPageComponent,  canActivate:[authGuard]},
+  { path: 'delete-account', component: DeleleAccountPageComponent,  canActivate:[authGuard]},
   { path: 'checkout', component: CheckoutPageComponent, canActivate:[authGuard]},
   { path: 'payment', component: PaymentPageComponent, canActivate:[authGuard]},
   {path:'track/:orderId', component: OrderTrackPageComponent, canActivate:[authGuard]},

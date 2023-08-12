@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { UserLogin } from '../shared/interfaces/UserLogin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { USER_ACCOUNT_URL, USER_LOGIN_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
+import { USER_ACCOUNT_URL, USER_DELETE_URL, USER_LOGIN_URL, USER_LOGOUT_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { UserRegister } from '../shared/interfaces/UserRegister';
 import { Router } from '@angular/router';
@@ -72,7 +72,6 @@ export class UserService {
     return this.http.put<User>(USER_UPDATE_URL, userUpdate).pipe(
       tap({
         next: (user) => {
-          console.log('Updated User:', user);
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
@@ -88,10 +87,47 @@ export class UserService {
   }
 
 
-  logout() {
+  deleteAccount(): Observable<void> {
+    return this.http.delete<void>(USER_DELETE_URL).pipe(
+      tap({
+        next: () => {
+          this.clearUserData();
+          this.router.navigate(['/'])
+          this.toastrService.success(
+            'Account deleted successfully',
+            'Account Deleted'
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Deletion Failed');
+        },
+      })
+    );
+  }
+  
+  private clearUserData(): void {
+    // Clear user data from local storage && subject
     this.userSubject.next(new User());
-    localStorage.removeItem(USER_KEY);
-    this.router.navigate(['/'])
+    localStorage.removeItem(USER_KEY); // Set the subject to null or an empty user object
+  }
+  
+
+  logout(): Observable<void> {
+    return this.http.post<void>(USER_LOGOUT_URL, {}).pipe(
+      tap({
+        next: () => {
+          this.clearUserData();
+          this.router.navigate(['/']);
+          this.toastrService.success(
+            'Logged out successfully',
+            'Logout'
+          );
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error, 'Logout Failed');
+        },
+      })
+    );
   }
 
 

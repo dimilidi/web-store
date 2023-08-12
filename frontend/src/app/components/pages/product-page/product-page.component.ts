@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -12,9 +12,10 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
 })
-export class ProductPageComponent implements OnInit {
+export class ProductPageComponent implements  OnInit {
   user: User = this.userService.currentUser;
   product!: Product;
+  favoriteProductsSet: Set<string> = new Set<string>();
   isRateMode: boolean = true;
   showDropdown: boolean = false;
   isOptionSelectedFlag: boolean = false;
@@ -24,8 +25,18 @@ export class ProductPageComponent implements OnInit {
     { value: 'View', label: 'View' },
   ];
 
-  ngOnInit() {
-    // Set default value to "rate" on initialization
+  ngOnInit():void {
+    if (this.user.id) {
+      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {
+        favoriteProducts.forEach((product) => {
+          console.log('ßßßß',product);
+          
+          this.favoriteProductsSet.add(product.product.id);
+        });
+      });
+    }
+
+    // Set default value to "View" on initialization
     this.selectedMode = 'View';
   }
 
@@ -90,11 +101,19 @@ export class ProductPageComponent implements OnInit {
   }
 
   toggleFavourite(product: Product) {
+    if(!this.user.id) return;
     const newFavoriteStatus = !product.favorite;
 
     this.productService.toggleFavorite(product.id, this.user.id).subscribe({
       next: (response) => {
+        
         product.favorite = newFavoriteStatus;
+
+        if (newFavoriteStatus) {
+          this.favoriteProductsSet.add(product.id);
+        } else {
+          this.favoriteProductsSet.delete(product.id);
+        }
         // Success: Product's favorite status updated on the backend
         console.log('Product favorite status updated on the backend.');
       },

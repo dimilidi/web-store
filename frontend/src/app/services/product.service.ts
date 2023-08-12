@@ -3,13 +3,14 @@ import { Product } from '../shared/models/Product';
 import { Tag } from '../shared/models/Tag';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { PRODUCTS_BY_ID_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_BY_TAG_URL, PRODUCTS_TAGS_URL, PRODUCTS_URL, TOGGLE_FAVOURITE_URL, UPDATE_PRODUCT_STARS_URL } from '../shared/constants/urls';
+import { FAVOURITES_URL, PRODUCTS_BY_ID_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_BY_TAG_URL, PRODUCTS_TAGS_URL, PRODUCTS_URL, TOGGLE_FAVOURITE_URL, UPDATE_PRODUCT_STARS_URL } from '../shared/constants/urls';
 import { Favourite } from '../shared/interfaces/Favourite';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  favorite!: boolean; 
    // Define the updateStars subject to emit the updateStars event
    updateStars: Subject<{ stars: number, productId: string }> = new Subject<{ stars: number, productId: string }>();
   constructor(private http: HttpClient) {}
@@ -40,6 +41,11 @@ export class ProductService {
     const body = { userId, productId }; 
     return this.http.post<Favourite>(TOGGLE_FAVOURITE_URL, body);
   }
+
+  getFavoriteProducts(userId: string): Observable<Favourite[]> {
+    return this.http.get<Favourite[]>(FAVOURITES_URL);
+  }  
+
 
   updateProductStars(stars: number, productId: string): Observable<Product> {
     const body = { stars, productId };

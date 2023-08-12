@@ -1,3 +1,4 @@
+import { log } from "console";
 import Favourite from "../models/Favourite";
 import Product from "../models/Product";
 import User from "../models/User";
@@ -45,11 +46,12 @@ export async function addToFavouriteProducts(req: any, res: any) {
 
 // GET FAVOURITES
 export async function getFavourites(req: any, res: any) {
-  const { userId } = req.params;
+  const userId = req.user.id;
 
   const favourites = await Favourite.find({ user: userId })
     .populate("product", "name price")
     .exec();
+console.log(favourites);
 
   res.status(200).json(favourites);
 }
