@@ -68,6 +68,8 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 - Ngx Toastr (^17.0.2)
 - Rxjs (~7.8.0)
 - TypeScript (~5.1.3)
+- Ng-particles (^3.12.0)
+
 
 **Backend**
 - Express (^4.18.2)
