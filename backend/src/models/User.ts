@@ -25,7 +25,7 @@ export const UserSchema = new Schema<IUser>({
     password: {type:String, required: true},
     address: {type:String, required: true},
     phone: {type:String, required: false},
-    avatar: { type: String, default: 'https://freesvg./img/abstract-user-flat-4.png' },
+    avatar: { type: String, default: 'https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview' },
     isAdmin: {type:Boolean, required: true}
 },
 {

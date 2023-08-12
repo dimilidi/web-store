@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserRegister } from 'src/app/shared/interfaces/UserRegister';
-import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator'
+import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator';
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css'],
 })
-export  class RegisterPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '';
@@ -49,7 +49,7 @@ export  class RegisterPageComponent implements OnInit {
 
     const fv = this.registerForm.value;
     const user: UserRegister = {
-      name: fv.name,
+      name: this.capitalizeFirstLetter(fv.name),
       email: fv.email,
       password: fv.password,
       confirmPassword: fv.confirmPassword,
@@ -60,5 +60,9 @@ export  class RegisterPageComponent implements OnInit {
       this.router.navigateByUrl(this.returnUrl);
     });
   }
-}
 
+  // Function to capitalize the first letter and convert the rest to lowercase
+  private capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+}

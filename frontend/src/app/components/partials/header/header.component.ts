@@ -26,10 +26,6 @@ export class HeaderComponent {
 
     userService.userObservable.subscribe((newUser) => {
       this.user = newUser;
-
-      this.capitalizedName = this.user?.name
-      ? this.user?.name.charAt(0).toUpperCase().concat(this.user?.name.slice(1))
-      : '';
     });
   }
 

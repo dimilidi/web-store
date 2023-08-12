@@ -46,9 +46,7 @@ export class HomeComponent implements OnInit{
 
 
     if (this.user.id) {
-      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {
-        console.log(favoriteProducts[0].product);
-        
+      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {        
         favoriteProducts.forEach((product) => {
           this.favoriteProductsSet.add(product.product.id);
           console.log('SET',this.favoriteProductsSet);

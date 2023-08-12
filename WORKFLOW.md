@@ -192,7 +192,7 @@
 
 
 ## TODO:
-- Delete  profile option
+- Delete  profile option -> DONE
 - Add favicon -> done
 - Password reset option
 - add phone validation -> done

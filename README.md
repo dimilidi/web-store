@@ -48,8 +48,10 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 - Mark products as favourite
 - Rate a product
 - Buy a product
+- Paypal payment option
+- Mark their location on the map by order checkout
 - Monitor made orders and their status
-- Manage a user profile, including the ability to provide contact information (phone) and add a profile photo 
+- Manage a user profile, including the ability to provide contact information (phone), add a profile photo and delete profile account
  <br />
 
 

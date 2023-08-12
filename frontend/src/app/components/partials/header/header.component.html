@@ -10,8 +10,8 @@
           <a >
             <div class="dashboard">
               <img src="{{user.avatar}}"/>
-              <mat-icon *ngIf="user.avatar === ''">person</mat-icon>
-              <span>{{ capitalizedName }}</span>
+              <mat-icon *ngIf="!user.avatar">person</mat-icon>
+              <span>{{ user.name }}</span>
             </div>
           </a>
           <div class="menu">
