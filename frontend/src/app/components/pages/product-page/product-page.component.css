@@ -1,9 +1,9 @@
 .container{
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 3rem;
 }
 
 .container > *{

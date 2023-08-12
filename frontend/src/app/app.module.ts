@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgParticlesModule } from "ng-particles";
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,6 +43,7 @@ import { EditAccountPageComponent } from './components/pages/edit-account-page/e
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
 import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
+import { ParticalBackgroundComponent } from './components/partials/partical-background/partical-background.component';
 
 @NgModule({
   declarations: [
@@ -72,8 +74,10 @@ import { DeleleAccountPageComponent } from './components/pages/delele-account-pa
     EditAccountPageComponent,
     OrdersPageComponent,
     DeleleAccountPageComponent,
+    ParticalBackgroundComponent
   ],
   imports: [
+    NgParticlesModule ,
     BrowserModule,
     AppRoutingModule,
     MatIconModule,

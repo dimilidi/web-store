@@ -34,7 +34,7 @@ ul{
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    color:  rgb(63, 151, 184);
+    color:  #3f97b8;
     background-color: white;
   }
 

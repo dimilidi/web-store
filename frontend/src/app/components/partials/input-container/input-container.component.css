@@ -4,13 +4,14 @@
     border-radius: 0.7rem;
     padding-top: 0.3rem;
     border: 1px solid #e0e0e0;
+    color: #ffffff00;
   }
   
   label{
     display: inline-block;
     margin-left: 0.5rem;
     font-size: 0.9rem;
-    color: #5f5f5f;
+    color: #434343;
     font-size: 1rem;
   }
   
