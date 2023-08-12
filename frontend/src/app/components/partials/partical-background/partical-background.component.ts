@@ -15,9 +15,9 @@ export class ParticalBackgroundComponent{
   id = "tsparticles";
 
   /* Starting from 1.19.0 you can use a remote url (AJAX request) to a JSON with the configuration */
-  particlesUrl = "http://foo.bar/particles.json";
+ // particlesUrl = "http://foo.bar/particles.json";
 
-  /* or the classic JavaScript object */
+  /* or the classic JavaScript object 
   particlesOptions = {
       background: {
           color: {
@@ -100,6 +100,6 @@ export class ParticalBackgroundComponent{
       // starting from v2 you can add only the features you need reducing the bundle size
       //await loadFull(engine);
       await loadSlim(engine);
-  }
+  }*/
   
 }
