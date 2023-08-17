@@ -13,6 +13,7 @@ export default class TextInputComponent {
   @Input() showErrorsWhen: boolean = true;
   @Input() label!: string;
   @Input() value?: string;
+  @Input() border!: string;
   @Input() type: "text"  | "password" | "email" | "file" | "number" = "text";
 
   get formControl() {

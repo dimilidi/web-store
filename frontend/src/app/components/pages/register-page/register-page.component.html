@@ -7,6 +7,7 @@
         [control]="fc.name"
         [showErrorsWhen]="isSubmitted || fc.name.touched"
         label="Name"
+        [border]=" fc.name.touched && fc.name.invalid ?'2px solid red' : '' "
       />
 
       <app-text-input
@@ -14,6 +15,8 @@
         [showErrorsWhen]="isSubmitted || fc.email.touched"
         label="Email"
         type="email"
+        [border]=" fc.email.touched && fc.email.invalid ?'2px solid red' : '' "
+
       />
 
       <app-text-input
@@ -21,6 +24,8 @@
         [showErrorsWhen]="isSubmitted || fc.password.touched"
         label="Password"
         type="password"
+        [border]=" fc.password.touched && fc.password.invalid ?'2px solid red' : '' "
+
       />
 
       <app-text-input
@@ -28,12 +33,15 @@
         [showErrorsWhen]="isSubmitted || fc.confirmPassword.touched"
         label="Confirm Password"
         type="password"
+        [border]=" fc.confirmPassword.touched && fc.confirmPassword.invalid ?'2px solid red' : '' "
+
       />
 
       <app-text-input
         [control]="fc.address"
         [showErrorsWhen]="isSubmitted || fc.address.touched"
         label="Address"
+        [border]=" fc.address.touched && fc.address.invalid ?'2px solid red' : '' "
       />
 
       <app-button

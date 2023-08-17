@@ -8,6 +8,7 @@
         [showErrorsWhen]="isSubmitted || loginForm.touched"
         type="email"
         label="Email"
+        [border]=" fc.email.touched && fc.email.invalid ?'2px solid red' : '' "
       ></app-text-input>
 
       <app-text-input
@@ -15,6 +16,7 @@
         [showErrorsWhen]="isSubmitted || loginForm.touched"
         type="password"
         label="Password"
+        [border]=" fc.password.touched && fc.password.invalid ?'2px solid red' : '' "
       ></app-text-input>
 
       <app-button
