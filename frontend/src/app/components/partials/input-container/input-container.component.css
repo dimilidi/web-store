@@ -12,13 +12,15 @@
     margin-left: 0.5rem;
     font-size: 0.9rem;
     color: #434343;
+    color: rgb(63, 151, 184);
     font-size: 1rem;
   }
-  
+
   .content{
     padding: 0 0.5rem;
     height: 2.7rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
   

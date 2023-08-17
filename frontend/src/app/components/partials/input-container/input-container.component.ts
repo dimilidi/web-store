@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-input-container',
@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
 export class InputContainerComponent {
   @Input() label!:string;
   @Input() bgColor = "#ffffff52";
-  @Input() border = "2px solid white";
+  @Input() border = "";
 }

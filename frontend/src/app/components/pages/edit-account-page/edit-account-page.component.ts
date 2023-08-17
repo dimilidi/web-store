@@ -102,8 +102,9 @@ export class EditAccountPageComponent {
       .subscribe(() => {
         this.router.navigate(['account']);
       });
-  
+  }
 
-    
+  cancelChanges() {
+    this.router.navigate(['/account']);
   }
 }

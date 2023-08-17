@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
 
@@ -15,6 +15,7 @@ export default class TextInputComponent {
   @Input() value?: string;
   @Input() border!: string;
   @Input() type: "text"  | "password" | "email" | "file" | "number" = "text";
+  
 
   get formControl() {
     return this.control as FormControl;

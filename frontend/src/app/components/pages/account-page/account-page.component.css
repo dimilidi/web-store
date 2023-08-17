@@ -1,5 +1,13 @@
+.wrapper {
+    height: 87vh;
+    padding: 0 0 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 app-title {
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
 }
 
@@ -18,15 +26,21 @@ input {
   }
   
 .form {
-    margin: 0px auto;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 300px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgb(185, 185, 185);
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .image-container {
-    height: 210px;
     width: auto;
+    padding: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -40,8 +54,22 @@ img {
     object-fit: cover;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container{
+  margin-bottom: 0.8rem;
+}
+
 input {
     display: block;
+}
+
+label {
+    padding: 0.3rem 0;
+    color: rgb(63, 151, 184);
 }
 
 

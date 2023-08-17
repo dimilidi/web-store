@@ -192,13 +192,11 @@
 
 
 ## TODO:
-- Delete  profile option -> DONE
-- Add favicon -> done
+
 - Password reset option
-- add phone validation -> done
+- email custom validator
 - Admin Dashboard
   - CRUD Product
   - manage users
 
-## BUGS
-- redirect to login page when user not logged in and want to buy a product -> done
+

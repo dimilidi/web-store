@@ -1,40 +1,39 @@
+<div class="wrapper">
+  <section *ngIf="user" class="form">
+    <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
 
-<div>
-  <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
+    <div class="image-container">
+      <img
+        *ngIf="user.avatar !== ''"
+        src="{{ user.avatar }}"
+        alt="profile picture"
+      />
+      <img
+        *ngIf="user.avatar === ''"
+        src="/assets/default_avatar.png"
+        alt="profile picture"
+      />
+    </div>
 
-  <div>
-    <section *ngIf="user" class="form">
-      <div class="image-container">
-        <img
-          *ngIf="user.avatar !== ''"
-          src="{{ user.avatar }}"
-          alt="profile picture"
-        />
-        <img
-          *ngIf="user.avatar === ''"
-          src="/assets/default_avatar.png"
-          alt="profile picture"
-        />
+    <div class="input-wrapper">
+      <div class="input-container">
+        <label>Username</label>
+        <input value="{{ user.name }}" disabled />
+      </div>
+      <div class="input-container">
+        <label>Address</label>
+        <input value="{{ user.address }}" disabled />
+      </div>
+      <div class="input-container">
+        <label>Phone</label>
+        <input value="{{ user.phone }}" disabled />
       </div>
 
-      <div>
-        <app-input-container label="Username">
-          <input value="{{ user.name }}" disabled />
-        </app-input-container>
-        <app-input-container label="Address">
-          <input value="{{ user.address }}" disabled />
-        </app-input-container>
-        <app-input-container label="Phone">
-          <input value="{{ user.phone }}" disabled />
-        </app-input-container>
-
-        <app-button
-          [widthRem]="15"
-          text="Edit Account"
-          (click)="handleEditAccount()"
-        ></app-button>
-      </div>
-    </section>
-  </div>
+      <app-button
+        [widthRem]="15"
+        text="Edit Account"
+        (click)="handleEditAccount()"
+      ></app-button>
+    </div>
+  </section>
 </div>
-
