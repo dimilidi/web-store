@@ -5,19 +5,23 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <app-text-input
         [control]="fc.email"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || loginForm.touched"
         type="email"
         label="Email"
       ></app-text-input>
 
       <app-text-input
         [control]="fc.password"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || loginForm.touched"
         type="password"
         label="Password"
       ></app-text-input>
 
-      <app-button text="Login"></app-button>
+      <app-button
+        [disabled]="loginForm.touched && loginForm.invalid"
+        bgColor="{{ loginForm.touched && loginForm.invalid ? '#3f3f3f' : '#3f97b8' }}"
+        text="Login"
+      ></app-button>
 
       <div class="register">
         No account? &nbsp;
@@ -28,5 +32,3 @@
     </form>
   </div>
 </div>
-
-

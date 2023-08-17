@@ -5,38 +5,44 @@
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <app-text-input
         [control]="fc.name"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || fc.name.touched"
         label="Name"
       />
 
       <app-text-input
         [control]="fc.email"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || fc.email.touched"
         label="Email"
         type="email"
       />
 
       <app-text-input
         [control]="fc.password"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || fc.password.touched"
         label="Password"
         type="password"
       />
 
       <app-text-input
         [control]="fc.confirmPassword"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || fc.confirmPassword.touched"
         label="Confirm Password"
         type="password"
       />
 
       <app-text-input
         [control]="fc.address"
-        [showErrorsWhen]="isSubmitted"
+        [showErrorsWhen]="isSubmitted || fc.address.touched"
         label="Address"
       />
 
-      <app-button text="Register" />
+      <app-button
+        [disabled]="registerForm.touched && registerForm.invalid"
+        bgColor="{{
+          registerForm.touched && registerForm.invalid ? '#3f3f3f' : '#3f97b8'
+        }}"
+        text="Register"
+      />
 
       <div class="login">
         You already have an account? &nbsp;

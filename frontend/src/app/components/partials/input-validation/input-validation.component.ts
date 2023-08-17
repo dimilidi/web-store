@@ -6,7 +6,7 @@ const VALIDATORS_MESSAGES:any = {
   required: 'Input required.',
   email: 'Email is not valid.',
   minlength: 'Input is too short.',
-  noMatch: 'Confirm Password does not match.',
+  notMatch: 'Confirm Password does not match.',
   phone: 'Invalid format.'
 }
 
