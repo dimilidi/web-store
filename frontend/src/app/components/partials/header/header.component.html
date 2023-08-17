@@ -7,9 +7,18 @@
           <a class="login-link" routerLink="/login">Login</a>
         </li>
         <li *ngIf="isAuth" class="menu-container">
-          <a >
+          <a>
             <div class="dashboard">
-              <img src="{{user.avatar}}"/>
+              <img
+                *ngIf="user.avatar !== ''"
+                src="{{ user.avatar }}"
+                alt="profile picture"
+              />
+              <img
+                *ngIf="user.avatar === ''"
+                src="/assets/default_avatar.png"
+                alt="profile picture"
+              />
               <mat-icon *ngIf="!user.avatar">person</mat-icon>
               <span>{{ user.name }}</span>
             </div>
