@@ -1,6 +1,6 @@
 <app-not-found
-[visible]="!products || !products.length"
-resetLinkText="Reset Search"
+  [visible]="!products || !products.length"
+  resetLinkText="Reset Search"
 />
 
 <app-dashboard *ngIf="user.isAdmin"></app-dashboard>
@@ -24,18 +24,15 @@ resetLinkText="Reset Search"
             </span>
           </a>
 
-
-
           <span
-            class="favorite {{
+            class="  material-icons favorite {{
               user.id && favoriteProductsSet.has(product.id)
                 ? 'favorite'
                 : 'not'
             }}"
             (click)="toggleFavourite(product)"
           >
-
-            ❤
+            favorite
           </span>
           <div class="stars">
             <app-star-rating
@@ -61,5 +58,4 @@ resetLinkText="Reset Search"
       </div>
     </li>
   </ul>
-  
 </div>
