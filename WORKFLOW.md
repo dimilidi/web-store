@@ -194,11 +194,12 @@
 ## TODO:
 
 - unsubscribe on Destroy
+- home page pagination
 - Password reset option
 - email custom validator
 - add favourite products in user Profile page
 - Admin Dashboard
-  - CRUD Product
+  - CRUD Product -> done
   - manage users
 
 
