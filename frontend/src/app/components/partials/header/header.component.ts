@@ -8,6 +8,7 @@ import {
   MatDialogModule,
 } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,6 @@ export class HeaderComponent {
   constructor(
     private cartService: CartService,
     private userService: UserService,
-    private dialog: MatDialog
   ) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       if (newCart) {
@@ -37,11 +37,6 @@ export class HeaderComponent {
     });
   }
 
-  openDialog() {
-    this.dialog.open(DialogComponent, {
-      width: '30%',
-    });
-  }
 
   logout() {
     this.userService.logout().subscribe();

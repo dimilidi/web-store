@@ -3,7 +3,7 @@ import { Product } from '../shared/models/Product';
 import { Tag } from '../shared/models/Tag';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { CREATE_PRODUCT_URL, FAVOURITES_URL, PRODUCTS_BY_ID_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_BY_TAG_URL, PRODUCTS_TAGS_URL, PRODUCTS_URL, TOGGLE_FAVOURITE_URL, UPDATE_PRODUCT_STARS_URL } from '../shared/constants/urls';
+import { CREATE_PRODUCT_URL, DELETE_PRODUCT_URL, FAVOURITES_URL, PRODUCTS_BY_ID_URL, PRODUCTS_BY_SEARCH_URL, PRODUCTS_BY_TAG_URL, PRODUCTS_TAGS_URL, PRODUCTS_URL, TOGGLE_FAVOURITE_URL, UPDATE_PRODUCT_STARS_URL, UPDATE_PRODUCT_URL } from '../shared/constants/urls';
 import { Favourite } from '../shared/interfaces/Favourite';
 
 @Injectable({
@@ -67,6 +67,12 @@ export class ProductService {
     return this.http.post<Product>(CREATE_PRODUCT_URL, product);
   }
 
-  updateProduct(){}
+  updateProduct(product: Product, productId: string){
+    return this.http.put<Product>(UPDATE_PRODUCT_URL + productId, product);
+  }
+
+  deleteProduct(productId: string){
+    return this.http.delete<Product>(DELETE_PRODUCT_URL + productId);
+  }
 
 }

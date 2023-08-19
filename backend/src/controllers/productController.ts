@@ -30,22 +30,21 @@ export async function createProduct(req: any, res: any) {
     averageRating,
   } = req.body;
 
-   // cloudinary configuration
-   cloudinary.config({
+  // cloudinary configuration
+  cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_KEY,
     api_secret: process.env.CLOUD_SECRET,
   });
 
-
   const upload = await cloudinary.uploader.upload(imageUrl);
-  
+
   const product = await Product.create({
     name,
     price,
     tags,
     origins,
-    imageUrl:upload.secure_url,
+    imageUrl: upload.secure_url,
     date,
     favourite,
     stars,
@@ -53,9 +52,39 @@ export async function createProduct(req: any, res: any) {
     averageRating,
   });
 
-
-  res.status(201).json('Product created');
+  res.status(201).json("Product created");
 }
+
+// UPDATE PRODUCT
+export async function updateProduct(req: any, res: any) {
+  const productId = req.params.id;
+  const updateData = req.body;
+
+  const product = await Product.findByIdAndUpdate(productId, updateData, {
+    new: true, 
+  });
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found." });
+  }
+
+  return res.status(200).json(product);
+}
+
+
+// DELETE PRODUCT
+export async function deleteProduct(req: any, res: any) {
+  const productId = req.params.id;
+
+  const product = await Product.findByIdAndDelete(productId);
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found." });
+  }
+
+  return res.status(204).json({message: "Product deleted successfully." });
+}
+
 
 // GET PRODUCTS
 export async function getProducts(req: any, res: any) {

@@ -34,16 +34,6 @@
             <mat-icon class="custom-icon">shopping_cart</mat-icon>
             <span class="counter" *ngIf="cartQuantity">{{ cartQuantity }}</span>
           </a>
-
-          <button
-            *ngIf="user.isAdmin"
-            button
-            mat-raised-button
-            color="warn"
-            (click)="openDialog()"
-          >
-            Add product
-          </button>
         </li>
       </ul>
     </nav>

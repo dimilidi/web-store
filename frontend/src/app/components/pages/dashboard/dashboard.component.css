@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.add-button {
+    float: right;
+}
+
 table {
     width: 100%;
 }

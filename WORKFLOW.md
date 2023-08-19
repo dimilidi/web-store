@@ -193,6 +193,7 @@
 
 ## TODO:
 
+- unsubscribe on Destroy
 - Password reset option
 - email custom validator
 - add favourite products in user Profile page
