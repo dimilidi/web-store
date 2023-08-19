@@ -1,13 +1,15 @@
-<div class="wrapper">
-  <div class="aside">
+<app-not-found
+[visible]="!products || !products.length"
+resetLinkText="Reset Search"
+/>
+
+<app-dashboard *ngIf="user.isAdmin"></app-dashboard>
+
+<div *ngIf="!user.isAdmin" class="wrapper">
+  <aside class="aside">
     <app-search />
     <app-tags (showCategory)="onShowCategory($event)" />
-  </div>
-
-  <app-not-found
-    [visible]="!products || !products.length"
-    resetLinkText="Reset Search"
-  />
+  </aside>
 
   <ul>
     <li *ngFor="let product of products">
@@ -22,6 +24,8 @@
             </span>
           </a>
 
+
+
           <span
             class="favorite {{
               user.id && favoriteProductsSet.has(product.id)
@@ -30,6 +34,8 @@
             }}"
             (click)="toggleFavourite(product)"
           >
+{{user.id && favoriteProductsSet.has(product.id) | json}}
+
             ❤
           </span>
           <div class="stars">
@@ -56,4 +62,5 @@
       </div>
     </li>
   </ul>
+  
 </div>

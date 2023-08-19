@@ -1,0 +1,32 @@
+.wrapper {
+    padding: 1rem;
+}
+
+div .mat-mdc-dialog-content {
+    padding: 1rem;
+ 
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+}
+
+.file-browser {
+    position: relative;
+}
+
+#fileUpload {
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right:0;
+    bottom: 0;
+    cursor: pointer;
+}

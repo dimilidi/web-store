@@ -4,13 +4,13 @@
 
     <div class="image-container">
       <img
-        *ngIf="user.avatar !== ''"
+        *ngIf="user.avatar"
         src="{{ user.avatar }}"
         alt="profile picture"
       />
       <img
-        *ngIf="user.avatar === ''"
-        src="/assets/default_avatar.png"
+        *ngIf="!user.avatar"
+        src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
         alt="profile picture"
       />
     </div>
@@ -26,7 +26,8 @@
       </div>
       <div class="input-container">
         <label>Phone</label>
-        <input value="{{ user.phone }}" disabled />
+        <input *ngIf="user.phone"  value="{{ user.phone }}" disabled />
+        <input *ngIf="!user.phone" value="unknown" disabled />
       </div>
 
       <app-button

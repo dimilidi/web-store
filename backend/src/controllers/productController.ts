@@ -1,17 +1,60 @@
 import { sample_products } from "../data";
 import Product from "../models/Product";
+import { v2 as cloudinary } from "cloudinary";
 
 // SEED PRODUCTS DATA INTO DB
 /** @type {import("express").RequestHandler} */
 export async function seedProducts(req: any, res: any) {
-  const foodsCount = await Product.countDocuments();
-  if (foodsCount > 0) {
+  const productsCount = await Product.countDocuments();
+  if (productsCount > 0) {
     res.send("Seed is already done!");
     return;
   }
 
   await Product.create(sample_products);
   res.send("Seed Is Done!");
+}
+
+// CREATE PRODUCT
+export async function createProduct(req: any, res: any) {
+  const {
+    name,
+    price,
+    tags,
+    imageUrl,
+    date,
+    origins,
+    favourite,
+    stars,
+    numRatings,
+    averageRating,
+  } = req.body;
+
+   // cloudinary configuration
+   cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_KEY,
+    api_secret: process.env.CLOUD_SECRET,
+  });
+
+
+  const upload = await cloudinary.uploader.upload(imageUrl);
+  
+  const product = await Product.create({
+    name,
+    price,
+    tags,
+    origins,
+    imageUrl:upload.secure_url,
+    date,
+    favourite,
+    stars,
+    numRatings,
+    averageRating,
+  });
+
+
+  res.status(201).json('Product created');
 }
 
 // GET PRODUCTS
@@ -53,7 +96,7 @@ export async function submitUserRating(req: any, res: any) {
   return res.status(200).json(product);
 }
 
-
+// GET TAGS
 export async function getTags(req: any, res: any) {
   const tags = await Product.aggregate([
     {
@@ -82,7 +125,6 @@ export async function getTags(req: any, res: any) {
   tags.unshift(all);
   res.send(tags);
 }
-
 
 // GET PRODUCT BY TAG
 export async function getProductsByTag(req: any, res: any) {

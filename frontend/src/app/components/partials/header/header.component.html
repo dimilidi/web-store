@@ -10,13 +10,13 @@
           <a>
             <div class="dashboard">
               <img
-                *ngIf="user.avatar !== ''"
+                *ngIf="user.avatar"
                 src="{{ user.avatar }}"
                 alt="profile picture"
               />
               <img
-                *ngIf="user.avatar === ''"
-                src="/assets/default_avatar.png"
+                *ngIf="!user.avatar"
+                src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
                 alt="profile picture"
               />
               <span>{{ user.name }}</span>
@@ -24,15 +24,26 @@
           </a>
           <div class="menu">
             <a routerLink="/account">Profile</a>
-            <a routerLink="/orders">Orders</a>
+            <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
+            <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
             <a (click)="logout()">Logout</a>
           </div>
         </li>
         <li>
-          <a class="cart-btn" routerLink="/cart-page">
+          <a *ngIf="!user.isAdmin" class="cart-btn" routerLink="/cart-page">
             <mat-icon class="custom-icon">shopping_cart</mat-icon>
             <span class="counter" *ngIf="cartQuantity">{{ cartQuantity }}</span>
           </a>
+
+          <button
+            *ngIf="user.isAdmin"
+            button
+            mat-raised-button
+            color="warn"
+            (click)="openDialog()"
+          >
+            Add product
+          </button>
         </li>
       </ul>
     </nav>

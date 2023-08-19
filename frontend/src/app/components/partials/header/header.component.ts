@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
-import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +19,11 @@ export class HeaderComponent {
   user!: User;
   capitalizedName = '';
 
-
-  constructor(private cartService: CartService, private userService: UserService) {
+  constructor(
+    private cartService: CartService,
+    private userService: UserService,
+    private dialog: MatDialog
+  ) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       if (newCart) {
         this.cartQuantity = newCart.totalCount;
@@ -29,7 +37,11 @@ export class HeaderComponent {
     });
   }
 
-
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+    });
+  }
 
   logout() {
     this.userService.logout().subscribe();
@@ -38,5 +50,4 @@ export class HeaderComponent {
   get isAuth() {
     return this.user.token;
   }
-
 }

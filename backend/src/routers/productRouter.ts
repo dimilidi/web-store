@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { getProducts, getProductsBySearchTerm, getTags, seedProducts, getProductsByTag, getProductsById, submitUserRating } from '../controllers/productController';
+import { getProducts, getProductsBySearchTerm, getTags, seedProducts, getProductsByTag, getProductsById, submitUserRating, createProduct } from '../controllers/productController';
 import auth from '../middlewares/auth';
 
 const app = Router();
 
+app.post('/add', auth,  asyncHandler(createProduct));
 app.get("/seed", asyncHandler(seedProducts));
 app.get('/', asyncHandler(getProducts));
 app.get('/tags',asyncHandler(getTags));

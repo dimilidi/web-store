@@ -195,6 +195,7 @@
 
 - Password reset option
 - email custom validator
+- add favourite products in user Profile page
 - Admin Dashboard
   - CRUD Product
   - manage users

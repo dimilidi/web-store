@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -19,25 +19,14 @@ export class ProductPageComponent implements  OnInit {
   isRateMode: boolean = true;
   showDropdown: boolean = false;
   isOptionSelectedFlag: boolean = false;
-  selectedMode!: string;
+  selectedMode: string = 'View';
   modeOptions: { value: string; label: string }[] = [
-    { value: 'Rate', label: 'Rate' },
     { value: 'View', label: 'View' },
+    { value: 'Rate', label: 'Rate' }
   ];
 
   ngOnInit():void {
-    if (this.user.id) {
-      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {
-        favoriteProducts.forEach((product) => {
-          console.log('ßßßß',product);
-          
-          this.favoriteProductsSet.add(product.product.id);
-        });
-      });
-    }
-
-    // Set default value to "View" on initialization
-    this.selectedMode = 'View';
+    this.getFavouriteProducts();
   }
 
   constructor(
@@ -72,10 +61,9 @@ export class ProductPageComponent implements  OnInit {
   updateStars(stars: number, productId: string) {
     this.productService.updateProductStars(stars, productId).subscribe({
       next: (updatedProduct: Product) => {
+        console.log(updatedProduct.stars);
         console.log(updatedProduct);
 
-        // Success: Product stars updated on the backend
-        console.log('Product stars updated on the backend.');
 
         // Update local product data with new stars and average rating
         this.product.stars = updatedProduct.stars;
@@ -83,9 +71,7 @@ export class ProductPageComponent implements  OnInit {
         this.product.averageRating = updatedProduct.averageRating;
       },
       error: (error: any) => {
-        // Error handling if the API call fails
         console.error('Error updating product stars:', error);
-        // You can display an error message to the user if needed
       },
     });
   }
@@ -100,30 +86,32 @@ export class ProductPageComponent implements  OnInit {
     return this.isOptionSelectedFlag;
   }
 
+
+  getFavouriteProducts() {
+    if (this.user.id) {
+      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {
+        favoriteProducts.forEach((product) => {          
+          this.favoriteProductsSet.add(product.product.id);
+        });
+      });
+    }
+  }
+
   toggleFavourite(product: Product) {
-    if(!this.user.id) return;
-    const newFavoriteStatus = !product.favorite;
+    if (!this.user.id) return;
 
-    this.productService.toggleFavorite(product.id, this.user.id).subscribe({
-      next: (response) => {
-        
-        product.favorite = newFavoriteStatus;
-
-        if (newFavoriteStatus) {
-          this.favoriteProductsSet.add(product.id);
-        } else {
-          this.favoriteProductsSet.delete(product.id);
-        }
-        // Success: Product's favorite status updated on the backend
-        console.log('Product favorite status updated on the backend.');
-      },
-      error: (error) => {
-        // Error handling if the API call fails
-        console.error('Error toggling favorite status:', error);
-        // If the API call fails, revert the 'favorite' property back to its original value
-        product.favorite = !product.favorite;
-        console.log('Failed to update product favorite status on the backend.');
-      },
-    });
+    return this.productService.toggleFavorite(product.id, this.user.id)
+      .subscribe({
+        next: (response) => {
+          if (response.product === undefined) {
+            this.favoriteProductsSet.delete(product.id);
+          } else {
+            this.favoriteProductsSet.add(product.id);
+          }
+        },
+        error: (error) => {
+          console.error('Error toggling favorite status:', error);
+        },
+      });
   }
 }

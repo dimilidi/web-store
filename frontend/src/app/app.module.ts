@@ -7,9 +7,20 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select'; 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SearchComponent } from './components/partials/search/search.component';
@@ -33,7 +44,6 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
-import { authGuard } from './auth/guards/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
@@ -44,6 +54,8 @@ import { OrdersPageComponent } from './components/pages/orders-page/orders-page.
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
 import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
 import { ParticalBackgroundComponent } from './components/partials/partical-background/partical-background.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
+import { DialogComponent } from './components/partials/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +86,9 @@ import { ParticalBackgroundComponent } from './components/partials/partical-back
     EditAccountPageComponent,
     OrdersPageComponent,
     DeleleAccountPageComponent,
-    ParticalBackgroundComponent
+    ParticalBackgroundComponent,
+    DashboardComponent,
+    DialogComponent
   ],
   imports: [
     NgParticlesModule ,
@@ -83,7 +97,17 @@ import { ParticalBackgroundComponent } from './components/partials/partical-back
     MatIconModule,
     MatListModule,
     MatSelectModule,
+    MatDatepickerModule,
     MatExpansionModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatNativeDateModule,
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,

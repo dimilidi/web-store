@@ -29,7 +29,6 @@ export class EditAccountPageComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
@@ -88,7 +87,7 @@ export class EditAccountPageComponent {
   saveChanges() {
     this.editImageIsOpen = false;
     this.isSubmitted = true;
-    
+
     if (this.editAccountForm.invalid) return;
 
     const editedData = this.editAccountForm.value;

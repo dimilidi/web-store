@@ -2,14 +2,16 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
-export const authGuard: CanActivateFn = (route,state) => {
+export const adminGuard: CanActivateFn = (route, state) => {
   const userService = inject(UserService);
   const router = inject(Router);
 
-  if (userService.currentUser?.token) {
+  if (userService.currentUser?.isAdmin) {
+    console.log(userService.currentUser?.isAdmin);
+    
     return true;
   } else {
-    router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    router.navigate(['/'], { queryParams: { returnUrl: state.url } });
     return false
   }
 };

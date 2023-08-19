@@ -39,7 +39,7 @@ export async function addToFavouriteProducts(req: any, res: any) {
     await newFavorite.save();
     // Update the product's 'favorite' field to true
     await Product.findByIdAndUpdate(productId, { favorite: true });
-    res.status(200).json({ message: "Product added to favorites successfully" });
+    res.status(200).json( newFavorite );
   }
 
 }
@@ -51,7 +51,7 @@ export async function getFavourites(req: any, res: any) {
   const favourites = await Favourite.find({ user: userId })
     .populate("product", "name price")
     .exec();
-console.log(favourites);
+console.log('FAV:',favourites);
 
   res.status(200).json(favourites);
 }

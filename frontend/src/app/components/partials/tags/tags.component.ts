@@ -18,6 +18,7 @@ export class TagsComponent {
     });
   }
 
+
   onShowCategory(tag: Tag) :void {
     this.showCategory.emit(tag);
   }

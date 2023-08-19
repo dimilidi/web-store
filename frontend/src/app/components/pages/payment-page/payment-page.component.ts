@@ -14,8 +14,6 @@ export class PaymentPageComponent {
       orderService.getNewOrderForCurrentUser().subscribe({
         next: (order) => {
           this.order = order;
-          console.log(order);
-          
         },
         error:() => {
           router.navigateByUrl('/chekcout');

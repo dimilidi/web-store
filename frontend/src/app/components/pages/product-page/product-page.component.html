@@ -13,12 +13,13 @@
         {{ product.name }}
       </span>
       <span
-        class="favorite {{
+        class=" 
+        material-icons favorite {{
           user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
         }}"
         (click)="toggleFavourite(product)"
       >
-        ❤
+          favorite
       </span>
     </div>
     <div class="rating">

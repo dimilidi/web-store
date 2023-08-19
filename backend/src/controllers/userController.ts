@@ -1,10 +1,9 @@
 import { sample_users } from "../data";
 import User, { IUser } from "../models/User";
 import bcrypt from "bcryptjs";
-import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import jwt, {  JwtPayload } from "jsonwebtoken";
 import { Request, Response } from "express";
 import { v2 as cloudinary } from "cloudinary";
-import { log } from "console";
 import { Order } from "../models/Order";
 
 interface TokenPayload extends JwtPayload {
