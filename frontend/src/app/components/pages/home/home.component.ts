@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
   toggledProduct!: string;
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private userService: UserService,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -100,6 +99,5 @@ export class HomeComponent implements OnInit {
 
   onShowCategory(event: any): void {
     this.tag = event;
-    console.log(this.tag);
   }
 }

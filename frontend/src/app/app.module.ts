@@ -57,6 +57,7 @@ import { ParticalBackgroundComponent } from './components/partials/partical-back
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { DialogComponent } from './components/partials/dialog/dialog.component';
 import { VisibilityIconComponent } from './components/partials/visibility-icon/visibility-icon.component';
+import { CardComponent } from './components/partials/card/card.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { VisibilityIconComponent } from './components/partials/visibility-icon/v
     ParticalBackgroundComponent,
     DashboardComponent,
     DialogComponent,
-    VisibilityIconComponent
+    VisibilityIconComponent,
+    CardComponent
   ],
   imports: [
     NgParticlesModule ,
