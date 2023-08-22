@@ -80,7 +80,7 @@
     background: none;
     border: none;
     padding: 0.5rem;
-    color: rgb(63, 151, 184);
+    color: rgb(63, 81, 181);
     outline: none;
   }
   
@@ -130,7 +130,7 @@
   .checkout a{
     padding: 1rem;
     color: white;
-    background:rgb(63, 151, 184);
+    background:rgb(63, 81, 181);
     display: block;
     width: 99%;
     border-radius: 1rem;

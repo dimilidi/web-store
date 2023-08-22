@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { icon } from 'leaflet';
 import { UserService } from 'src/app/services/user.service';
 import { UserRegister } from 'src/app/shared/interfaces/UserRegister';
 import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator';
@@ -14,6 +15,9 @@ export class RegisterPageComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '';
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
+ 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -64,5 +68,14 @@ export class RegisterPageComponent implements OnInit {
   // Function to capitalize the first letter and convert the rest to lowercase
   private capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+
+  togglePasswordVisibility(propertyName: string) {
+    if (propertyName === 'showPassword') {
+      this.showPassword = !this.showPassword;
+    } else if (propertyName === 'showConfirmPassword') {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
   }
 }

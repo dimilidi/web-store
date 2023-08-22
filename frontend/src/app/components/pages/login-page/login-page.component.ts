@@ -12,6 +12,8 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '';
+  showPassword: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -43,5 +45,11 @@ export class LoginPageComponent implements OnInit {
     }).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);
     });
+  }
+
+  togglePasswordVisibility(propertyName: string) {
+    if (propertyName === 'showPassword') {
+      this.showPassword = !this.showPassword;
+    } 
   }
 }

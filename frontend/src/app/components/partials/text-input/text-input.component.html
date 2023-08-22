@@ -1,10 +1,18 @@
-<app-input-container [label]="label" [border]="border">
+<app-input-container
+  [label]="label"
+  [icon]="icon"
+  [border]="border"
+  [showPassword]="showPassword"
+  (iconClick)="iconClickTrigger()"
+  
+>
   <input
     [type]="type"
     [value]="value"
-    [placeholder]="label"
+    [placeholder]="placeholder"
     [formControl]="formControl"
   />
+
   <app-input-validation
     [control]="control"
     [showErrorsWhen]="showErrorsWhen"

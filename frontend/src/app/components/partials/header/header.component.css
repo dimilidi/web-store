@@ -8,6 +8,7 @@ header{
     height: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0.96);
     box-shadow: 0 0 8px rgb(185, 185, 185);
     position: fixed;
@@ -16,18 +17,24 @@ header{
     z-index: 1;
   }
 
+  a.login-link  {
+    height: 100%;
+  }
+
   a{ 
-    padding: 1.3rem;
-    color:  rgb(14, 141, 186);
+    height: 100%;
+    padding: 1rem;
+    color:  #3f51b5;
   }
   
   a:hover{
-    background:rgb(14, 141, 186);
+    background:#3f51b5;
     color: white;
     cursor: pointer;
   }
   
   .container{
+    height: 100%;
     width: 85%;
     margin: 0 auto;
     display: flex;
@@ -35,17 +42,22 @@ header{
     align-items: center;
   }
   
-  a.logo{
+  a.logo {
     font-weight: bold;
+    height: 100%;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
   }
   
   ul{
+    height: 100%;
     display: flex;
     align-items: center;
     list-style-type: none;
   }
 
-  li{
+  li {
     height: 100%;
   }
   
@@ -85,19 +97,29 @@ header{
     border: none;
     outline: none;
     background-color: transparent;
-    color: rgb(14, 141, 186);
-    position: relative;
-   
+    color: #3f51b5;
+    position: relative; 
   }
+
+  .login-link {
+    height: 100%;
+  }
+
+  
   
   .counter {
-    background: #ff4d4d;
+    height: 20px;
+    width: 20px;
+    background: #F50057;
     color: white;
-    padding: 0.1rem 0.45rem;
+    padding: 0.1rem 0.45rem 0;
     border-radius: 100rem;
-    font-size:0.9rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 5px;
   }
   
@@ -121,6 +143,9 @@ header{
     min-width:8rem;
   }
 
+  .custom-icon {
+    height: 100%;
+  }
 
   @media screen and (max-width: 990px) {
   

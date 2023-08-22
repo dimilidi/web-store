@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() type: 'submit' | 'button' = 'submit';
   @Input() text: string = 'Submit';
-  @Input() bgColor = '#3f97b8';
+  @Input() bgColor = '#3f51b5';
   @Input() color = 'white';
   @Input() fontSizeRem = 1.3;
   @Input() widthRem = 12;

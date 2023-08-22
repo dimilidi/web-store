@@ -1,53 +1,72 @@
 <div class="container">
   <app-partical-background />
+
   <div class="details">
     <app-title title="Register"></app-title>
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <app-text-input
         [control]="fc.name"
         [showErrorsWhen]="isSubmitted || fc.name.touched"
-        label="Name"
-        [border]=" fc.name.touched && fc.name.invalid ?'2px solid red' : '' "
+        placeholder="Name"
+        icon="person"
+        [border]="fc.name.touched && fc.name.invalid ? '2px solid #F50057' : ''"
       />
 
       <app-text-input
         [control]="fc.email"
         [showErrorsWhen]="isSubmitted || fc.email.touched"
-        label="Email"
+        placeholder="Email"
+        icon="email"
         type="email"
-        [border]=" fc.email.touched && fc.email.invalid ?'2px solid red' : '' "
-
+        [border]="
+          fc.email.touched && fc.email.invalid ? '2px solid #F50057' : ''
+        "
       />
 
       <app-text-input
+        #password
+        [showPassword]="showPassword"
+        (iconClick)="togglePasswordVisibility('showPassword')"
         [control]="fc.password"
         [showErrorsWhen]="isSubmitted || fc.password.touched"
-        label="Password"
-        type="password"
-        [border]=" fc.password.touched && fc.password.invalid ?'2px solid red' : '' "
-
+        placeholder="Password"
+        icon="password"
+        [type]="showPassword ? 'text' : 'password'"
+        [border]="
+          fc.password.touched && fc.password.invalid ? '2px solid #F50057' : ''
+        "
       />
 
       <app-text-input
+        #confirmPassword
+        [showPassword]="showConfirmPassword"
+        (iconClick)="togglePasswordVisibility('showConfirmPassword')"
         [control]="fc.confirmPassword"
         [showErrorsWhen]="isSubmitted || fc.confirmPassword.touched"
-        label="Confirm Password"
-        type="password"
-        [border]=" fc.confirmPassword.touched && fc.confirmPassword.invalid ?'2px solid red' : '' "
-
+        placeholder="Confirm Password"
+        icon="password"
+        [type]="showConfirmPassword ? 'text' : 'password'"
+        [border]="
+          fc.confirmPassword.touched && fc.confirmPassword.invalid
+            ? '2px solid #F50057'
+            : ''
+        "
       />
 
       <app-text-input
         [control]="fc.address"
         [showErrorsWhen]="isSubmitted || fc.address.touched"
-        label="Address"
-        [border]=" fc.address.touched && fc.address.invalid ?'2px solid red' : '' "
+        placeholder="Address"
+        icon="place"
+        [border]="
+          fc.address.touched && fc.address.invalid ? '2px solid #F50057' : ''
+        "
       />
 
       <app-button
         [disabled]="registerForm.touched && registerForm.invalid"
         bgColor="{{
-          registerForm.touched && registerForm.invalid ? '#3f3f3f' : '#3f97b8'
+          registerForm.touched && registerForm.invalid ? '#3f3f3f' : '#F50057'
         }}"
         text="Register"
       />

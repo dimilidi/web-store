@@ -11,7 +11,7 @@ input {
   }
   
   input::placeholder{
-    color: #bcbcbc;
+    color: #474747;
     font-size: 0.95rem;
   }
   
@@ -29,4 +29,4 @@ input {
   height: 100%;
   width: 12rem;
   }
-  
+

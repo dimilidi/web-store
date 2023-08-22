@@ -5,10 +5,10 @@
     height: 100%;
     margin-top: 1.5rem;
   }
-  
+
   .details {
     width: 25rem;
-    height: 37rem;
+    height: 33rem;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.747);
     border-radius: 5px;
@@ -18,10 +18,14 @@
     flex-direction: column;
     justify-content: flex-start;
 }
-  
-  .login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
+
+.login{
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+

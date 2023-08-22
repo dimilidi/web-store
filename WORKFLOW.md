@@ -194,12 +194,14 @@
 ## TODO:
 
 - unsubscribe on Destroy
+- change color blue to material purple
 - home page pagination
 - Password reset option
 - email custom validator
 - add favourite products in user Profile page
 - Admin Dashboard
   - CRUD Product -> done
+  - responsiveness
   - manage users
 
 

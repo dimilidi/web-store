@@ -37,4 +37,17 @@
       ></app-button>
     </div>
   </section>
+
+  <div class="hr">
+     <hr/> 
+  </div>
+
+  
+  <div class="favourites" *ngFor="let favourite of favouriteProducts" >
+    {{favourite.product.imageUrl }}
+  <!-- ++++++++++++++++++++++++++++-->
+    <p>{{favourite.product.name}}</p>
+    <img  [src]="favourite.product.imageUrl" />
+    <p>{{favourite.product.price}}</p>
+  </div>
 </div>

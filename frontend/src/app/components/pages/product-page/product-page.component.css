@@ -60,7 +60,7 @@ img{
 
 
 .favorite{
-  color: rgb(63, 151, 184);
+  color: #3f51b5;
   font-size: 2.5rem;
 }
 
@@ -102,7 +102,7 @@ img{
   margin: 0.2rem 0.15rem;
   border-radius: 10rem;
   font-weight: 600;
-  color: rgb(63, 151, 184);
+  color: #3f51b5;
 }
 
 .cook-time{
@@ -118,7 +118,7 @@ img{
 .price{
   font-size: 1.8rem;
   margin: 2rem 2rem 2rem 0;
-  color: green;
+  color: #414141;
 }
 
 .price::before{
@@ -128,7 +128,7 @@ img{
 
 button{
   color: white;
-  background: rgb(63, 151, 184);
+  background: #3f51b5;
   border: none;
   font-size: 1.2rem;
   padding: 1rem;

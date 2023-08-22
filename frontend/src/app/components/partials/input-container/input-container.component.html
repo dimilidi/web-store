@@ -1,9 +1,21 @@
-<div class="container" [ngStyle]="{'background-color': bgColor, 'border': border} ">
+<div
+  class="wrapper"
+  [ngStyle]="{ 'background-color': bgColor, border: border }"
+>
+  <div class="container">
     <label>
-      {{label}}
+      {{ label }}
     </label>
-  
+
+    <mat-icon class="icon" color="primary"> {{ icon }} </mat-icon>
     <div class="content">
       <ng-content></ng-content>
     </div>
   </div>
+
+  <app-visibility-icon
+    *ngIf="icon === 'password'"
+    [isVisible]="showPassword"
+    (iconClick)="iconClicked()"
+  ></app-visibility-icon>
+</div>

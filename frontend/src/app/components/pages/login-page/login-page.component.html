@@ -7,21 +7,36 @@
         [control]="fc.email"
         [showErrorsWhen]="isSubmitted || loginForm.touched"
         type="email"
-        label="Email"
-        [border]=" fc.email.touched && fc.email.invalid ?'2px solid red' : '' "
+        placeholder="Email"
+        icon="email"
+        [border]="
+          fc.email.touched && fc.email.invalid
+            ? '2px solid rgb(245, 0, 87)'
+            : ''
+        "
       ></app-text-input>
 
       <app-text-input
+        #password
+        [showPassword]="showPassword"
+        (iconClick)="togglePasswordVisibility('showPassword')"
         [control]="fc.password"
         [showErrorsWhen]="isSubmitted || loginForm.touched"
-        type="password"
-        label="Password"
-        [border]=" fc.password.touched && fc.password.invalid ?'2px solid red' : '' "
+        [type]="showPassword ? 'text' : 'password'"
+        placeholder="Password"
+        icon="password"
+        [border]="
+          fc.password.touched && fc.password.invalid
+            ? '2px solid rgb(245, 0, 87)'
+            : ''
+        "
       ></app-text-input>
 
       <app-button
         [disabled]="loginForm.touched && loginForm.invalid"
-        bgColor="{{ loginForm.touched && loginForm.invalid ? '#3f3f3f' : '#3f97b8' }}"
+        bgColor="{{
+          loginForm.touched && loginForm.invalid ? '#3f3f3f' : '#F50057'
+        }}"
         text="Login"
       ></app-button>
 

@@ -21,7 +21,7 @@ export class ParticalBackgroundComponent{
   particlesOptions = {
       background: {
           color: {
-              value: "#3f97b8",
+              value: "#3f51b5",
           },
       },
       fpsLimit: 120,

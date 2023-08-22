@@ -56,6 +56,7 @@ import { DeleleAccountPageComponent } from './components/pages/delele-account-pa
 import { ParticalBackgroundComponent } from './components/partials/partical-background/partical-background.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { DialogComponent } from './components/partials/dialog/dialog.component';
+import { VisibilityIconComponent } from './components/partials/visibility-icon/visibility-icon.component';
 
 @NgModule({
   declarations: [
@@ -70,8 +71,8 @@ import { DialogComponent } from './components/partials/dialog/dialog.component';
     NotFoundComponent,
     LoadingComponent,
     LoginPageComponent,
-    InputContainerComponent,
     InputValidationComponent,
+    InputContainerComponent,
     TextInputComponent,
     ButtonComponent,
     RegisterPageComponent,
@@ -88,7 +89,8 @@ import { DialogComponent } from './components/partials/dialog/dialog.component';
     DeleleAccountPageComponent,
     ParticalBackgroundComponent,
     DashboardComponent,
-    DialogComponent
+    DialogComponent,
+    VisibilityIconComponent
   ],
   imports: [
     NgParticlesModule ,

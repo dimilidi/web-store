@@ -58,8 +58,8 @@ input {
  height: 40px;
  border-radius: 50%;
  color: white;
- background-color: rgb(63, 151, 184);
- border: 2px solid rgb(63, 151, 184);
+ background-color: #3f51b5;
+ border: 2px solid #3f51b5;
  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
  cursor: pointer;
  display: flex;
@@ -71,13 +71,13 @@ input {
 }
 
 .edit-icon mat-icon:hover {
-    color: rgb(63, 151, 184);
+    color: #3f51b5;
 }
 
 .edit-icon:hover {
     background-color: white;
-    color: rgb(63, 151, 184);
-    border: 2px solid rgb(63, 151, 184);
+    color: #3f51b5;
+    border: 2px solid #3f51b5;
 }
 
 .icon:hover {
