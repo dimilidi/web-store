@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgParticlesModule } from "ng-particles";
+import { NgParticlesModule } from 'ng-particles';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,19 +7,20 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
 
 import { MatIconModule } from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSelectModule } from '@angular/material/select'; 
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -59,6 +60,7 @@ import { DialogComponent } from './components/partials/dialog/dialog.component';
 import { VisibilityIconComponent } from './components/partials/visibility-icon/visibility-icon.component';
 import { CardComponent } from './components/partials/card/card.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,10 +94,10 @@ import { CardComponent } from './components/partials/card/card.component';
     DashboardComponent,
     DialogComponent,
     VisibilityIconComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
-    NgParticlesModule ,
+    NgParticlesModule,
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
@@ -123,10 +125,10 @@ import { CardComponent } from './components/partials/card/card.component';
     }),
   ],
   providers: [
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: AuthInterceptor, 
-      multi: true 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,

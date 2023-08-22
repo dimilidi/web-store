@@ -3,8 +3,8 @@ import { Product } from "./Product";
 import { IUser } from "./User";
 
 export interface Favourite {
-    user: IUser;
-    product: Product;
+  user: IUser;
+  product: Product;
 }
 
 export const FavouriteSchema = new Schema<Favourite>(
@@ -25,4 +25,4 @@ export const FavouriteSchema = new Schema<Favourite>(
 
 const Favourite = model("Favourite", FavouriteSchema);
 
-export default Favourite
+export default Favourite;

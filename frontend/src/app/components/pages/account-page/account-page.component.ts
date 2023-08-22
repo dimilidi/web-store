@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,6 +17,7 @@ export class AccountPageComponent implements OnInit {
   user: User = this.userService.currentUser;
   favouriteProducts!: Favourite[];
   favoriteProductsSet: Set<string> = new Set();
+
 
   constructor(
     private userService: UserService,

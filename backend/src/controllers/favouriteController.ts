@@ -49,9 +49,8 @@ export async function getFavourites(req: any, res: any) {
   const userId = req.user.id;
 
   const favourites = await Favourite.find({ user: userId })
-    .populate("product", "name price")
+    .populate("product")
     .exec();
-console.log('FAV:',favourites);
 
   res.status(200).json(favourites);
 }

@@ -4,6 +4,7 @@
 
     <div class="image-container">
       <img
+        class="profile-image"
         *ngIf="user.avatar"
         src="{{ user.avatar }}"
         alt="profile picture"
@@ -26,7 +27,7 @@
       </div>
       <div class="input-container">
         <label>Phone</label>
-        <input *ngIf="user.phone"  value="{{ user.phone }}" disabled />
+        <input *ngIf="user.phone" value="{{ user.phone }}" disabled />
         <input *ngIf="!user.phone" value="unknown" disabled />
       </div>
 
@@ -38,17 +39,14 @@
     </div>
   </section>
 
-  <div class="hr">
-     <hr/> 
-  </div>
- 
-
-  
-
-   
+  <div *ngIf="favouriteProducts.length > 0" class="scroller snaps-inline">
     <div class="favourites card" *ngFor="let favourite of favouriteProducts">
       <a routerLink="/product/{{ favourite.product.id }}">
-        <img [src]="favourite.product.imageUrl" alt="{{ favourite.product.name }}" />
+        <img
+          class="product-image"
+          [src]="favourite.product.imageUrl"
+          alt="{{ favourite.product.name }}"
+        />
       </a>
       <div class="content">
         <a routerLink="/product/{{ favourite.product.id }}" class="name">
@@ -56,7 +54,7 @@
             {{ favourite.product.name }}
           </span>
         </a>
-  
+
         <span
           class="  material-icons favorite {{
             user.id && favoriteProductsSet.has(favourite.product.id)
@@ -82,17 +80,14 @@
         </div>
       </div>
 
-
-  
       <div class="price">
         <span>
           {{ favourite.product.price | currency : "EUR" }}
         </span>
-        <button class="add-btn" (click)="addToCart(favourite.product)">Buy</button>
+        <button class="add-btn" (click)="addToCart(favourite.product)">
+          Buy
+        </button>
       </div>
     </div>
-    
   </div>
-
-
-
+</div>
