@@ -1,5 +1,5 @@
-<!-- <div class="card">
-    <a routerLink="/product/{{ product.id }}">
+<div  [ngClass]="['card',  'card-' + cardSize]">
+    <a class="image-link" routerLink="/product/{{ product.id }}">
       <img [src]="product.imageUrl" alt="{{ product.name }}" />
     </a>
     <div class="content">
@@ -11,7 +11,7 @@
 
       <span
         class="  material-icons favorite {{
-          user.id && favoriteProductsSet.has(product.id)
+          user.id && favoriteProductsSet?.has(product.id)
             ? 'favorite'
             : 'not'
         }}"
@@ -41,4 +41,3 @@
       <button class="add-btn" (click)="addToCart(product)">Buy</button>
     </div>
   </div>
--->

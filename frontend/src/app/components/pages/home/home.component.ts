@@ -1,8 +1,6 @@
 import {
-  ChangeDetectorRef,
   Component,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
 import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
+import { CardSize } from 'src/app/components/partials/card/card.component'
+
 
 @Component({
   selector: 'app-home',
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   user: User = this.userService.currentUser;
   tag!: Tag;
   toggledProduct!: string;
+  CardSize = CardSize;
 
   constructor(
     private userService: UserService,
@@ -79,6 +80,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  
+
   toggleFavourite(product: Product) {
     if (!this.user.id) return;
 
@@ -97,7 +100,17 @@ export class HomeComponent implements OnInit {
       });
   }
 
+
   onShowCategory(event: any): void {
     this.tag = event;
+  }
+
+
+
+
+  handleFavoriteToggled(product: Product) {
+    console.log('tog');
+    this.toggleFavourite(product)
+    this.getFavouriteProducts();
   }
 }

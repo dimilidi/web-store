@@ -14,8 +14,6 @@ export class InputContainerComponent {
   @Output() iconClick: EventEmitter<void> = new EventEmitter<void>();
 
   iconClicked()  {
-    console.log('333');
-    
     this.iconClick.emit();
   }
 

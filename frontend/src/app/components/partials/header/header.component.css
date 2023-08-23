@@ -23,7 +23,7 @@ header{
 
   a{ 
     height: 100%;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     color:  #3f51b5;
   }
   
@@ -99,6 +99,9 @@ header{
     background-color: transparent;
     color: #3f51b5;
     position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .login-link {
@@ -112,15 +115,15 @@ header{
     width: 20px;
     background: #F50057;
     color: white;
-    padding: 0.1rem 0.45rem 0;
+    padding: 0.5rem;
     border-radius: 100rem;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 9px;
+    right: 12px;
   }
   
   .menu-container{
@@ -145,6 +148,8 @@ header{
 
   .custom-icon {
     height: 100%;
+    margin-top: 0.4rem;
+    
   }
 
   @media screen and (max-width: 990px) {

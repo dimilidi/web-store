@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { icon } from 'leaflet';
 import { UserService } from 'src/app/services/user.service';
 import { UserRegister } from 'src/app/shared/interfaces/UserRegister';
 import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator';

@@ -39,54 +39,21 @@
     </div>
   </section>
 
-  <div *ngIf="favouriteProducts.length > 0" class="scroller snaps-inline">
-    <div class="favourites card" *ngFor="let favourite of favouriteProducts">
-      <a routerLink="/product/{{ favourite.product.id }}">
-        <img
-          class="product-image"
-          [src]="favourite.product.imageUrl"
-          alt="{{ favourite.product.name }}"
-        />
-      </a>
-      <div class="content">
-        <a routerLink="/product/{{ favourite.product.id }}" class="name">
-          <span>
-            {{ favourite.product.name }}
-          </span>
-        </a>
-
-        <span
-          class="  material-icons favorite {{
-            user.id && favoriteProductsSet.has(favourite.product.id)
-              ? 'favorite'
-              : 'not'
-          }}"
-          (click)="toggleFavourite(favourite.product)"
-        >
-          favorite
-        </span>
-        <div class="stars">
-          <app-star-rating
-            [averageRating]="favourite.product.averageRating"
-            [productId]="favourite.product.id"
-          ></app-star-rating>
-        </div>
-        <div class="product-item-footer">
-          <div class="origins">
-            <span *ngFor="let origin of favourite.product.origins">
-              {{ origin }}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="price">
-        <span>
-          {{ favourite.product.price | currency : "EUR" }}
-        </span>
-        <button class="add-btn" (click)="addToCart(favourite.product)">
-          Buy
-        </button>
+  <!-- FAVOURITE PRODUCTS-->
+  <div class="scroller-container">
+    <app-title
+      class="scroller-title"
+      title="{{ user.name }}'s Favourite Products"
+      margin="0 auto"
+    />
+    <div *ngIf="favouriteProducts.length > 0" class="scroller snaps-inline">
+      <div *ngFor="let favourite of favouriteProducts">
+        <app-card
+          [product]="favourite.product"
+          [favoriteProductsSet]="favoriteProductsSet"
+          [size]="CardSize.Small"
+          (favoriteToggled)="handleFavoriteToggled(favourite.product)"
+        ></app-card>
       </div>
     </div>
   </div>

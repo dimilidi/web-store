@@ -2,19 +2,24 @@
   class="wrapper"
   [ngStyle]="{ 'background-color': bgColor, border: border }"
 >
+  <div class="{{ icon ? 'icon-container' : 'not' }}" >
+    <mat-icon class="icon" color="primary">
+      {{ icon }}
+    </mat-icon>
+  </div>
+
   <div class="container">
     <label>
       {{ label }}
     </label>
 
-    <mat-icon class="icon" color="primary"> {{ icon }} </mat-icon>
     <div class="content">
       <ng-content></ng-content>
     </div>
   </div>
 
   <app-visibility-icon
-    *ngIf="icon === 'password'"
+    *ngIf="icon === 'lock'"
     [isVisible]="showPassword"
     (iconClick)="iconClicked()"
   ></app-visibility-icon>

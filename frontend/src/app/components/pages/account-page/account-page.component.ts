@@ -1,5 +1,5 @@
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, OnChanges, SimpleChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Favourite } from 'src/app/shared/interfaces/Favourite';
 import { Product } from 'src/app/shared/models/Product';
 import { User } from 'src/app/shared/models/User';
+import { CardSize } from 'src/app/components/partials/card/card.component'
 
 @Component({
   selector: 'app-account-page',
@@ -17,6 +18,7 @@ export class AccountPageComponent implements OnInit {
   user: User = this.userService.currentUser;
   favouriteProducts!: Favourite[];
   favoriteProductsSet: Set<string> = new Set();
+  CardSize = CardSize; 
 
 
   constructor(
@@ -30,9 +32,13 @@ export class AccountPageComponent implements OnInit {
     this.getFavouriteProducts();
   }
 
+  handleFavoriteToggled(product: Product) {
+    console.log('tog');
+    this.toggleFavourite(product)
+    this.getFavouriteProducts();
+  }
+
   handleEditAccount() {
-    console.log(this.favouriteProducts);
-    
     this.router.navigate(['edit-account']);
   }
 
@@ -41,6 +47,8 @@ export class AccountPageComponent implements OnInit {
       this.productService
         .getFavoriteProducts(this.user.id)
         .subscribe((favoriteProducts) => {
+          console.log(favoriteProducts);
+          
           favoriteProducts.forEach((product) => {
             this.favoriteProductsSet.add(product.product.id);
           });
@@ -57,16 +65,26 @@ export class AccountPageComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (response.product === undefined) {
+            console.log('delete');
             this.favoriteProductsSet.delete(product.id);
           } else {
             this.favoriteProductsSet.add(product.id);
           }
+          this.getFavouriteProducts();
+          
+          
         },
         error: (error) => {
           console.error('Error toggling favorite status:', error);
+          this.getFavouriteProducts();
+      
         },
       });
+  
   }
+
+
+
 
   addToCart(product: Product) {
     if (!this.user.id) {

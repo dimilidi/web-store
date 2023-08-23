@@ -4,20 +4,18 @@ app-partial-background{
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: centfler;
     height: 100%;
-    
-   
     margin-top: 3rem;
 }
 
 .details {
     width: 25rem;
-    height: 30rem;
-    padding: 1rem;
+    padding: 2rem;
     background-color: rgba(255, 255, 255, 0.747);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    border: 0.5px solid whitesmoke;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -25,17 +23,15 @@ app-partial-background{
 }
 
 form {
-    margin-top: 2rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-app-button {
-    margin-top: 1rem;
-}
 
 .register{
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;

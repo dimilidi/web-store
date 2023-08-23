@@ -1,0 +1,135 @@
+.card{
+    height: 22.5rem;
+    width: 20rem;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color:  #3f51b5;
+    background-color: white;
+}
+
+.card-small {
+    width: 15rem !important;
+    height: 17rem !important;
+  }
+  
+.card-medium {
+width: 18rem;
+height: 19rem;
+}
+  
+.card-large {
+
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.card a {
+    align-self: center;
+}
+
+.image-link {
+    aspect-ratio: 14 / 9;
+    width: 100%;
+}
+
+
+img{
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 14 / 9;
+}
+
+.card img:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.content{
+    margin-top: 0.3rem;
+    margin-bottom: .5rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    height: 2.7rem;
+    width: 100%;
+}
+
+.content .name:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.favorite{
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.2rem;
+}
+
+.favorite:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    }
+
+.favorite.not{
+    color: grey;
+}
+
+.stars{
+    margin-bottom: 0.2rem;
+}
+
+.product-item-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.origins{
+    flex: 9;
+}
+
+.origins span{
+    border-radius: 2rem;
+    background-color: whitesmoke;
+    display: inline-block;
+    font-size: 0.8rem;
+    color: grey;
+    margin-right: 0.3rem;
+    padding: 0 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.price{
+    height: 50px;
+    padding: 0 1rem;
+    background: white;
+    color: #414141;
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+.add-btn {
+    width: 4rem;
+    padding:  10px;
+    border-radius: 5px;
+    background-color:  #3f51b5;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    opacity: 0.8;
+}
+

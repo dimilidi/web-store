@@ -30,7 +30,7 @@
         [control]="fc.password"
         [showErrorsWhen]="isSubmitted || fc.password.touched"
         placeholder="Password"
-        icon="password"
+        icon="lock"
         [type]="showPassword ? 'text' : 'password'"
         [border]="
           fc.password.touched && fc.password.invalid ? '2px solid #F50057' : ''
@@ -44,7 +44,7 @@
         [control]="fc.confirmPassword"
         [showErrorsWhen]="isSubmitted || fc.confirmPassword.touched"
         placeholder="Confirm Password"
-        icon="password"
+        icon="lock"
         [type]="showConfirmPassword ? 'text' : 'password'"
         [border]="
           fc.confirmPassword.touched && fc.confirmPassword.invalid
