@@ -11,6 +11,8 @@ import { Product } from 'src/app/shared/models/Product';
 import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
 import { CardSize } from 'src/app/components/partials/card/card.component'
+import { DataService } from 'src/app/services/data.service';
+
 
 
 @Component({
@@ -25,18 +27,25 @@ export class HomeComponent implements OnInit {
   tag!: Tag;
   toggledProduct!: string;
   CardSize = CardSize;
+  isSearchBarVisible: boolean= false;
+ 
+
 
   constructor(
     private userService: UserService,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
+    private dataService: DataService,
     private route: Router
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
-    this.getFavouriteProducts();
+
+    this.dataService.isSearchBarVisible$.subscribe((isVisible) => {
+      this.isSearchBarVisible = isVisible;
+    });
   }
 
 
@@ -67,6 +76,8 @@ export class HomeComponent implements OnInit {
       this.route.navigateByUrl('/cart-page');
     }
   }
+
+
 
   getFavouriteProducts() {
     if (this.user.id) {
@@ -106,11 +117,10 @@ export class HomeComponent implements OnInit {
   }
 
 
-
-
   handleFavoriteToggled(product: Product) {
-    console.log('tog');
     this.toggleFavourite(product)
     this.getFavouriteProducts();
   }
+
+
 }

@@ -3,23 +3,28 @@
     <a routerLink="/" class="logo">Web Store</a>
     <nav>
       <ul>
+        <li>
+          <button class="search-icon" (click)="toggleSearchBar()">
+            <mat-icon>search</mat-icon>
+          </button>
+        </li>
         <li *ngIf="!isAuth">
           <a class="login-link" routerLink="/login">Login</a>
         </li>
+
         <li *ngIf="isAuth" class="menu-container">
           <a>
             <div class="dashboard">
-              <img
-                *ngIf="user.avatar"
-                src="{{ user.avatar }}"
-                alt="profile picture"
-              />
               <img
                 *ngIf="!user.avatar"
                 src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
                 alt="profile picture"
               />
-              <span>{{ user.name }}</span>
+              <img
+                *ngIf="user.avatar"
+                src="{{ user.avatar }}"
+                alt="profile picture"
+              />
             </div>
           </a>
           <div class="menu">

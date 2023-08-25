@@ -5,6 +5,7 @@ import jwt, {  JwtPayload } from "jsonwebtoken";
 import { Request, Response } from "express";
 import { v2 as cloudinary } from "cloudinary";
 import { Order } from "../models/Order";
+import Role from "../models/Role";
 
 interface TokenPayload extends JwtPayload {
   id: string;
@@ -38,7 +39,8 @@ export async function login(req: Request, res: Response) {
 
 // REGISTER
 export async function register(req: Request, res: Response) {
-  const { name, email, password, address, phone, avatar } = req.body;
+  const role = await Role.find({role: 'User'});
+  const { name, email, password, address, phone } = req.body;
   const user = await User.findOne({ email });
   if (user) {
     res.status(400).send("User is already exist, please login!");
@@ -54,8 +56,7 @@ export async function register(req: Request, res: Response) {
     password: encryptedPassword,
     address,
     phone,
-    avatar,
-    isAdmin: false,
+    roles: role 
   };
 
   const dbUser = await User.create(newUser);

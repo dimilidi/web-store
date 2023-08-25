@@ -84,8 +84,6 @@ export class AccountPageComponent implements OnInit {
   }
 
 
-
-
   addToCart(product: Product) {
     if (!this.user.id) {
       this.router.navigateByUrl('/login');

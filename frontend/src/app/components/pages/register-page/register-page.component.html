@@ -6,7 +6,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <app-text-input
         [control]="fc.name"
-        [showErrorsWhen]="isSubmitted || fc.name.touched"
+        [showErrorsWhen]="isSubmitted || (fc.name.touched && fc.name.invalid)"
         placeholder="Name"
         icon="person"
         [border]="fc.name.touched && fc.name.invalid ? '2px solid #F50057' : ''"
@@ -14,7 +14,7 @@
 
       <app-text-input
         [control]="fc.email"
-        [showErrorsWhen]="isSubmitted || fc.email.touched"
+        [showErrorsWhen]="isSubmitted ||(fc.email.touched && fc.email.invalid)"
         placeholder="Email"
         icon="email"
         type="email"
@@ -28,7 +28,7 @@
         [showPassword]="showPassword"
         (iconClick)="togglePasswordVisibility('showPassword')"
         [control]="fc.password"
-        [showErrorsWhen]="isSubmitted || fc.password.touched"
+        [showErrorsWhen]="isSubmitted || (fc.password.touched && fc.password.invalid)"
         placeholder="Password"
         icon="lock"
         [type]="showPassword ? 'text' : 'password'"
@@ -42,7 +42,7 @@
         [showPassword]="showConfirmPassword"
         (iconClick)="togglePasswordVisibility('showConfirmPassword')"
         [control]="fc.confirmPassword"
-        [showErrorsWhen]="isSubmitted || fc.confirmPassword.touched"
+        [showErrorsWhen]="isSubmitted || (fc.confirmPassword.touched && fc.confirmPassword.invalid)"
         placeholder="Confirm Password"
         icon="lock"
         [type]="showConfirmPassword ? 'text' : 'password'"
@@ -55,7 +55,7 @@
 
       <app-text-input
         [control]="fc.address"
-        [showErrorsWhen]="isSubmitted || fc.address.touched"
+        [showErrorsWhen]="isSubmitted || (fc.address.touched && fc.address.invalid)"
         placeholder="Address"
         icon="place"
         [border]="

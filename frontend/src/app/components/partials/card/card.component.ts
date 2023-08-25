@@ -31,7 +31,7 @@ export class CardComponent {
   cardSize!: CardSize 
 
   @Input() product!: Product;
-   @Input() favoriteProductsSet!: Set<string>;
+  @Input() favoriteProductsSet!: Set<string>;
   @Input() set size(size: CardSize) {
     this.cardSize = size;
   }
@@ -46,12 +46,6 @@ export class CardComponent {
     private route: Router
   ) {}
 
-  ngOnInit(): void {
- 
-  }
-
-
-  
 
   addToCart(product: Product) {
     if (!this.user.id) {
@@ -63,7 +57,6 @@ export class CardComponent {
   }
 
   toggleFavourite(product: Product) {
-    // Emit the favoriteToggled event
     this.favoriteToggled.emit();
   }
 

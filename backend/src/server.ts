@@ -8,6 +8,7 @@ import orderRouter from "./routers/orderRouter";
 import { dbConnect } from './configs/database_config';
 import path from 'path';
 import favouriteRouter from './routers/favouriteRouter';
+import roleRouter from './routers/roleRouter';
 
 // DB CONNECT
 dbConnect();
@@ -29,6 +30,7 @@ app.use('/products', productRouter);
 app.use('/users', userRouter);
 app.use('/orders', orderRouter);
 app.use('/favourites', favouriteRouter);
+app.use('/roles', roleRouter);
 
 // set the public folder that represents the frontend to static
 app.use(express.static('public'));

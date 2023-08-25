@@ -1,60 +1,63 @@
-<div class="wrapper">
-  <section *ngIf="user" class="form">
-    <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
-
-    <div class="image-container">
-      <img
-        class="profile-image"
-        *ngIf="user.avatar"
-        src="{{ user.avatar }}"
-        alt="profile picture"
+<div class="center">
+  <div class="wrapper">
+    <section *ngIf="user" class="form">
+      <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
+  
+      <div class="image-container">
+        <img
+          class="profile-image"
+          *ngIf="user.avatar"
+          src="{{ user.avatar }}"
+          alt="profile picture"
+        />
+        <img
+          *ngIf="!user.avatar"
+          src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
+          alt="profile picture"
+        />
+      </div>
+  
+      <div class="input-wrapper">
+        <div class="input-container">
+          <label>Username</label>
+          <input value="{{ user.name }}" disabled />
+        </div>
+        <div class="input-container">
+          <label>Address</label>
+          <input value="{{ user.address }}" disabled />
+        </div>
+        <div class="input-container">
+          <label>Phone</label>
+          <input *ngIf="user.phone" value="{{ user.phone }}" disabled />
+          <input *ngIf="!user.phone" value="Unknown" disabled />
+        </div>
+  
+        <app-button
+          [widthRem]="15"
+          text="Edit Account"
+          (click)="handleEditAccount()"
+        ></app-button>
+      </div>
+    </section>
+  
+    <!-- FAVOURITE PRODUCTS-->
+    <div *ngIf="favouriteProducts.length > 0" class="scroller-container">
+      <app-title
+        class="scroller-title"
+        title="{{ user.name }}'s Favourite Products"
+        margin="0 auto"
       />
-      <img
-        *ngIf="!user.avatar"
-        src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
-        alt="profile picture"
-      />
-    </div>
-
-    <div class="input-wrapper">
-      <div class="input-container">
-        <label>Username</label>
-        <input value="{{ user.name }}" disabled />
-      </div>
-      <div class="input-container">
-        <label>Address</label>
-        <input value="{{ user.address }}" disabled />
-      </div>
-      <div class="input-container">
-        <label>Phone</label>
-        <input *ngIf="user.phone" value="{{ user.phone }}" disabled />
-        <input *ngIf="!user.phone" value="unknown" disabled />
-      </div>
-
-      <app-button
-        [widthRem]="15"
-        text="Edit Account"
-        (click)="handleEditAccount()"
-      ></app-button>
-    </div>
-  </section>
-
-  <!-- FAVOURITE PRODUCTS-->
-  <div class="scroller-container">
-    <app-title
-      class="scroller-title"
-      title="{{ user.name }}'s Favourite Products"
-      margin="0 auto"
-    />
-    <div *ngIf="favouriteProducts.length > 0" class="scroller snaps-inline">
-      <div *ngFor="let favourite of favouriteProducts">
-        <app-card
-          [product]="favourite.product"
-          [favoriteProductsSet]="favoriteProductsSet"
-          [size]="CardSize.Small"
-          (favoriteToggled)="handleFavoriteToggled(favourite.product)"
-        ></app-card>
+      <div class="scroller snaps-inline">
+        <div *ngFor="let favourite of favouriteProducts">
+          <app-card
+            [product]="favourite.product"
+            [favoriteProductsSet]="favoriteProductsSet"
+            [size]="CardSize.Small"
+            (favoriteToggled)="handleFavoriteToggled(favourite.product)"
+          ></app-card>
+        </div>
       </div>
     </div>
   </div>
+  
 </div>

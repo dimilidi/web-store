@@ -1,42 +1,49 @@
 .search-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0rem;
     width: 100%;
+    box-shadow: 0 0 8px rgb(185, 185, 185);
 }
 
-  input{
-    border-radius: 5px 0 0 5px;
-    border: none;
-    height: 3rem;
-    width: 200px;
-    background-color: #f1f1f1;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    outline: none;
-  }
+input{
+  border-radius: 5px 0 0 5px;
+  border: none;
+  height: 3rem;
+  width: 200px;
+  background-color: white;
+  padding: 1.2rem;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+}
 
-  input:focus {
-    background-color: white;
-    border: 2px solid #f1f1f1;
+input::placeholder {
+  color: rgba(0,0,0,.87);
+  font-weight: 100;
+  text-transform: uppercase;
 
-  }
+}
+
+input:focus {
+  background-color: #f1f1f1;
+  border: 2px solid #3f51b5;
+
+}
+
+div button {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1rem;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-color: #3f51b5;
+  color: white;
+  opacity: 0.8;
+  outline: none;
+}
   
-  div button{
-    color: grey;
-    height: 3rem;
-    width: 3rem;
-    font-size: 1rem;
-    border-radius: 0 5px 5px 0;
-    border: none;
-    background-color: #3f51b5;
-    color: white;
-    opacity: 0.8;
-    outline: none;
-  }
-  
-  div button:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
+div button:hover{
+  opacity: 1;
+  cursor: pointer;
+}

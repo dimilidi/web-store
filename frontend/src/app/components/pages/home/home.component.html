@@ -1,15 +1,15 @@
-<app-not-found
-  [visible]="!products || !products.length"
-  resetLinkText="Reset Search"
-/>
-
 <app-dashboard *ngIf="user.isAdmin"></app-dashboard>
 
 <div *ngIf="!user.isAdmin" class="wrapper">
-  <aside class="aside">
+  <aside   [ngClass]="isSearchBarVisible ? 'aside' : 'hide'">
     <app-search />
     <app-tags (showCategory)="onShowCategory($event)" />
   </aside>
+
+  <app-not-found
+    [visible]="!products || !products.length"
+    resetLinkText="Reset Search"
+  />
 
   <ul class="products-container">
     <li *ngFor="let product of products">

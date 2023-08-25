@@ -24,7 +24,7 @@
   .icon-container {
     width: 2rem;
     height: 2.7rem;
-    border-right: 3px solid #3f51b5;
+    border-right: 1px solid #3f51b5a1;
     display: flex;
     align-items: center;
   }
@@ -55,7 +55,6 @@
     width: 90%;
     height: 2.7rem;
     margin-left: 0.5rem;
-    padding-left: 0.5rem;
     display: flex;
     align-self: flex-start;
   }

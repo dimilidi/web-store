@@ -1,5 +1,15 @@
 mat-expansion-panel {
   width: 250px;
+  box-shadow: 0 0 8px rgb(185, 185, 185);
+  
+}
+
+mat-expansion-panel-header {
+  font-size: 14px;
+
+}
+mat-expansion-panel-indicator {
+  background-color: pink;
 }
 
 

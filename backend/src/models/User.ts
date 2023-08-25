@@ -12,9 +12,9 @@ export interface IUser {
   password: string;
   name: string;
   address: string;
-  phone: string;
-  avatar: string;
-  isAdmin: boolean;
+  phone?: string;
+  avatar?: string;
+  isAdmin?: boolean;
    // Add an index signature for dynamic property access
    [key: string]: any;
 }
@@ -25,8 +25,10 @@ export const UserSchema = new Schema<IUser>({
     password: {type:String, required: true},
     address: {type:String, required: true},
     phone: {type:String, required: false},
-    avatar: { type: String},
-    isAdmin: {type:Boolean, required: true}
+    avatar: { type: String, default: "https://cdn-icons-png.flaticon.com/512/64/64572.png"},
+    isAdmin: {type:Boolean, default: false},
+    roles: {type: [Schema.Types.ObjectId], required: true, ref: 'Role'}
+   
 },
 {
     timestamps: true,

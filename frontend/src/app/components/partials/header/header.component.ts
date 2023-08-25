@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
-import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-} from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { ProductService } from 'src/app/services/product.service';
+
 
 @Component({
   selector: 'app-header',
@@ -19,10 +14,13 @@ export class HeaderComponent {
   cartQuantity = 0;
   user!: User;
   capitalizedName = '';
+  
+
 
   constructor(
     private cartService: CartService,
     private userService: UserService,
+    private dataService: DataService
   ) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       if (newCart) {
@@ -45,4 +43,13 @@ export class HeaderComponent {
   get isAuth() {
     return this.user.token;
   }
+
+
+  toggleSearchBar() {
+    console.log('click');
+    
+    this.dataService.toggleSearchBar();
+  }
+
+  
 }
