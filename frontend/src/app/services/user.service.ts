@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { UserLogin } from '../shared/interfaces/UserLogin';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { USER_ACCOUNT_URL, USER_DELETE_URL, USER_LOGIN_URL, USER_LOGOUT_URL, USER_REGISTER_URL, USER_UPDATE_URL } from '../shared/constants/urls';
+import { HttpClient } from '@angular/common/http';
+import {
+  USER_DELETE_URL,
+  USER_LOGIN_URL,
+  USER_LOGOUT_URL,
+  USER_REGISTER_URL,
+  USER_UPDATE_URL,
+} from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { UserRegister } from '../shared/interfaces/UserRegister';
 import { Router } from '@angular/router';
 import { EditInput } from '../shared/interfaces/EditInput';
+import { ServerResponse } from '../shared/interfaces/ServerResponse';
 
 const USER_KEY = 'User';
 
@@ -15,15 +22,17 @@ const USER_KEY = 'User';
   providedIn: 'root',
 })
 export class UserService {
-
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
   );
   public userObservable: Observable<User>;
 
-
   // userObservable is the readOnly version of the userSubject
-  constructor(private http: HttpClient, private toastrService: ToastrService, private router:Router) {
+  constructor(
+    private http: HttpClient,
+    private toastrService: ToastrService,
+    private router: Router
+  ) {
     this.userObservable = this.userSubject.asObservable();
   }
 
@@ -31,34 +40,38 @@ export class UserService {
     return this.userSubject.value;
   }
 
-  login(userLogin: UserLogin): Observable<User> {
-    return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
+  login(userLogin: UserLogin): Observable<ServerResponse> {
+    return this.http.post<ServerResponse>(USER_LOGIN_URL, userLogin).pipe(
       tap({
-        next: (user) => {
+        next: (res) => {
+          const user = res.data;
+          console.log(user);
+          
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
             `Welcome to Web-Store! ${user.name}`,
-            'Login Successful'
+            res.message
           );
         },
         error: (errorResponse) => {
-          this.toastrService.error(errorResponse.error, 'Login Failed');
+          this.toastrService.error(errorResponse.error.message, 'Login Failed');
         },
       })
     );
   }
 
-  register(userRegiser: UserRegister): Observable<User> {
-    return this.http.post<User>(USER_REGISTER_URL, userRegiser).pipe(
+  register(userRegiser: UserRegister): Observable<ServerResponse> {
+    return this.http.post<ServerResponse>(USER_REGISTER_URL, userRegiser).pipe(
       tap({
-        next: (user) => {
+        next: (res) => {
+          const user = res.data;
           this.setUserToLocalStorage(user);
           // notify all observables that new user is created
           this.userSubject.next(user);
           this.toastrService.success(
             `Welcome to Web-Shop ${user.name}`,
-            'Register Successful'
+            res.message
           );
         },
         error: (errorResponse) => {
@@ -86,13 +99,12 @@ export class UserService {
     );
   }
 
-
   deleteAccount(): Observable<void> {
     return this.http.delete<void>(USER_DELETE_URL).pipe(
       tap({
         next: () => {
           this.clearUserData();
-          this.router.navigate(['/'])
+          this.router.navigate(['/']);
           this.toastrService.success(
             'Account deleted successfully',
             'Account Deleted'
@@ -104,13 +116,12 @@ export class UserService {
       })
     );
   }
-  
+
   private clearUserData(): void {
     // Clear user data from local storage && subject
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY); // Set the subject to null or an empty user object
   }
-  
 
   logout(): Observable<void> {
     return this.http.post<void>(USER_LOGOUT_URL, {}).pipe(
@@ -118,10 +129,7 @@ export class UserService {
         next: () => {
           this.clearUserData();
           this.router.navigate(['/']);
-          this.toastrService.success(
-            'Logged out successfully',
-            'Logout'
-          );
+          this.toastrService.success('Logged out successfully', 'Logout');
         },
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Logout Failed');
@@ -130,20 +138,17 @@ export class UserService {
     );
   }
 
-
   private setUserToLocalStorage(user: User) {
     const currentUser = this.getUserFromLocalStorage();
     const updatedUser = { ...currentUser, ...user };
-     // Add or update the token property
-     updatedUser.token = user.token || currentUser.token;
+    // Add or update the token property
+    updatedUser.token = user.token || currentUser.token;
     localStorage.setItem(USER_KEY, JSON.stringify(updatedUser));
-    
   }
-  
 
   private getUserFromLocalStorage(): User {
     const userJson = localStorage.getItem(USER_KEY);
-        
+
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
   }

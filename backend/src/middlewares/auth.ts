@@ -1,18 +1,40 @@
 import { verify } from "jsonwebtoken";
-import User from '../models/User'
+import { createError } from "./error";
+import User, { TokenPayload } from "../models/User";
 
+export async function verifyToken(req: any, res: any, next: any) {
+  const token = req.headers.access_token as string;
+  if (!token) return next(createError(401, "You are not authenticated."));
 
-export default async function(req: any, res: any, next: any) {
-    const token = req.headers.access_token as string;
-    if(!token) return res.status(401).send();    
+  try {
+    const user = verify(token, process.env.TOKEN_KEY!);
+    req.user = user;
+  } catch (error) {
+    return next(createError(403, "Token is not valid."));
+  }
 
-    try {
-        const user = verify(token, process.env.TOKEN_KEY!);
-        req.user = user;        
+  next();
+}
 
-    } catch (error) {
-        res.status(401).send();
+export function verifyUser(req: any, res: any, next: any) {
+    verifyToken(req, res, (token: any) => {
+     const user = req.user;
+      
+    if (req.user || req.user.isAdmin) {
+      next();
+    } else {
+      return next(createError(403, "You are not authorised."));
     }
-    
-    next();
+  });
+}
+
+
+export function verifyAdmin(req: any, res: any, next: any) {
+  verifyToken(req, res, () => {
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      return next(createError(403, "You are not authorised."));
+    }
+  });
 }

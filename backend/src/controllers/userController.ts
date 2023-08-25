@@ -1,11 +1,13 @@
 import { sample_users } from "../data";
 import User, { IUser } from "../models/User";
 import bcrypt from "bcryptjs";
-import jwt, {  JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { Request, Response } from "express";
 import { v2 as cloudinary } from "cloudinary";
 import { Order } from "../models/Order";
 import Role from "../models/Role";
+import { createError } from "../middlewares/error";
+import { createSuccess } from "../middlewares/success";
 
 interface TokenPayload extends JwtPayload {
   id: string;
@@ -24,22 +26,30 @@ export async function seedUsers(req: Request, res: Response) {
   res.send("Seed Is Done!");
 }
 
-
 // LOGIN
-export async function login(req: Request, res: Response) {
+export async function login(req: Request, res: Response, next: any) {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).populate("roles", "role").exec();
 
-  if (user && (await bcrypt.compare(password, user.password))) {
-    res.send(generateTokenResponse(user));
+  if (user && (await checkPassword(password, user))) {
+    const { roles } = user;
+    console.log(user);
+
+    return next(
+      createSuccess(
+        200,
+        "User logged in successfully.",
+        generateTokenResponse(user)
+      )
+    );
   } else {
-    res.status(400).send("Username or password is invalid!");
+    return next(createError(400, "Username or password is invalid!"));
   }
 }
 
 // REGISTER
-export async function register(req: Request, res: Response) {
-  const role = await Role.find({role: 'User'});
+export async function register(req: Request, res: Response, next: any) {
+  const role = await Role.find({ role: "User" });
   const { name, email, password, address, phone } = req.body;
   const user = await User.findOne({ email });
   if (user) {
@@ -56,11 +66,52 @@ export async function register(req: Request, res: Response) {
     password: encryptedPassword,
     address,
     phone,
-    roles: role 
+    roles: role,
   };
 
   const dbUser = await User.create(newUser);
-  res.send(generateTokenResponse(dbUser));
+  // res.send(generateTokenResponse(dbUser));
+  return next(
+    createSuccess(
+      201,
+      "User registered successfully.",
+      generateTokenResponse(dbUser)
+    )
+  );
+}
+
+// REGISTER ADMIN
+export async function registerAdmin(req: Request, res: Response, next: any) {
+  const role = await Role.find();
+  const { name, email, password, address, phone } = req.body;
+  const user = await User.findOne({ email });
+  if (user) {
+    res.status(400).send("User is already exist, please login!");
+    return;
+  }
+
+  const encryptedPassword = await bcrypt.hash(password, 10);
+
+  const newUser: IUser = {
+    id: "",
+    name,
+    email: email.toLowerCase(),
+    password: encryptedPassword,
+    address,
+    phone,
+    isAdmin: true,
+    roles: role,
+  };
+
+  const dbUser = await User.create(newUser);
+  // res.send(generateTokenResponse(dbUser));
+  return next(
+    createSuccess(
+      201,
+      "Admin registered successfully.",
+      generateTokenResponse(dbUser)
+    )
+  );
 }
 
 // TOKEN
@@ -70,6 +121,7 @@ const generateTokenResponse = (user: IUser) => {
       id: user.id,
       email: user.email,
       isAdmin: user.isAdmin,
+      roles: user.roles,
     },
     process.env.TOKEN_KEY!,
     {
@@ -85,6 +137,7 @@ const generateTokenResponse = (user: IUser) => {
     avatar: user.avatar,
     phone: user.phone,
     isAdmin: user.isAdmin,
+    roles: user.roles,
     token: token,
   };
 };
@@ -117,24 +170,21 @@ export async function editAccount(req: any, res: Response) {
     api_secret: process.env.CLOUD_SECRET,
   });
 
- 
- // Change avatar
- if (user && avatar) {
-  const upload = await cloudinary.uploader.upload(avatar);
-  user.avatar = upload.secure_url;
-} else if (user && avatar === '') {
-  // If avatar is an empty string, delete the avatar
-  user.avatar = '';
-}
+  // Change avatar
+  if (user && avatar) {
+    const upload = await cloudinary.uploader.upload(avatar);
+    user.avatar = upload.secure_url;
+  } else if (user && avatar === "") {
+    // If avatar is an empty string, delete the avatar
+    user.avatar = "";
+  }
 
- 
   // Change other items
   if (user) {
     for (const key in others) {
       (user as IUser)[key] = others[key];
     }
 
-    
     await user.save();
 
     // Send the updated user object with the token back to the client
@@ -147,12 +197,12 @@ export async function editAccount(req: any, res: Response) {
 }
 
 // LOGOUT
-export const logout = async (req:any, res:any) => {
+export const logout = async (req: any, res: any) => {
   res.status(204).json();
-}
+};
 
 // DELETE ACCOUNT
-export const deleteAccount = async (req:any, res:any) => {
+export const deleteAccount = async (req: any, res: any) => {
   const userId = await User.findById(req.user.id);
 
   await Order.deleteMany({ user: userId });
@@ -161,18 +211,34 @@ export const deleteAccount = async (req:any, res:any) => {
   await User.deleteOne({ _id: userId });
 
   res.status(204).json();
-}
-
+};
 
 // GET ALL ORDERS
 export async function getAllOrders(req: any, res: any) {
-  const userId = req.user.id;  
+  const userId = req.user.id;
   const user = await User.findById(userId);
 
   if (!user) {
-    return res.status(404).json({ message: 'User not found' });
+    return res.status(404).json({ message: "User not found" });
   }
 
   const userOrders = await user.getAllOrders();
   res.status(200).json(userOrders);
+}
+
+
+// GET ALL USERS
+export async function getAllUsers(req: any, res: any, next: any) {
+  const users = await User.find();
+  return next(createSuccess(201, "All Users", users));
+}
+
+
+// GET USER BY ID
+export async function getUserById(req: any, res: any, next: any) {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if(!user) return next(createError(404, 'User not found'));
+  return next(createSuccess(200, 'Single User', user));
+  
 }

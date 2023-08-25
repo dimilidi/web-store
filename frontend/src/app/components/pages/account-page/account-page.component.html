@@ -41,7 +41,7 @@
     </section>
   
     <!-- FAVOURITE PRODUCTS-->
-    <div *ngIf="favouriteProducts.length > 0" class="scroller-container">
+    <div *ngIf="favouriteProducts && favouriteProducts.length > 0" class="scroller-container">
       <app-title
         class="scroller-title"
         title="{{ user.name }}'s Favourite Products"

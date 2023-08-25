@@ -59,6 +59,9 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { DialogComponent } from './components/partials/dialog/dialog.component';
 import { VisibilityIconComponent } from './components/partials/visibility-icon/visibility-icon.component';
 import { CardComponent } from './components/partials/card/card.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
 
 
 @NgModule({
@@ -95,6 +98,9 @@ import { CardComponent } from './components/partials/card/card.component';
     DialogComponent,
     VisibilityIconComponent,
     CardComponent,
+    ResetPasswordComponent,
+    ForgottenPasswordComponent,
+    FooterComponent,
   ],
   imports: [
     NgParticlesModule,

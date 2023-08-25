@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import { Order } from "./Order";
 
-interface TokenPayload extends JwtPayload {
+export interface TokenPayload extends JwtPayload {
     id: string;
   }
 

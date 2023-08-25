@@ -1,5 +1,4 @@
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -47,8 +46,6 @@ export class AccountPageComponent implements OnInit {
       this.productService
         .getFavoriteProducts(this.user.id)
         .subscribe((favoriteProducts) => {
-          console.log(favoriteProducts);
-          
           favoriteProducts.forEach((product) => {
             this.favoriteProductsSet.add(product.product.id);
           });
@@ -71,16 +68,12 @@ export class AccountPageComponent implements OnInit {
             this.favoriteProductsSet.add(product.id);
           }
           this.getFavouriteProducts();
-          
-          
         },
         error: (error) => {
           console.error('Error toggling favorite status:', error);
           this.getFavouriteProducts();
-      
         },
       });
-  
   }
 
 
@@ -92,6 +85,4 @@ export class AccountPageComponent implements OnInit {
       this.router.navigateByUrl('/cart-page');
     }
   }
-
-
 }

@@ -9,6 +9,7 @@ import { dbConnect } from './configs/database_config';
 import path from 'path';
 import favouriteRouter from './routers/favouriteRouter';
 import roleRouter from './routers/roleRouter';
+import { CustomResponse } from './middlewares/error';
 
 // DB CONNECT
 dbConnect();
@@ -22,7 +23,8 @@ app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"]
 }));
-//app.use('/', express.static('/build'))
+
+
 
 
 // ROUTERS
@@ -38,6 +40,20 @@ app.use(express.static('public'));
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname,'public', 'index.html'))
 })
+
+
+// Response Handler Middleware
+app.use((obj: CustomResponse, req:any, res:any, next:any):any => {
+    const statusCode = obj.status || 500;
+    const message = obj.message || 'Something went wrong.';
+    return res.status(statusCode).json({
+        success: [200, 201, 204].some(a => a === statusCode), 
+        status: statusCode, 
+        message: message,
+        data: obj.data
+    });
+})
+
 
 
 const port = process.env.PORT || 5000;
