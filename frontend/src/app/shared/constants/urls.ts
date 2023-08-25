@@ -1,7 +1,7 @@
 
 import { environment } from "src/environments/environment";
-const BASE_URL = 'http://localhost:5000';
-//const BASE_URL = 'https://web-store-85da.onrender.com';
+//cconst BASE_URL = 'http://localhost:5000';
+onst BASE_URL = 'https://web-store-85da.onrender.com';
 
 
 export const PRODUCTS_URL = BASE_URL + '/products';
