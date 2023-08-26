@@ -9,11 +9,6 @@
         type="email"
         placeholder="Email"
         icon="email"
-        [border]="
-          fc.email.touched && fc.email.invalid
-            ? '2px solid rgb(245, 0, 87)'
-            : ''
-        "
       ></app-text-input>
 
       <app-text-input
@@ -25,11 +20,6 @@
         [type]="showPassword ? 'text' : 'password'"
         placeholder="Password"
         icon="lock"
-        [border]="
-          fc.password.touched && fc.password.invalid
-            ? '2px solid rgb(245, 0, 87)'
-            : ''
-        "
       ></app-text-input>
 
       <app-button

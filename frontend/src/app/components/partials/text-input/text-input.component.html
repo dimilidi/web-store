@@ -2,7 +2,7 @@
   <app-input-container
     [label]="label"
     [icon]="icon"
-    [border]="border"
+    [border]="isInvalid ? '1px solid rgb(245, 0, 87)' : ''"
     [showPassword]="showPassword"
     (iconClick)="iconClickTrigger()"
   >

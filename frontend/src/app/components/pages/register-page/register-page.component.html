@@ -10,7 +10,6 @@
         [showErrorsWhen]="isSubmitted"
         placeholder="Name"
         icon="person"
-        [border]="fc.name.touched && fc.name.invalid ? '2px solid #F50057' : ''"
       />
 
       <app-text-input
@@ -19,9 +18,6 @@
         placeholder="Email"
         icon="email"
         type="email"
-        [border]="
-          fc.email.touched && fc.email.invalid ? '2px solid #F50057' : ''
-        "
       />
 
       <app-text-input
@@ -33,9 +29,6 @@
         placeholder="Password"
         icon="lock"
         [type]="showPassword ? 'text' : 'password'"
-        [border]="
-          fc.password.touched && fc.password.invalid ? '2px solid #F50057' : ''
-        "
       />
       <app-text-input
       
@@ -47,11 +40,6 @@
         placeholder="Confirm Password"
         icon="lock"
         [type]="showConfirmPassword ? 'text' : 'password'"
-        [border]="
-          fc.confirmPassword.touched && fc.confirmPassword.invalid
-            ? '2px solid #F50057'
-            : ''
-        "
       />
 
       <app-text-input
@@ -59,9 +47,6 @@
         [showErrorsWhen]="isSubmitted"
         placeholder="Address"
         icon="place"
-        [border]="
-          fc.address.touched && fc.address.invalid ? '2px solid #F50057' : ''
-        "
       />
 
       <app-button
