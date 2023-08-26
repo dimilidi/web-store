@@ -3,8 +3,8 @@ import {
   EventEmitter,
   Input,
   Output,
+  OnChanges,
   SimpleChanges,
-  ViewChild,
 } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
@@ -20,20 +20,15 @@ export default class TextInputComponent {
   @Input() icon!: string;
   @Input() placeholder!: string;
   @Input() value?: string;
-  @Input() border!: string;
   @Input() type: 'text' | 'password' | 'email' | 'file' | 'number' = 'text';
   @Input() showPassword!: boolean;
-   isInvalid!: boolean;
+  isInvalid!: boolean;
+  border!: string;
 
   @Output() iconClick: EventEmitter<void> = new EventEmitter<void>();
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.control) {
-      this.updateInvalidState();
-    }
-  }
 
-  private updateInvalidState() {
+  private updateisInvalidState() {
     this.isInvalid = this.control.touched && this.control.invalid;
   }
 
@@ -42,9 +37,7 @@ export default class TextInputComponent {
   }
 
   get formControl() {
-    this.updateInvalidState();
+    this.updateisInvalidState();
     return this.control as FormControl;
   }
-
-
 }

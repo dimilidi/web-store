@@ -54,8 +54,8 @@ export class RegisterPageComponent implements OnInit {
   }
 
   submit() {
-    this.isSubmitted = true;
     this.isFormInvalid = this.registerForm.invalid;
+    this.isSubmitted = true;
     if (this.registerForm.invalid) return;
 
     const fv = this.registerForm.value;

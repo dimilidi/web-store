@@ -1,8 +1,8 @@
 <div class="input-wrapper">
   <app-input-container
     [label]="label"
+    [border]="control.touched && control.invalid ? '1px solid #F50057' : ''"
     [icon]="icon"
-    [border]="isInvalid ? '1px solid rgb(245, 0, 87)' : ''"
     [showPassword]="showPassword"
     (iconClick)="iconClickTrigger()"
   >
