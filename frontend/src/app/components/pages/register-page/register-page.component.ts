@@ -68,11 +68,12 @@ export class RegisterPageComponent implements OnInit {
     };
 
     this.userService.register(user).subscribe(() => {
+      this.registerForm.reset();
       this.router.navigateByUrl(this.returnUrl);
     });
   }
 
-  // Function to capitalize the first letter and convert the rest to lowercase
+
   private capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
-import { deleteAccount, editAccount, getAllOrders, getAllUsers, getUserById, login, logout, register, registerAdmin, seedUsers } from '../controllers/userController';
+import { deleteAccount, editAccount, getAllOrders, getAllUsers, getUserById, login, logout, register, registerAdmin, resetPassword, seedUsers, sendEmail } from '../controllers/userController';
 import 
 { verifyAdmin, verifyUser } from '../middlewares/auth'
 
@@ -17,5 +17,7 @@ app.post("/register-admin", asyncHandler(registerAdmin));
 app.put("/edit-account", verifyUser,  asyncHandler(editAccount));
 app.delete('/delete-account', verifyUser, asyncHandler(deleteAccount));
 app.post('/logout', verifyUser, asyncHandler(logout));
+app.post('/send-email', asyncHandler(sendEmail));
+app.post('/reset-password', asyncHandler(resetPassword));
 
 export default app;

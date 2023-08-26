@@ -1,7 +1,12 @@
 .error-list{
+width: 100%;
     color: rgb(245, 0, 87);
     text-align: center;
     font-size: 0.95rem;
     margin-bottom: 1rem;
+  }
+
+  .error-list  div {
+  width: 100%;
   }
   

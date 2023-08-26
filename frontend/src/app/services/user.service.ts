@@ -8,6 +8,8 @@ import {
   USER_LOGIN_URL,
   USER_LOGOUT_URL,
   USER_REGISTER_URL,
+  USER_RESET_PASSWORD,
+  USER_SEND_EMAIL,
   USER_UPDATE_URL,
 } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
@@ -126,9 +128,6 @@ export class UserService {
       tap({
         next: () => {
           this.clearUserData();
-          console.log(this.currentUser);
-          
-         // this.router.navigate(['/']);
           this.toastrService.success('Logged out successfully', 'Logout');
         },
         error: (errorResponse) => {
@@ -151,5 +150,13 @@ export class UserService {
 
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
+  }
+
+   sendEmailService(email: string) {
+    return this.http.post<any>(USER_SEND_EMAIL, {email:email});
+  }
+
+   resetPasswordService(resetObj: any) {
+    return this.http.post<any>(USER_RESET_PASSWORD, resetObj);
   }
 }

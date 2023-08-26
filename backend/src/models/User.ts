@@ -4,6 +4,7 @@ import { Order } from "./Order";
 
 export interface TokenPayload extends JwtPayload {
     id: string;
+    email?: string;
   }
 
 export interface IUser {

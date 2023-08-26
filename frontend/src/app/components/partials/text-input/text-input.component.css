@@ -1,4 +1,5 @@
 .input-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -24,10 +25,10 @@ input {
   }
   
   app-input-validation{
+    padding: 0 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: flex-start;
-  width: 12rem;
   }
 

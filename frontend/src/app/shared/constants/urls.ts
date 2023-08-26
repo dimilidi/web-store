@@ -22,6 +22,8 @@ export const USER_ACCOUNT_URL = BASE_URL + '/users/account';
 export const USER_UPDATE_URL = BASE_URL + '/users/edit-account';
 export const USER_DELETE_URL = BASE_URL + '/users/delete-account';
 export const USER_ORDERS_URL = BASE_URL + '/users/orders';
+export const USER_SEND_EMAIL = BASE_URL + '/users/send-email';
+export const USER_RESET_PASSWORD = BASE_URL + '/users/reset-password';
 
 
 export const ORDERS_URL = BASE_URL + '/orders';

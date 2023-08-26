@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'forgotten-password', component: ForgottenPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'reset/:token', component: ResetPasswordComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
