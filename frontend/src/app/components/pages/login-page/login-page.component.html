@@ -5,7 +5,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <app-text-input
         [control]="fc.email"
-        [showErrorsWhen]="isSubmitted || (fc.email.touched && fc.email.invalid)"
+        [showErrorsWhen]="isSubmitted"
         type="email"
         placeholder="Email"
         icon="email"
@@ -21,7 +21,7 @@
         [showPassword]="showPassword"
         (iconClick)="togglePasswordVisibility('showPassword')"
         [control]="fc.password"
-        [showErrorsWhen]="isSubmitted || (fc.password.touched && fc.password.invalid)"
+        [showErrorsWhen]="isSubmitted"
         [type]="showPassword ? 'text' : 'password'"
         placeholder="Password"
         icon="lock"
@@ -33,10 +33,9 @@
       ></app-text-input>
 
       <app-button
-        [disabled]="loginForm.touched && loginForm.invalid"
-        bgColor="{{
-          loginForm.touched && loginForm.invalid ? '#3f3f3f' : '#F50057'
-        }}"
+        [disabled]="isFormInvalid"
+        [cursor]="(isFormInvalid) ? 'not-allowed' : 'pointer'"
+        [bgColor]="(isFormInvalid) ? '#3f3f3f' : '#F50057'"
         text="Login"
       ></app-button>
 

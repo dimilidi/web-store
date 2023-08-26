@@ -1,35 +1,31 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
 import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
-import { CardSize } from 'src/app/components/partials/card/card.component'
+import { CardSize } from 'src/app/components/partials/card/card.component';
 import { DataService } from 'src/app/services/data.service';
-
-
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   favoriteProductsSet: Set<string> = new Set();
   products: Product[] = [];
-  user: User = this.userService.currentUser;
+  user!: User;
   tag!: Tag;
   toggledProduct!: string;
   CardSize = CardSize;
-  isSearchBarVisible: boolean= false;
- 
+  isSearchBarVisible: boolean = false;
 
+  private productsSubscription: Subscription;
+  private isSearchBarVisibleSubscription: Subscription;
 
   constructor(
     private userService: UserService,
@@ -38,7 +34,14 @@ export class HomeComponent implements OnInit {
     private cartService: CartService,
     private dataService: DataService,
     private route: Router
-  ) {}
+  ) {
+    this.productsSubscription = new Subscription();
+    this.isSearchBarVisibleSubscription = new Subscription();
+
+    userService.userObservable.subscribe((newUser) => {
+      this.user = newUser;
+    });
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -48,6 +51,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.productsSubscription.unsubscribe();
+    this.isSearchBarVisibleSubscription.unsubscribe();
+  }
 
   getProducts() {
     let productsObservable: Observable<Product[]>;
@@ -77,8 +84,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-
-
   getFavouriteProducts() {
     if (this.user.id) {
       this.productService
@@ -91,12 +96,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  
-
   toggleFavourite(product: Product) {
     if (!this.user.id) return;
 
-    return this.productService.toggleFavorite(product.id, this.user.id)
+    return this.productService
+      .toggleFavorite(product.id, this.user.id)
       .subscribe({
         next: (response) => {
           if (response.product === undefined) {
@@ -111,16 +115,12 @@ export class HomeComponent implements OnInit {
       });
   }
 
-
   onShowCategory(event: any): void {
     this.tag = event;
   }
 
-
   handleFavoriteToggled(product: Product) {
-    this.toggleFavourite(product)
+    this.toggleFavourite(product);
     this.getFavouriteProducts();
   }
-
-
 }

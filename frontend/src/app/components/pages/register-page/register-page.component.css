@@ -31,6 +31,10 @@ form {
   align-items: center;
 }
 
+.login a {
+  color:  #3f51b5;
+}
+
 
 app-button {
   margin-top: 1rem;

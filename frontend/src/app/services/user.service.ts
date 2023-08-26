@@ -45,8 +45,6 @@ export class UserService {
       tap({
         next: (res) => {
           const user = res.data;
-          console.log(user);
-          
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
@@ -128,7 +126,9 @@ export class UserService {
       tap({
         next: () => {
           this.clearUserData();
-          this.router.navigate(['/']);
+          console.log(this.currentUser);
+          
+         // this.router.navigate(['/']);
           this.toastrService.success('Logged out successfully', 'Logout');
         },
         error: (errorResponse) => {

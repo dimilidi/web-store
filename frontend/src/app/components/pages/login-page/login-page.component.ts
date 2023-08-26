@@ -13,6 +13,7 @@ export class LoginPageComponent implements OnInit {
   isSubmitted = false;
   returnUrl = '';
   showPassword: boolean = false;
+  isFormInvalid!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +35,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
+    this.isFormInvalid = this.loginForm.invalid;
     this.isSubmitted = true;
     if (this.loginForm.invalid) return;
 

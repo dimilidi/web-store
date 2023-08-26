@@ -1,4 +1,4 @@
-<div class="error-list" *ngIf="errorMessages && showErrorsWhen">
+<div class="error-list" *ngIf="errorMessages && showErrorsWhen || isInvalid">
     <div *ngFor="let errorMessage of errorMessages">
         {{errorMessage}}
     </div>

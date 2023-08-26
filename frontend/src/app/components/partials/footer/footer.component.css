@@ -1,0 +1,12 @@
+footer {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p {
+    color: #a5a5a5;
+}

@@ -16,12 +16,15 @@ import { DeleleAccountPageComponent } from './components/pages/delele-account-pa
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { adminGuard } from './auth/guards/admin.guard';
+import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
+import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-
+  { path: 'forgotten-password', component: ForgottenPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,

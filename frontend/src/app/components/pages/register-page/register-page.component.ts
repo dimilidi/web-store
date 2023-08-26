@@ -1,4 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -13,10 +19,11 @@ import { PWMatchValidator } from 'src/app/shared/validators/password_match_valid
 export class RegisterPageComponent implements OnInit {
   registerForm!: FormGroup;
   isSubmitted = false;
+  isInvalid!: boolean;
   returnUrl = '';
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
- 
+  isFormInvalid!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,11 +50,12 @@ export class RegisterPageComponent implements OnInit {
   }
 
   get fc() {
-    return this.registerForm.controls;
+    return this.registerForm?.controls;
   }
 
   submit() {
     this.isSubmitted = true;
+    this.isFormInvalid = this.registerForm.invalid;
     if (this.registerForm.invalid) return;
 
     const fv = this.registerForm.value;
@@ -68,7 +76,6 @@ export class RegisterPageComponent implements OnInit {
   private capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
-
 
   togglePasswordVisibility(propertyName: string) {
     if (propertyName === 'showPassword') {

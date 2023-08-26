@@ -1,6 +1,6 @@
-<app-dashboard *ngIf="user.isAdmin"></app-dashboard>
+<app-dashboard *ngIf="user?.isAdmin && user.id != '' "></app-dashboard>
 
-<div *ngIf="!user.isAdmin" class="wrapper">
+<div *ngIf="!user?.isAdmin" class="wrapper">
   <aside   [ngClass]="isSearchBarVisible ? 'aside' : 'hide'">
     <app-search />
     <app-tags (showCategory)="onShowCategory($event)" />
