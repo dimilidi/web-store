@@ -20,4 +20,5 @@ app.post('/logout', verifyUser, asyncHandler(logout));
 app.post('/send-email', asyncHandler(sendEmail));
 app.post('/reset-password', asyncHandler(resetPassword));
 
+
 export default app;
