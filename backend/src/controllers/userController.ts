@@ -10,8 +10,7 @@ import { createError } from "../middlewares/error";
 import { createSuccess } from "../middlewares/success";
 import UserToken from "../models/UserToken";
 import nodemailer from "nodemailer";
-import Mail from "nodemailer/lib/mailer";
-import { log } from "console";
+
 
 interface TokenPayload extends JwtPayload {
   id: string;
