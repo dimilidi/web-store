@@ -4,8 +4,9 @@ app-partial-background{
 .container {
     display: flex;
     justify-content: center;
-    align-items: centfler;
+    align-items: center;
     height: 100%;
+    min-height: 85vh;
     margin-top: 3rem;
 }
 
@@ -33,7 +34,7 @@ form {
 .register{
     margin-top: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 

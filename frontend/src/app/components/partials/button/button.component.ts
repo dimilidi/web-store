@@ -11,7 +11,7 @@ export class ButtonComponent {
   @Input() bgColor = '#3f51b5';
   @Input() color = 'white';
   @Input() cursor = 'pointer';
-  @Input() fontSizeRem = 1.3;
+  @Input() fontSizeRem = 1.2;
   @Input() widthRem = 12;
   @Input() disabled = false;
   @Output() onClick = new EventEmitter();

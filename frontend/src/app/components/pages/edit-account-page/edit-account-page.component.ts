@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +16,7 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './edit-account-page.component.html',
   styleUrls: ['./edit-account-page.component.css'],
 })
-export class EditAccountPageComponent {
+export class EditAccountPageComponent implements OnInit {
   editAccountForm!: FormGroup;
   isSubmitted = false;
   returnUrl = '/edit-account';
@@ -25,12 +25,15 @@ export class EditAccountPageComponent {
   file: any;
   fileName: string = '';
   fileContent: string = '';
+  selectedDialCode: string = '+359 ';
+  phoneWithoutCountryCode!: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router
   ) {}
+  @ViewChild('dynamicInput') dynamicInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
     const avatarFormControl = new FormControl(this.user.avatar);
@@ -40,7 +43,7 @@ export class EditAccountPageComponent {
         this.user.address,
         [Validators.required, Validators.minLength(10)],
       ],
-      phone: [this.user.phone, [ phoneNumberValidator()]],
+      phone: [this.user.phone, [phoneNumberValidator()]],
       avatar: avatarFormControl,
     });
   }
@@ -91,11 +94,15 @@ export class EditAccountPageComponent {
     if (this.editAccountForm.invalid) return;
 
     const editedData = this.editAccountForm.value;
+
+    // Get the phone number from the form control
+    let phoneNumber = this.editAccountForm.get('phone')!.value;
+
     this.userService
       .editAccount({
         name: editedData.name,
         address: editedData.address,
-        phone: editedData.phone,
+        phone: phoneNumber,
         avatar: this.user.avatar,
       })
       .subscribe(() => {
@@ -105,5 +112,19 @@ export class EditAccountPageComponent {
 
   cancelChanges() {
     this.router.navigate(['/account']);
+  }
+
+  // Handle the emitted dial code
+  handleDialCodeChange(dialCode: any) {
+    if (this.selectedDialCode === dialCode) return;
+
+    // Get the current phone control value
+    const phoneNumberControl = this.editAccountForm.get('phone');
+    const phoneNumber = phoneNumberControl ? phoneNumberControl.value : '';
+    const cleanedPhoneNumber = phoneNumber.replace(/^\+\d+\s/, ''); // Remove existing country code
+
+    // Update the formatted phone number with the new dial code
+    const formattedPhoneNumber = `+${dialCode} ${cleanedPhoneNumber}`;
+    this.editAccountForm.patchValue({ phone: formattedPhoneNumber });
   }
 }

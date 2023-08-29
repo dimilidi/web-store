@@ -1,7 +1,7 @@
 <div class="container">
-  {{isInvalid | json}}
-
-
+  
+  <app-partical-background />
+  
   <div class="details">
     <app-title title="Register"></app-title>
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
@@ -23,23 +23,22 @@
       <app-text-input
         #password
         [showPassword]="showPassword"
-        (iconClick)="togglePasswordVisibility('showPassword')"
         [control]="fc.password"
         [showErrorsWhen]="isSubmitted"
         placeholder="Password"
         icon="lock"
         [type]="showPassword ? 'text' : 'password'"
+        (iconClick)="togglePasswordVisibility('showPassword')"
       />
       <app-text-input
-      
         #confirmPassword
         [showPassword]="showConfirmPassword"
-        (iconClick)="togglePasswordVisibility('showConfirmPassword')"
         [control]="fc.confirmPassword"
         [showErrorsWhen]="isSubmitted"
         placeholder="Confirm Password"
         icon="lock"
         [type]="showConfirmPassword ? 'text' : 'password'"
+        (iconClick)="togglePasswordVisibility('showConfirmPassword')"
       />
 
       <app-text-input
@@ -53,6 +52,7 @@
         [disabled]="isFormInvalid"
         [cursor]="isFormInvalid ? 'not-allowed' : 'pointer'"
         [bgColor]="isFormInvalid ? '#3f3f3f' : '#F50057'"
+        [widthRem]="25"
         text="Register"
       />
 

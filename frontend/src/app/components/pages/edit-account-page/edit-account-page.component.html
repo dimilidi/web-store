@@ -3,11 +3,7 @@
     <app-title title="Edit Profile" margin="0 auto" />
 
     <div class="image-container">
-      <img
-        *ngIf="user.avatar"
-        src="{{ user.avatar }}"
-        alt="profile picture"
-      />
+      <img *ngIf="user.avatar" src="{{ user.avatar }}" alt="profile picture" />
       <img
         *ngIf="!user.avatar"
         src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
@@ -40,6 +36,7 @@
         label="Username"
         value="{{ user.name }}"
       ></app-text-input>
+
       <app-text-input
         [control]="fc.address"
         [showErrorsWhen]="isSubmitted"
@@ -47,12 +44,17 @@
         label="Address"
         value="{{ user.address }}"
       ></app-text-input>
+
       <app-text-input
+        #dynamicInput
+        [isPhone]="true"
         [control]="fc.phone"
         [showErrorsWhen]="isSubmitted"
-        type="number"
+        type="tel"
         label="Phone"
+        placeholder="Phone number"
         value="{{ user.phone }}"
+        (dialCodeChange)="handleDialCodeChange($event)"
       ></app-text-input>
 
       <app-button

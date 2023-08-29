@@ -28,16 +28,16 @@
         [disabled]="isFormInvalid"
         [cursor]="(isFormInvalid) ? 'not-allowed' : 'pointer'"
         [bgColor]="(isFormInvalid) ? '#3f3f3f' : '#F50057'"
+        [widthRem]="25"
         text="Login"
       ></app-button>
 
       <div class="register">
-        No account? &nbsp;
         <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }">
-          Register here
+          Create Account
         </a>
         <a routerLink="/forgotten-password" [queryParams]="{ returnUrl: returnUrl }">
-          Forgotten Paaword
+          Forgotten Password
         </a>
       </div>
     </form>

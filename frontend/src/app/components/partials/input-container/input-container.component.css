@@ -1,6 +1,6 @@
 .wrapper{
     width: 100%;
-    padding: 0rem 0.5rem;
+    padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 0.7rem;
     border: 1px solid #e0e0e0;
@@ -12,7 +12,8 @@
   }
 
   .container {
-    width: 90%;
+    width: 100%;
+    margin-left: 0.5rem;
     position:relative;
     display: flex;
     flex-direction: column;
@@ -20,10 +21,9 @@
     justify-content: center;
   }
 
-  
   .icon-container {
     width: 2rem;
-    height: 2.7rem;
+    height: 2rem;
     border-right: 1px solid #3f51b5a1;
     display: flex;
     align-items: center;
@@ -31,7 +31,6 @@
 
   .icon {
     width: 2rem;
-   
   }
 
   .not {
@@ -40,7 +39,7 @@
   }
   
   label{
-    margin-left: 1rem;
+    margin-left: 0rem;
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -48,15 +47,15 @@
     font-size: 0.9rem;
     color: #3f51b5;
     font-size: 1rem;
-   
   }
 
   .content{
-    width: 90%;
-    height: 2.7rem;
-    margin-left: 0.5rem;
+    width: 95%;
+    height: 2rem;
+    margin-left: 0rem;
     display: flex;
     align-self: flex-start;
+    color: black;
   }
 
 

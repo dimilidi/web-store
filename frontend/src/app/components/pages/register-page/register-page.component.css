@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 1.5rem;
+    min-height: 85vh;
+    margin: 1.5rem 0;
   }
 
   .details {
@@ -20,7 +21,7 @@
 }
 
 form {
-  padding: 1rem 0;
+  padding: 0.5rem 1rem 0;
   width: 100%;
 }
 

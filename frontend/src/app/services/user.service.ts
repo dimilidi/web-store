@@ -129,6 +129,7 @@ export class UserService {
         next: () => {
           this.clearUserData();
           this.toastrService.success('Logged out successfully', 'Logout');
+          this.router.navigate(['/']);
         },
         error: (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Logout Failed');

@@ -8,7 +8,7 @@ export function phoneNumberValidator(): any | string {
       return null;
     }
 
-    const phonePattern = /^00\d{1,3}\d{9,13}$/;
+    const phonePattern = /^\+\d{1,3} [1-9]\d{4,10}$/; 
 
     if (!phonePattern.test(value)) {
      console.log(phonePattern.test(value));

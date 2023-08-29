@@ -7,10 +7,13 @@
     (iconClick)="iconClickTrigger()"
   >
     <input
+      [appIntlTelInput]="isPhone"
       [type]="type"
       [value]="value"
       [placeholder]="placeholder"
       [formControl]="formControl"
+      (dialCodeChange)="countryCodeChanged($event)"
+
     />
   </app-input-container>
 
@@ -20,3 +23,4 @@
     [isInvalid]="isInvalid"
   ></app-input-validation>
 </div>
+

@@ -62,6 +62,7 @@ import { CardComponent } from './components/partials/card/card.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
+import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { FooterComponent } from './components/partials/footer/footer.component';
     ResetPasswordComponent,
     ForgottenPasswordComponent,
     FooterComponent,
+    IntlTelInputDirective,
   ],
   imports: [
     NgParticlesModule,

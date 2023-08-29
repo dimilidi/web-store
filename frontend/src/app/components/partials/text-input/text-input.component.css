@@ -21,14 +21,13 @@ input {
   }
   
   input:focus{
-  border-width: 2.9px;
+  border-width: 2px;
   }
   
   app-input-validation{
-    padding: 0 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-start;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
   }
-

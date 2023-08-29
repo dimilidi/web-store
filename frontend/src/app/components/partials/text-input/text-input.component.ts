@@ -5,6 +5,8 @@ import {
   Output,
   OnChanges,
   SimpleChanges,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
@@ -20,12 +22,17 @@ export default class TextInputComponent {
   @Input() icon!: string;
   @Input() placeholder!: string;
   @Input() value?: string;
-  @Input() type: 'text' | 'password' | 'email' | 'file' | 'number' = 'text';
+  @Input() type: 'text' | 'password' | 'email' | 'file' | 'number' | 'tel' = 'text';
   @Input() showPassword!: boolean;
+  @Input() isPhone: boolean = false;
+  @Input() dialCode: string = '';
+  @Output() dialCodeChange: EventEmitter<void> = new EventEmitter<void>();
+  @Output() iconClick: EventEmitter<void> = new EventEmitter<void>();
   isInvalid!: boolean;
   border!: string;
+  selectedDialCode: string = '';
 
-  @Output() iconClick: EventEmitter<void> = new EventEmitter<void>();
+
 
 
   private updateisInvalidState() {
@@ -34,6 +41,12 @@ export default class TextInputComponent {
 
   iconClickTrigger() {
     this.iconClick.emit();
+  }
+
+
+  countryCodeChanged(code:any)  {
+    this.dialCode = code;
+    this.dialCodeChange.emit(code);
   }
 
   get formControl() {
