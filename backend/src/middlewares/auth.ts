@@ -8,6 +8,8 @@ export async function verifyToken(req: any, res: any, next: any) {
 
   try {
     const user = verify(token, process.env.TOKEN_KEY!);
+    console.log(user);
+    
     req.user = user;
   } catch (error) {
     return next(createError(403, "Token is not valid."));
@@ -21,6 +23,7 @@ export function verifyUser(req: any, res: any, next: any) {
      const user = req.user;
       
     if (req.user || req.user.isAdmin) {
+      req.user = user;
       next();
     } else {
       return next(createError(403, "You are not authorised."));
@@ -31,7 +34,7 @@ export function verifyUser(req: any, res: any, next: any) {
 
 export function verifyAdmin(req: any, res: any, next: any) {
   verifyToken(req, res, () => {
-    if (req.user.isAdmin) {
+    if (req.user?.isAdmin) {
       next();
     } else {
       return next(createError(403, "You are not authorised."));

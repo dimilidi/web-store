@@ -17,6 +17,7 @@ export const DELETE_PRODUCT_URL = PRODUCTS_URL +  '/delete/';
 export const USER_LOGIN_URL = BASE_URL + '/users/login';
 export const USER_REGISTER_URL = BASE_URL + '/users/register';
 export const USER_LOGOUT_URL = BASE_URL + '/users/logout';
+export const USER_BY_ID_URL = BASE_URL + '/users/user';
 export const USER_ACCOUNT_URL = BASE_URL + '/users/account';
 export const USER_UPDATE_URL = BASE_URL + '/users/edit-account';
 export const USER_DELETE_URL = BASE_URL + '/users/delete-account';

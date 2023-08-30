@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -26,13 +26,24 @@ export class AccountPageComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService
   ) {}
+   
 
   ngOnInit(): void {
     this.getFavouriteProducts();
+    this.userService.getUserById();
+  }
+
+ 
+  getUserById(userId: string) {
+    this.userService.getUserById().subscribe( res => {
+      console.log(res);
+      this.user = res.data;
+    });
+    
+    
   }
 
   handleFavoriteToggled(product: Product) {
-    console.log('tog');
     this.toggleFavourite(product)
     this.getFavouriteProducts();
   }

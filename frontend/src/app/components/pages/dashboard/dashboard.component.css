@@ -48,6 +48,10 @@ th {
     font-weight: 600;
 }
 
+td {
+    padding-block: 0.5rem;
+}
+
 
 
 

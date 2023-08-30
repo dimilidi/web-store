@@ -11,7 +11,6 @@ import { createSuccess } from "../middlewares/success";
 import UserToken from "../models/UserToken";
 import nodemailer from "nodemailer";
 
-
 interface TokenPayload extends JwtPayload {
   id: string;
 }
@@ -36,8 +35,7 @@ export async function login(req: Request, res: Response, next: any) {
 
   if (user && (await checkPassword(password, user))) {
     const { roles } = user;
-    console.log(user);
-
+  
     return next(
       createSuccess(
         200,
@@ -155,7 +153,6 @@ export async function editAccount(req: any, res: Response) {
   const user = await User.findById(req.user.id);
 
   const { password, newPassword, avatar, ...others } = req.body;
-
   // Change password
   if (user) {
     if (password && newPassword) {
@@ -237,10 +234,12 @@ export async function getAllUsers(req: any, res: any, next: any) {
 
 // GET USER BY ID
 export async function getUserById(req: any, res: any, next: any) {
-  const { id } = req.params;
-  const user = await User.findById(id);
+  const user = req.user;
+  const singleUser = await User.findById(user.id);
+  console.log(singleUser);
+  
   if (!user) return next(createError(404, "User not found"));
-  return next(createSuccess(200, "Single User", user));
+  return next(createSuccess(200, "Single User", singleUser));
 }
 
 // SEND EMAIL
@@ -301,7 +300,6 @@ export async function sendEmail(req: any, res: any, next: any) {
 
   mailTransporter.sendMail(mailDetails, async (err, data) => {
     if (err) {
-      console.log(err);
       return next(createError(500, "Something went wrong."));
     } else {
       await newToken.save();
@@ -323,7 +321,7 @@ export async function resetPassword(req: any, res: any, next: any) {
       const user = await User.findOne({
         email: { $regex: "^" + response.email + "$", $options: "i" },
       });
-      const salt =  bcrypt.genSaltSync(10);
+      const salt = bcrypt.genSaltSync(10);
       const encryptedPassword = await bcrypt.hash(newPassword, salt);
 
       try {
@@ -332,7 +330,7 @@ export async function resetPassword(req: any, res: any, next: any) {
 
           await user.save();
           const updatedUser = user.toObject();
-      
+
           return next(
             createSuccess(200, "Password Reset Success.", updatedUser)
           );

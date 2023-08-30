@@ -4,6 +4,7 @@ import { User } from '../shared/models/User';
 import { UserLogin } from '../shared/interfaces/UserLogin';
 import { HttpClient } from '@angular/common/http';
 import {
+  USER_BY_ID_URL,
   USER_DELETE_URL,
   USER_LOGIN_URL,
   USER_LOGOUT_URL,
@@ -81,6 +82,25 @@ export class UserService {
     );
   }
 
+
+  getUserById(): Observable<User> {
+    return this.http.get<any>( USER_BY_ID_URL).pipe(
+      tap({
+        next: (res:any) => {
+          this.setUserToLocalStorage(res.data);
+          // notify all observables that new user is created
+          this.userSubject.next(res.data);
+          this.userObservable = res.data;
+          console.log('userService', res.data);
+          
+        },
+        error: (error) => {
+          this.toastrService.error(error.error, 'Getting user data failed');
+        }
+      })
+    );
+  }
+
   editAccount(userUpdate: EditInput): Observable<User> {
     return this.http.put<User>(USER_UPDATE_URL, userUpdate).pipe(
       tap({
@@ -152,6 +172,7 @@ export class UserService {
     if (userJson) return JSON.parse(userJson) as User;
     return new User();
   }
+
 
    sendEmailService(email: string) {
     return this.http.post<any>(USER_SEND_EMAIL, {email:email});
