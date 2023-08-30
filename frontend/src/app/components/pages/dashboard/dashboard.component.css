@@ -1,20 +1,39 @@
 .container {
-    margin-top: 10px;
+    min-height: 91vh;
     max-width: 1200px;
-    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+
+
 }
 
 .add-button {
     float: right;
 }
 
+.table-container {
+    margin: 8rem 0 5rem;
+    overflow-y: auto;
+    align-self: center;
+}
+
 table {
     width: 100%;
+    
+}
+
+.form-field-container {
+    max-width: 1170px;
+    margin: 0 auto;
 }
   
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
+    position: fixed;
+    left: 0;
+    z-index: 1;
 }
   
 
@@ -25,5 +44,21 @@ img {
     border-radius: 50%;
 }
 
+th {
+    font-weight: 600;
+}
 
-  
+
+
+
+  @media screen and (max-width: 700px) {
+    .container {
+      width: 100%;
+    }
+
+    table {
+        margin-bottom: 0rem;
+    }
+
+    
+  }

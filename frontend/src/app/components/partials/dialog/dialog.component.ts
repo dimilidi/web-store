@@ -34,6 +34,7 @@ export class DialogComponent implements OnInit {
   file: any;
   fileContent: string = '';
   actionButton: string = 'Save';
+  formTitle: string = 'Add Product Form';
 
   @Output() showCategory = new EventEmitter<Tag>();
   @ViewChild('UploadFileInput') uploadFileInput!: ElementRef;
@@ -62,11 +63,12 @@ export class DialogComponent implements OnInit {
       date: ['', Validators.required],
       imageUrl: imageFormControl,
       //description: ['', Validators.required],
-      // date: ['', Validators.required],
+     
     });
 
     if (this.editData) {
       this.actionButton = 'Update';
+      this.formTitle = 'Edit Product Form'
       this.productForm.controls['name'].setValue(this.editData.name);
       this.productForm.controls['tags'].setValue(this.editData.tags[0]);
       this.productForm.controls['price'].setValue(this.editData.price);

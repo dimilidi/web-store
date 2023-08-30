@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog() {
     this.dialog
-      .open(DialogComponent, { width: '30%' })
+      .open(DialogComponent, { width: '100%', maxWidth: '400px' })
       .afterClosed()
       .subscribe((value) => {
         if (value === 'save') {
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
 
   editProduct(row: any) {
     this.dialog
-      .open(DialogComponent, { data: row, width: '30%' })
+      .open(DialogComponent, { data: row, width: '100%', maxWidth: '400px'  })
       .afterClosed()
       .subscribe((value) => {
         if (value === 'update') {

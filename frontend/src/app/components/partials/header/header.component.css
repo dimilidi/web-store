@@ -13,7 +13,6 @@ header{
     box-shadow: 0 0 8px rgb(185, 185, 185);
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 5;
   }
 
@@ -35,7 +34,12 @@ header{
 
   button {
     border: none;
+    outline : none;
     background-color: white;
+  }
+
+  mat-icon {
+    height: 22px;
   }
   
   .container{

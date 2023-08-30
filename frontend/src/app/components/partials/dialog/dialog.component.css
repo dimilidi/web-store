@@ -4,10 +4,11 @@
 
 div .mat-mdc-dialog-content {
     padding: 1rem;
+    width: 100%;
  
 }
 
-mat-form-field {
+mat-form-field, form {
     width: 100%;
 }
 
