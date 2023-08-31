@@ -36,8 +36,16 @@ export class EditAccountPageComponent implements OnInit {
   @ViewChild('dynamicInput') dynamicInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
- 
-    const avatarFormControl = new FormControl(this.user.avatar);
+    this.userService.userObservable.subscribe((user) => {
+      this.user = user;
+    });
+    this.userService.getUserById().subscribe();
+    this.buildForm();
+  }
+
+
+  buildForm() {
+     const avatarFormControl = new FormControl(this.user.avatar);
 
     this.editAccountForm = this.formBuilder.group({
       name: [this.user.name, [Validators.required, Validators.minLength(5)]],
@@ -47,13 +55,6 @@ export class EditAccountPageComponent implements OnInit {
       ],
       phone: [this.user.phone, [phoneNumberValidator()]],
       avatar: avatarFormControl,
-    });
-  }
-
-  getUserById() {
-    this.userService.getUserById().subscribe((res) => {
-      console.log(res);
-      this.user = res.data;
     });
   }
 
@@ -112,9 +113,8 @@ export class EditAccountPageComponent implements OnInit {
         phone: phoneNumber,
         avatar: this.user.avatar,
       })
-      .subscribe(() => {
-        
-      });this.router.navigate(['account']);
+      .subscribe(() => {});
+    this.router.navigate(['account']);
   }
 
   cancelChanges() {

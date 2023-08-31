@@ -28,31 +28,29 @@ export class UserService {
   private userSubject = new BehaviorSubject<User>(
     this.getUserFromLocalStorage()
   );
+  // userObservable is the readOnly version of the userSubject
   public userObservable: Observable<User>;
 
-  // userObservable is the readOnly version of the userSubject
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
     private router: Router
   ) {
-    // Fetch the initial user data from the backend
-    //this.currentUser.subscribe((user) => {
-      //this.userSubject.next(user);
-      //});
-      this.userObservable = this.userSubject.asObservable();
+    this.userObservable = this.userSubject.asObservable();
+    this.refreshUserDataPeriodically();
   }
 
   public get currentUser(): User {
     const localUser = this.getUserFromLocalStorage();
     return localUser || this.userSubject.value;
-   //return this.userSubject.value;
   }
 
- // public get currentUser(): Observable<User> {
-    // Return an observable that emits the user data from the backend
- //   return this.getUserById();
- // }
+  private refreshUserDataPeriodically(): void {
+    // Set up a timer to refresh user data every 15 minutes
+    setInterval(() => {
+      this.getUserById().subscribe();
+    }, 15 * 60 * 1000); // 15 minutes
+  }
 
   login(userLogin: UserLogin): Observable<ServerResponse> {
     return this.http.post<ServerResponse>(USER_LOGIN_URL, userLogin).pipe(

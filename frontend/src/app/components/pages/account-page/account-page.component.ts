@@ -31,26 +31,14 @@ export class AccountPageComponent implements OnInit {
   ngOnInit(): void {
     this.getFavouriteProducts();
    
-    
     this.userService.userObservable.subscribe(user => {
-      this.user = user
-      console.log(user);
+      this.user = user;
     });
-    
-     this.userService.getUserById().subscribe();
-    console.log('current User',this.user);
 
+     this.userService.getUserById().subscribe();
   }
 
  
-  getUserById(userId: string) {
-    this.userService.getUserById().subscribe( res => {
-      console.log('get User BE',res.data);
-      this.user = res.data;
-    });
-    
-    
-  }
 
   handleFavoriteToggled(product: Product) {
     this.toggleFavourite(product)
