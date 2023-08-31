@@ -238,7 +238,7 @@ export async function getUserById(req: any, res: any, next: any) {
   const singleUser = await User.findById(user.id);
   console.log(singleUser);
   
-  if (!user) return next(createError(404, "User not found"));
+  if (!singleUser) return next(createError(404, "User not found"));
   return next(createSuccess(200, "Single User", singleUser));
 }
 

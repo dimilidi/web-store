@@ -36,12 +36,22 @@ export class UserService {
     private toastrService: ToastrService,
     private router: Router
   ) {
+    this.getUserById();
+    // Fetch the initial user data from the backend
+    //this.currentUser.subscribe((user) => {
+      //this.userSubject.next(user);
+    //});
     this.userObservable = this.userSubject.asObservable();
   }
 
   public get currentUser(): User {
-    return this.userSubject.value;
+   return this.userSubject.value;
   }
+
+ // public get currentUser(): Observable<User> {
+    // Return an observable that emits the user data from the backend
+ //   return this.getUserById();
+ // }
 
   login(userLogin: UserLogin): Observable<ServerResponse> {
     return this.http.post<ServerResponse>(USER_LOGIN_URL, userLogin).pipe(
@@ -82,21 +92,19 @@ export class UserService {
     );
   }
 
-
   getUserById(): Observable<User> {
-    return this.http.get<any>( USER_BY_ID_URL).pipe(
+    return this.http.get<any>(USER_BY_ID_URL).pipe(
       tap({
-        next: (res:any) => {
-          this.setUserToLocalStorage(res.data);
+        next: (res: any) => {
+          // this.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
           this.userSubject.next(res.data);
           this.userObservable = res.data;
           console.log('userService', res.data);
-          
         },
         error: (error) => {
           this.toastrService.error(error.error, 'Getting user data failed');
-        }
+        },
       })
     );
   }
@@ -173,12 +181,11 @@ export class UserService {
     return new User();
   }
 
-
-   sendEmailService(email: string) {
-    return this.http.post<any>(USER_SEND_EMAIL, {email:email});
+  sendEmailService(email: string) {
+    return this.http.post<any>(USER_SEND_EMAIL, { email: email });
   }
 
-   resetPasswordService(resetObj: any) {
+  resetPasswordService(resetObj: any) {
     return this.http.post<any>(USER_RESET_PASSWORD, resetObj);
   }
 }
