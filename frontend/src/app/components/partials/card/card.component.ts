@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { Favourite } from 'src/app/shared/interfaces/Favourite';
 import { Product } from 'src/app/shared/models/Product';
@@ -25,7 +26,7 @@ export class CardComponent {
 
   products: Product[] = [];
   favouriteProducts!: Favourite[];
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
   tag!: Tag;
   toggledProduct!: string;
   cardSize!: CardSize 
@@ -39,9 +40,7 @@ export class CardComponent {
 
 
   constructor(
-    private userService: UserService,
-    private productService: ProductService,
-    private activatedRoute: ActivatedRoute,
+    private userStateService: UserStateService,
     private cartService: CartService,
     private route: Router
   ) {}
@@ -59,8 +58,5 @@ export class CardComponent {
   toggleFavourite(product: Product) {
     this.favoriteToggled.emit();
   }
-
-
-
 
 }

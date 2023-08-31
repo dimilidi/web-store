@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forgotten-password',
@@ -22,7 +23,8 @@ export class ForgottenPasswordComponent {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class ForgottenPasswordComponent {
     this.isSubmitted = true;
     if (this.forgetForm.invalid) return;
 
-    this.userService.sendEmailService(this.forgetForm.value.email).subscribe({
+    this.authService.sendEmailService(this.forgetForm.value.email).subscribe({
       next: (res) => {
         console.log(res?.message);
         

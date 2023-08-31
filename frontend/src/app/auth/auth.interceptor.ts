@@ -6,15 +6,15 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserService } from '../services/user.service';
+import { UserStateService } from '../services/user-state.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private userService: UserService) {}
+  constructor(private userStateService: UserStateService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const user = this.userService.currentUser;
+    const user = this.userStateService.currentUser;
     if(user.token)
     {
       request = request.clone({

@@ -9,6 +9,7 @@ import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
 import { CardSize } from 'src/app/components/partials/card/card.component';
 import { DataService } from 'src/app/services/data.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-home',
@@ -33,12 +34,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private dataService: DataService,
-    private route: Router
+    private route: Router,
+    private userStateService: UserStateService,
   ) {
     this.productsSubscription = new Subscription();
     this.isSearchBarVisibleSubscription = new Subscription();
 
-    userService.userObservable.subscribe((newUser) => {
+    this.userStateService.userObservable.subscribe((newUser) => {
       this.user = newUser;
     });
   }

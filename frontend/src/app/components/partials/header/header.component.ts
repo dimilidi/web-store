@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { DataService } from 'src/app/services/data.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
 
@@ -21,7 +23,9 @@ export class HeaderComponent implements OnDestroy {
   constructor(
     private cartService: CartService,
     private userService: UserService,
-    private dataService: DataService
+    private dataService: DataService, 
+    private userStateService: UserStateService,
+    private authService: AuthService,
   ) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       if (newCart) {
@@ -31,7 +35,7 @@ export class HeaderComponent implements OnDestroy {
       }
     });
 
-    userService.userObservable.subscribe((newUser) => {
+    this.userStateService.userObservable.subscribe((newUser) => {
       this.user = newUser;
     });
   }
@@ -42,7 +46,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   logout() {
-    this.userService.logout().subscribe();
+    this.authService.logout().subscribe();
   }
 
   get isAuth() {

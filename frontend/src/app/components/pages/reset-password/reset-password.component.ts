@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -23,7 +24,7 @@ export class ResetPasswordComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private router: Router,
@@ -63,7 +64,7 @@ export class ResetPasswordComponent implements OnInit{
       token: this.token,
       password: this.resetForm.value.password
     };
-    this.userService.resetPasswordService(resetObj).subscribe({
+    this.authService.resetPasswordService(resetObj).subscribe({
       next: (res) => {
         this.toastrService.success('Email sent successfully', res?.message);
         this.resetForm.reset();

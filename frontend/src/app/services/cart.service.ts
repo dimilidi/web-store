@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../shared/models/Product';
 import { CartItem } from '../shared/models/CartItem';
 import { UserService } from './user.service';
+import { UserStateService } from './user-state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,8 @@ export class CartService {
     this.cart
   );
 
-  constructor(private userService: UserService) {
-    this.userService.userObservable.subscribe((user) => {
+  constructor(private userStateService: UserStateService) {
+    this.userStateService.userObservable.subscribe((user) => {
       if (user) {
         // User is logged in, retrieve their cart from local storage or create a new cart if not found.
         this.cart = this.getCartFromLocalStorage(user.id) || new Cart();
@@ -28,7 +29,7 @@ export class CartService {
       this.cartSubject.next(this.cart);
     });
   }
-  private user: User = this.userService.currentUser;
+  private user: User = this.userStateService.currentUser;
 
   addToCart(product: Product): void {
     if (!this.cart) {
@@ -91,7 +92,7 @@ export class CartService {
   }
 
   private getCurrentUserCartId(): string | null {
-    const user = this.userService.currentUser;
+    const user = this.userStateService.currentUser;
     return user ? user.id : null;
   }
 

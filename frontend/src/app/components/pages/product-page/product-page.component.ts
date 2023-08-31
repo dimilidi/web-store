@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { CartItem } from 'src/app/shared/models/CartItem';
 import { Product } from 'src/app/shared/models/Product';
@@ -13,7 +14,7 @@ import { User } from 'src/app/shared/models/User';
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent implements  OnInit {
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
   product!: Product;
   favoriteProductsSet: Set<string> = new Set<string>();
   isRateMode: boolean = true;
@@ -31,7 +32,7 @@ export class ProductPageComponent implements  OnInit {
 
   constructor(
     activatedRoute: ActivatedRoute,
-    private userService: UserService,
+    private userStateService: UserStateService,
     private productService: ProductService,
     private cartService: CartService,
     private router: Router

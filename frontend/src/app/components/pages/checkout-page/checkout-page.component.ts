@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { UserService } from 'src/app/services/user.service';
 import { Order } from 'src/app/shared/models/Order';
 
@@ -19,7 +20,7 @@ export class CheckoutPageComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private userStateService: UserStateService,
     private toastrService: ToastrService,
     private router: Router,
     private orderService: OrderService,
@@ -36,7 +37,7 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let { name, address } = this.userService.currentUser;
+    let { name, address } = this.userStateService.currentUser;
     this.checkoutForm = this.formBuilder.group({
       name: [name, Validators.required],
       address: [address, Validators.required],

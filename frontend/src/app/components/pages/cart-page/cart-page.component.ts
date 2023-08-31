@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { UserService } from 'src/app/services/user.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 import { Cart } from 'src/app/shared/models/Cart';
 import { CartItem } from 'src/app/shared/models/CartItem';
 import { User } from 'src/app/shared/models/User';
@@ -12,9 +12,9 @@ import { User } from 'src/app/shared/models/User';
 })
 export class CartPageComponent {
   cart!:Cart | null;
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
 
-  constructor(private cartService: CartService, private userService: UserService){
+  constructor(private cartService: CartService, private userStateService: UserStateService){
     this.cartService.getCartObservable().subscribe((cart)=> {
       this.cart = cart;
     })

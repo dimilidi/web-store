@@ -1,6 +1,6 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { User } from '../shared/models/User';
+import { UserStateService } from '../services/user-state.service';
 
 @Directive({
   selector: '[appIntlTelInput]',
@@ -8,9 +8,9 @@ import { User } from '../shared/models/User';
 export class IntlTelInputDirective implements AfterViewInit {
   @Input() appIntlTelInput: boolean = false;
   @Output() dialCodeChange = new EventEmitter<string>();
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
 
-  constructor(private el: ElementRef, private userService: UserService) {}
+  constructor(private el: ElementRef, private userStateService: UserStateService) {}
 
   ngAfterViewInit(): void {
     
@@ -30,17 +30,12 @@ export class IntlTelInputDirective implements AfterViewInit {
         const selectedCountryData = iti.getSelectedCountryData();
         console.log(selectedCountryData.iso2);
      
-        
-          
         if (selectedCountryData) {
           console.log(selectedCountryData);
           const dialCode = selectedCountryData.dialCode;
           this.dialCodeChange.emit(dialCode);
-        
         } 
-        
       });
-      
     }
   }
 }

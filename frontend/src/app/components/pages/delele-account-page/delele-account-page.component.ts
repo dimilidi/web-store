@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { UserStateService } from 'src/app/services/user-state.service';
 
 
 @Component({
@@ -17,10 +18,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ],
 })
 export class DeleleAccountPageComponent {
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
 
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private userStateService: UserStateService) {}
 
 
   deleteUserAccount() {

@@ -7,6 +7,7 @@ import { Favourite } from 'src/app/shared/interfaces/Favourite';
 import { Product } from 'src/app/shared/models/Product';
 import { User } from 'src/app/shared/models/User';
 import { CardSize } from 'src/app/components/partials/card/card.component'
+import { UserStateService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-account-page',
@@ -14,7 +15,7 @@ import { CardSize } from 'src/app/components/partials/card/card.component'
   styleUrls: ['./account-page.component.css'],
 })
 export class AccountPageComponent implements OnInit {
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
   favouriteProducts!: Favourite[];
   favoriteProductsSet: Set<string> = new Set();
   CardSize = CardSize; 
@@ -24,14 +25,15 @@ export class AccountPageComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private userStateService: UserStateService,
   ) {}
    
 
   ngOnInit(): void {
     this.getFavouriteProducts();
    
-    this.userService.userObservable.subscribe(user => {
+    this.userStateService.userObservable.subscribe(user => {
       this.user = user;
     });
 

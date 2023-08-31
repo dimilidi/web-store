@@ -1,14 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserStateService } from 'src/app/services/user-state.service';
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  const userService = inject(UserService);
+  const userStateService = inject(UserStateService);
   const router = inject(Router);
 
-  if (userService.currentUser?.isAdmin) {
-    console.log(userService.currentUser?.isAdmin);
-    
+  if (userStateService.currentUser?.isAdmin) {
     return true;
   } else {
     router.navigate(['/'], { queryParams: { returnUrl: state.url } });

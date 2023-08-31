@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserRegister } from 'src/app/shared/interfaces/UserRegister';
 import { PWMatchValidator } from 'src/app/shared/validators/password_match_validator';
@@ -27,7 +28,7 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -67,7 +68,7 @@ export class RegisterPageComponent implements OnInit {
       address: fv.address,
     };
 
-    this.userService.register(user).subscribe(() => {
+    this.authService.register(user).subscribe(() => {
       this.registerForm.reset();
       this.router.navigateByUrl(this.returnUrl);
     });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginPageComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class LoginPageComponent implements OnInit {
 
     const fv = this.loginForm.value;
 
-    this.userService.login({
+    this.authService.login({
       email: fv.email,
       password: fv.password,
     }).subscribe(() => {

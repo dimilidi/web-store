@@ -10,6 +10,7 @@ import { phoneNumberValidator } from '../../../shared/validators/phone_number_va
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/User';
+import { UserStateService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-edit-account-page',
@@ -21,7 +22,7 @@ export class EditAccountPageComponent implements OnInit {
   isSubmitted = false;
   returnUrl = '/edit-account';
   editImageIsOpen: boolean = false;
-  user: User = this.userService.currentUser;
+  user: User = this.userStateService.currentUser;
   file: any;
   fileName: string = '';
   fileContent: string = '';
@@ -31,12 +32,13 @@ export class EditAccountPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private userStateService: UserStateService
   ) {}
   @ViewChild('dynamicInput') dynamicInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
-    this.userService.userObservable.subscribe((user) => {
+    this.userStateService.userObservable.subscribe((user) => {
       this.user = user;
     });
     this.userService.getUserById().subscribe();
