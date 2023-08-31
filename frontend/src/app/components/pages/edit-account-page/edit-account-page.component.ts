@@ -36,8 +36,7 @@ export class EditAccountPageComponent implements OnInit {
   @ViewChild('dynamicInput') dynamicInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit(): void {
-    this.userService.getUserById();
-
+ 
     const avatarFormControl = new FormControl(this.user.avatar);
 
     this.editAccountForm = this.formBuilder.group({
@@ -114,8 +113,8 @@ export class EditAccountPageComponent implements OnInit {
         avatar: this.user.avatar,
       })
       .subscribe(() => {
-        this.router.navigate(['account']);
-      });
+        
+      });this.router.navigate(['account']);
   }
 
   cancelChanges() {

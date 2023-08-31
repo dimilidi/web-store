@@ -41,7 +41,6 @@ export class UserService {
       //this.userSubject.next(user);
       //});
       this.userObservable = this.userSubject.asObservable();
-      this.getUserById();
   }
 
   public get currentUser(): User {
@@ -101,7 +100,7 @@ export class UserService {
           this.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
           this.userSubject.next(res.data);
-          this.userObservable = res.data;
+          //this.userObservable = res.data;
           console.log('userService', res.data);
         },
         error: (error) => {
