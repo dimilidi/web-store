@@ -36,16 +36,18 @@ export class UserService {
     private toastrService: ToastrService,
     private router: Router
   ) {
-    this.getUserById();
     // Fetch the initial user data from the backend
     //this.currentUser.subscribe((user) => {
       //this.userSubject.next(user);
-    //});
-    this.userObservable = this.userSubject.asObservable();
+      //});
+      this.userObservable = this.userSubject.asObservable();
+      this.getUserById();
   }
 
   public get currentUser(): User {
-   return this.userSubject.value;
+    const localUser = this.getUserFromLocalStorage();
+    return localUser || this.userSubject.value;
+   //return this.userSubject.value;
   }
 
  // public get currentUser(): Observable<User> {
@@ -96,7 +98,7 @@ export class UserService {
     return this.http.get<any>(USER_BY_ID_URL).pipe(
       tap({
         next: (res: any) => {
-          // this.setUserToLocalStorage(res.data);
+          this.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
           this.userSubject.next(res.data);
           this.userObservable = res.data;
