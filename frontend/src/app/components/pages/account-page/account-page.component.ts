@@ -27,17 +27,19 @@ export class AccountPageComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private userStateService: UserStateService,
-  ) {}
+  ) {    this.userStateService.userObservable.subscribe(user => {
+    this.user = user;
+  });}
    
 
   ngOnInit(): void {
     this.getFavouriteProducts();
+    this.userService.getUserById().subscribe();
    
     this.userStateService.userObservable.subscribe(user => {
       this.user = user;
     });
 
-     this.userService.getUserById().subscribe();
   }
 
  

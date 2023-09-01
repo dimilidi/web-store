@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -14,7 +14,7 @@ import { User } from 'src/app/shared/models/User';
 })
 export class HeaderComponent implements OnDestroy {
   cartQuantity = 0;
-  user!: User;
+  user: User = this.userStateService.currentUser;
   capitalizedName = '';
 
   private cartSubscription!: Subscription;
@@ -34,11 +34,9 @@ export class HeaderComponent implements OnDestroy {
         this.cartQuantity = 0;
       }
     });
-
-    this.userStateService.userObservable.subscribe((newUser) => {
-      this.user = newUser;
-    });
   }
+
+
 
   ngOnDestroy(): void {
     this.cartSubscription.unsubscribe();
