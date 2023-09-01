@@ -1,63 +1,63 @@
-<div class="center">
-  <div class="wrapper">
-    <section *ngIf="user" class="form">
-      <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
-  
-      <div class="image-container">
-        <img
-          class="profile-image"
-          *ngIf="user.avatar"
-          src="{{ user.avatar }}"
-          alt="profile picture"
-        />
-        <img
-          *ngIf="!user.avatar"
-          src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-          alt="profile picture"
-        />
-      </div>
-  
-      <div class="input-wrapper">
-        <div class="input-container">
-          <label>Username</label>
-          <input value="{{ user.name }}" disabled />
-        </div>
-        <div class="input-container">
-          <label>Address</label>
-          <input value="{{ user.address }}" disabled />
-        </div>
-        <div class="input-container">
-          <label>Phone</label>
-          <input *ngIf="user.phone" value="{{ user.phone }}" disabled />
-          <input *ngIf="!user.phone" value="Unknown" disabled />
-        </div>
-  
-        <app-button
-          [widthRem]="15"
-          text="Edit Account"
-          (click)="handleEditAccount()"
-        ></app-button>
-      </div>
-    </section>
-  
-    <!-- FAVOURITE PRODUCTS-->
-    <div *ngIf="favouriteProducts && favouriteProducts.length > 0" class="scroller-container">
-      <app-title
-        class="scroller-title"
-        title="{{ user.name }}'s Favourite Products"
-        margin="0 auto"
+<div class="wrapper">
+  <section *ngIf="user" class="form">
+    <app-title title="{{ user.name }}'s Profile" margin="0 auto" />
+
+    <div class="image-container">
+      <img
+        class="profile-image"
+        *ngIf="user.avatar"
+        src="{{ user.avatar }}"
+        alt="profile picture"
       />
-      <div class="scroller snaps-inline">
-        <div *ngFor="let favourite of favouriteProducts">
-          <app-card
-            [product]="favourite.product"
-            [favoriteProductsSet]="favoriteProductsSet"
-            [size]="CardSize.Small"
-            (favoriteToggled)="handleFavoriteToggled(favourite.product)"
-          ></app-card>
-        </div>
+      <img
+        *ngIf="!user.avatar"
+        src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+        alt="profile picture"
+      />
+    </div>
+
+    <div class="p-wrapper">
+      <div class="p-container">
+        <label>Username</label>
+        <p>{{ user.name }}</p> 
+      </div>
+      <div class="p-container">
+        <label>Address</label>
+        <p>{{ user.address }}</p> 
+      </div>
+      <div class="p-container">
+        <label>Phone</label>
+        <p *ngIf="user.phone">{{ user.phone }}</p> 
+        <p *ngIf="!user.phone">"Unknown"</p>
+      </div>
+    </div>
+    <app-button
+      [widthRem]="18"
+      text="Edit Account"
+      [icon]="'navigate_next'"
+      (click)="handleEditAccount()"
+    ></app-button>
+  </section>
+
+  <!-- FAVOURITE PRODUCTS-->
+  <div
+    *ngIf="favouriteProducts && favouriteProducts.length > 0"
+    class="scroller-container"
+  >
+    <app-title
+      class="scroller-title"
+      title="{{ user.name }}'s Favourite Products"
+      margin="0 auto"
+    />
+    <div class="scroller snaps-inline">
+      <div *ngFor="let favourite of favouriteProducts">
+        <app-card
+          [product]="favourite.product"
+          [favoriteProductsSet]="favoriteProductsSet"
+          [size]="CardSize.Small"
+          (favoriteToggled)="handleFavoriteToggled(favourite.product)"
+        ></app-card>
       </div>
     </div>
   </div>
-  
 </div>

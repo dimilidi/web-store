@@ -3,12 +3,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/services/product.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/shared/models/Product';
 import { ActivatedRoute } from '@angular/router';
 import { DialogComponent } from '../../partials/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  isSearchBarVisible: boolean = false;
+
+  private isSearchBarVisibleSubscription: Subscription;
   displayedColumns: string[] = [
     'name',
     'tags',
@@ -30,16 +34,29 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
+    private dataService: DataService,
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {this.isSearchBarVisibleSubscription = new Subscription();}
 
   ngOnInit(): void {
     this.getProducts();
+
+    this.dataService.isSearchBarVisible$.subscribe((isVisible:boolean) => {
+      console.log(isVisible);
+      
+      this.isSearchBarVisible = isVisible;
+    });
   }
+
+  ngOnDestroy(): void {
+    //this.isSearchBarVisibleSubscription.unsubscribe();
+  }
+
 
   openDialog() {
     this.dialog

@@ -11,6 +11,7 @@
     [disabled]="disabled"
     (click)="onClick.emit()"
   >
-    {{ text }}
+    <span class="button-text">{{ text }}</span>
+    <span *ngIf="icon" class="button-icon"> <mat-icon>{{ icon }}</mat-icon></span>
   </button>
 </div>

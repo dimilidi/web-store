@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private isSearchBarVisibleSubscription: Subscription;
 
   constructor(
-    private userService: UserService,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,

@@ -1,9 +1,13 @@
 .wrapper {
     height: 100%;
-    margin: 2rem 0;
+    min-height: calc(100vh - 40px) ; 
+    padding-top: 100px;
+    padding-bottom: 40px;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center; 
+    overflow: hidden;
 }
 
 app-title {
@@ -14,7 +18,7 @@ app-title {
 .form {
     margin: 0 auto;
     padding: 2rem;
-    width: 300px;
+    width: 27rem;
     background-color: #f3f3f3;
     border-radius: 5px;
     box-shadow: 0 0 8px rgb(185, 185, 185);
@@ -41,12 +45,17 @@ img {
     object-fit: cover;
 }
 
+.text-input {
+    width: 100%;
+    padding: 2rem;
+}
+
 input {
     display: block;
 }
 
 .icon {
-    color: rgb(63, 151, 184);
+    color: rgba(63, 81, 181);
     cursor: pointer;
 }
 
@@ -99,7 +108,7 @@ input {
 }
 
 .file-input-label {
-    display: inline-block;
+    display: flex;
     overflow: hidden;
     cursor: pointer;
   }
@@ -116,6 +125,19 @@ input {
  margin-right: 8px; 
 }
 
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+app-button {
+    width: 100%;
+  }
+
 .delete-account-container {
  padding: 1rem;
 }
@@ -128,4 +150,22 @@ input {
     text-decoration: underline;
 }
 
+
+
+
  
+@media screen and (max-width: 700px) {
+    .form {
+      width: 90%;
+      padding: 1rem;
+      max-width: 27rem;
+    }
+
+    .text-input {
+        width: 100%;
+        
+        padding: 0;
+    }
+  }
+  
+  

@@ -10,20 +10,24 @@
 html{
   font-size:16px;
   background-color: #fcfcfc;
-
-
 }
 
 body{
-  min-height: 90vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+ 
   height: 100%;
-  margin: 60px 0 0;
-  background-color: #fcfcfc;
   position: relative;
-  
 }
 
 a{
   text-decoration: none;
 }
 
+
+ .body {margin-top: 60px;
+  min-height: 80vh;
+  height: 100%;
+  background-color: #fcfcfc;
+  position: relative;}

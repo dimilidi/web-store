@@ -1,26 +1,40 @@
 .container {
+    padding-top: 40px;
     min-height: 91vh;
     max-width: 1200px;
     overflow-y: auto;
     overflow-x: hidden;
-  
+    text-align: center;
+}
+.hide {
+    display: none;
+}
 
+.show {
+    display: block;
+    height: 100%;
+    background-color: blue;
+}
 
+app-title {
+    padding: 0.5rem;
 }
 
 .add-button {
-    float: right;
+  align-self: flex-end;
+   margin: 1rem 2rem ;
 }
 
 .table-container {
     margin: 8rem 0 5rem;
     overflow-y: auto;
     align-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
 table {
     width: 100%;
-    
 }
 
 .form-field-container {
@@ -50,6 +64,14 @@ th {
 
 td {
     padding-block: 0.5rem;
+}
+
+.mat-mdc-paginator-container {
+    width: 50%;
+}
+
+mat-paginator {
+    padding-block: 1rem;
 }
 
 

@@ -14,6 +14,8 @@ export class DataService {
   
 
   toggleSearchBar() {
+    console.log('TOGGLE');
+    
     this.isSearchBarVisibleSubject.next(!this.isSearchBarVisibleSubject.value);
   }
 }

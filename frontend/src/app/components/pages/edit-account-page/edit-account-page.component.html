@@ -6,7 +6,7 @@
       <img *ngIf="user.avatar" src="{{ user.avatar }}" alt="profile picture" />
       <img
         *ngIf="!user.avatar"
-        src="https://res-console.cloudinary.com/dv3g1lcnc/thumbnails/v1/image/upload/v1690364881/d2dvbnFwZGZ5eWw1aG90OGV6Zng=/preview"
+        src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
         alt="profile picture"
       />
 
@@ -57,18 +57,23 @@
         (dialCodeChange)="handleDialCodeChange($event)"
       ></app-text-input>
 
+      <div class="buttons-container">
+        
       <app-button
-        [widthRem]="15"
-        [text]="'Save Changes'"
+       
+        [text]="'Save'"
+        [icon]="'save_alt'"
         (click)="saveChanges()"
       />
-
       <app-button
-        [widthRem]="15"
+        
         [text]="'Cancel'"
+        [icon]="'not_interested'"
         bgColor="#F50057"
         (click)="cancelChanges()"
       />
+      </div>
+
     </div>
 
     <div class="delete-account-container">
