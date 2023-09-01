@@ -29,7 +29,6 @@ app-title {
 
 .table-container {
     margin-top: 2rem;
-    padding: 2rem 0 ;
     overflow-y: auto;
     align-self: center;
     display: flex;

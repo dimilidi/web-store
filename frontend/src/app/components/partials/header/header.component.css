@@ -3,7 +3,7 @@
   margin: 0;
 }
 
-header{
+header {
     width: 100%;
     height: 60px;
     display: flex;
@@ -58,6 +58,7 @@ header{
     display: flex;
     align-items: center;
   }
+
   
   ul{
     height: 100%;
@@ -114,9 +115,6 @@ header{
     align-items: center;
     justify-content: center;
   }
-
- 
-
   
   
   .counter {
@@ -141,6 +139,7 @@ header{
   
   .menu{
     position:absolute;
+    right: 0;
     z-index:1;
     background:whitesmoke;
     display: none;
