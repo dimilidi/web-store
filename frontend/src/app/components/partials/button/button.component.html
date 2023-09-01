@@ -11,7 +11,16 @@
     [disabled]="disabled"
     (click)="onClick.emit()"
   >
+    <span *ngIf="icon" class="button-icon">
+      <mat-icon
+        [ngStyle]="{
+          color: color,
+          'font-size.rem': fontSizeRem,
+          'height.rem': fontSizeRem,
+        }"
+        >{{ icon }}</mat-icon
+      >
+    </span>
     <span class="button-text">{{ text }}</span>
-    <span *ngIf="icon" class="button-icon"> <mat-icon>{{ icon }}</mat-icon></span>
   </button>
 </div>

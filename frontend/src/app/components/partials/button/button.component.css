@@ -7,7 +7,7 @@
   }
   
   button {
-    height: 3rem;
+    height: 2.5rem;
     width: 100%;
     margin: 0.5rem auto;
     border: none;
@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
   
   button:not(:disabled):hover{
@@ -37,7 +37,12 @@
     height: 100%;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
   }
+
+
+
+ 
 
   
  

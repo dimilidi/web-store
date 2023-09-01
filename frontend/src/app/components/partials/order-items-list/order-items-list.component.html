@@ -1,4 +1,5 @@
-<table>
+
+  <table>
     <tr>
       <td colspan="5">
         <h3>Order Items:</h3>
@@ -6,35 +7,33 @@
     </tr>
     <tr *ngFor="let item of order.items">
       <td>
-        <a routerLink="/product/{{item.product.id}}">
-          <img [src]="item.product.imageUrl"/>
+        <a routerLink="/product/{{ item.product.id }}">
+          <img [src]="item.product.imageUrl" />
         </a>
       </td>
       <td>
-        {{item.product.name}}
+        {{ item.product.name }}
       </td>
       <td>
-        {{item.product.price | currency:'EUR'}}
+        {{ item.product.price | currency : "EUR" }}
       </td>
       <td>
-        {{item.quantity}}
+        {{ item.quantity }}
       </td>
       <td>
-        {{item.price | currency:'EUR'}}
+        {{ item.price | currency : "EUR" }}
       </td>
     </tr>
     <tr>
       <td colspan="3"></td>
       <td>
-        <strong>
-          Total :
-        </strong>
+        <strong> Total : </strong>
       </td>
       <td>
         <strong>
-          {{order.totalPrice | currency:'EUR'}}
+          {{ order.totalPrice | currency : "EUR" }}
         </strong>
       </td>
     </tr>
   </table>
-  
+

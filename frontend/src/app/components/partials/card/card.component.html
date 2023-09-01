@@ -23,6 +23,7 @@
         <app-star-rating
           [averageRating]="product.averageRating"
           [productId]="product.id"
+          [size]="cardSize=='small' ? .8 : 1"
         ></app-star-rating>
       </div>
       <div class="product-item-footer">
@@ -38,6 +39,8 @@
       <span>
         {{ product.price | currency : "EUR" }}
       </span>
-      <button class="add-btn" (click)="addToCart(product)">Buy</button>
+      <button class="add-btn" (click)="addToCart(product)">
+        <mat-icon >add_shopping_cart</mat-icon>
+      </button>
     </div>
   </div>

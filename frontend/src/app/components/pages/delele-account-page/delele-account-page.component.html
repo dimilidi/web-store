@@ -1,19 +1,24 @@
 <div class="wrapper" *ngIf="user" [@fadeInOut]>
   <section>
-    <app-title title="Delete Account" fontSize="2.6rem" />
-    <mat-icon>warning</mat-icon>
+    <app-title title="Delete Account" fontSize="2rem" />
+    <span class="delete-icon"><mat-icon>delete</mat-icon></span>
+    
     <h4>Are you sure you want to delete your account?</h4>
-    <app-button
-      type="button"
-      text="Delete"
-      bgColor="tomato"
-      color="white"
-      (click)="deleteUserAccount()"
-    ></app-button>
-    <app-button
-      type="button"
-      text="Back to Account"
-      (click)="backToAccount()"
-    ></app-button>
+    <div class="buttons-container">
+      <app-button
+        type="button"
+        text="Delete"
+        icon="close"
+        bgColor="#f44336"
+        color="white"
+        (click)="deleteUserAccount()"
+      ></app-button>
+      <app-button
+        type="button"
+        text="Back"
+        icon="keyboard_return"
+        (click)="backToAccount()"
+      ></app-button>
+    </div>
   </section>
 </div>

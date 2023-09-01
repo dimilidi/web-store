@@ -1,9 +1,16 @@
-.container{
+  .container{
+    height: 100%;
+    min-height: calc(100vh - 40px) ; 
+    padding-top: 100px;
+    padding-bottom: 40px;
     margin-top: 1rem;
     display: flex;
-    margin: 0 2rem 6rem 2rem;
+    margin: 0 auto;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    flex: 1; 
+    overflow: hidden;
   }
   
   .content{
@@ -19,6 +26,10 @@
   form{
     width: 100%;
     z-index: 0;
+  }
+
+  .scroller {
+    overflow-x: auto;
   }
   
   .buttons-container{
@@ -48,13 +59,19 @@
     cursor: pointer;
   }
   
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 700px) {
     .content{
       margin: 0 auto;
       width: 100%;
     }
     .buttons {
-      width: 400px;
+      width: 100%;
+      min-width: 300px;
+    }
+
+    .map {
+      width: 100%;
+      min-width: 300px;
     }
   }
  
@@ -62,4 +79,9 @@
     .buttons-container {
       width: 300px;
     }
+  }
+
+
+  @media screen and (max-width: 700px) {
+ 
   }

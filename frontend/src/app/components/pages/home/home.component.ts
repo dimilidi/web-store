@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getProducts();
+    this.getFavouriteProducts();
 
     this.dataService.isSearchBarVisible$.subscribe((isVisible) => {
       this.isSearchBarVisible = isVisible;
@@ -90,6 +91,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.productService
         .getFavoriteProducts(this.user.id)
         .subscribe((favoriteProducts) => {
+          console.log('PRODUCTS',favoriteProducts);
+          
           favoriteProducts.forEach((product) => {
             this.favoriteProductsSet.add(product.product.id);
           });

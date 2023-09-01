@@ -58,22 +58,18 @@
       ></app-text-input>
 
       <div class="buttons-container">
-        
-      <app-button
-       
-        [text]="'Save'"
-        [icon]="'save_alt'"
-        (click)="saveChanges()"
-      />
-      <app-button
-        
-        [text]="'Cancel'"
-        [icon]="'not_interested'"
-        bgColor="#F50057"
-        (click)="cancelChanges()"
-      />
+        <app-button
+          [text]="'Save'"
+          [icon]="'save_alt'"
+          (click)="saveChanges()"
+        />
+        <app-button
+          [text]="'Cancel'"
+          [icon]="'close'"
+          bgColor="#f44336"
+          (click)="cancelChanges()"
+        />
       </div>
-
     </div>
 
     <div class="delete-account-container">

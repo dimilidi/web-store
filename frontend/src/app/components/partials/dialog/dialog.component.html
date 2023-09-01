@@ -61,9 +61,13 @@
               placeholder="Image"
             />
             <!-- Browse Button -->
-            <button mat-flat-button color="accent" class="file-browser">
-              Browse
-            </button>
+            <span   class="file-browser">
+              <button mat-raised-button color="accent">
+                   Browse
+              <mat-icon>cloud_upload</mat-icon>
+              </button>
+           
+            </span>
           </mat-toolbar>
         </mat-form-field>
 
@@ -86,15 +90,23 @@
     </form>
   </div>
 
-  <div style="padding: 1rem; margin: 0 auto; display: flex;" mat-dialog-action [align]="'center'">
-    <button  style="width: 50%;" mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <div
+    style="padding: 1rem; margin: 0 auto; display: flex"
+    mat-dialog-action
+    [align]="'center'"
+  >
+    <button style="width: 50%" mat-raised-button color="warn" mat-dialog-close>
+      Close
+      <mat-icon>close</mat-icon>
+    </button>
     <button
-      style="margin: 0 10px; width: 50%;"
+      style="margin: 0 10px; width: 50%"
       mat-raised-button
       color="primary"
       (click)="addProduct()"
     >
       {{ actionButton }}
+      <mat-icon>{{ actionIcon }}</mat-icon>
     </button>
   </div>
 </div>

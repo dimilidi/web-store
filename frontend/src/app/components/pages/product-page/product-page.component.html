@@ -5,77 +5,79 @@
 />
 
 <div *ngIf="product?.id" class="container">
-  <img [src]="product.imageUrl" [alt]="product.name" />
+  <div class="box">
+    <img [src]="product.imageUrl" [alt]="product.name" />
 
-  <div class="details">
-    <div class="header">
-      <span class="name">
-        {{ product.name }}
-      </span>
-      <span
-        class=" 
+    <div class="details">
+      <div class="header">
+        <span class="name">
+          {{ product.name }}
+        </span>
+        <span
+          class=" 
         material-icons favorite {{
-          user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
-        }}"
-        (click)="toggleFavourite(product)"
-      >
+            user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
+          }}"
+          (click)="toggleFavourite(product)"
+        >
           favorite
-      </span>
-    </div>
-    <div class="rating">
-      <div class="stars">
-        <!-- In "rate" mode, show stars given by the current user -->
-        <div *ngIf="selectedMode === 'Rate'">
-          <app-star-rating
-            [stars]="product.stars"
-            [productId]="product.id"
-            (starClicked)="updateStars($event.stars, $event.productId)"
-          ></app-star-rating>
-        </div>
+        </span>
+      </div>
+      <div class="rating">
+        <div class="stars">
+          <!-- In "rate" mode, show stars given by the current user -->
+          <div *ngIf="selectedMode === 'Rate'">
+            <app-star-rating
+              [stars]="product.stars"
+              [productId]="product.id"
+              (starClicked)="updateStars($event.stars, $event.productId)"
+            ></app-star-rating>
+          </div>
 
-        <!-- In "view" mode, show the average rating -->
-        <div *ngIf="selectedMode === 'View'">
-          <app-star-rating
-            [averageRating]="product.averageRating"
-            [productId]="product.id"
-          ></app-star-rating>
-        </div>
+          <!-- In "view" mode, show the average rating -->
+          <div *ngIf="selectedMode === 'View'">
+            <app-star-rating
+              [averageRating]="product.averageRating"
+              [productId]="product.id"
+            ></app-star-rating>
+          </div>
 
-        <!-- Dropdown menu for mode selection using mat-select -->
-        <div *ngIf="user.id" class="mode-select">
-          <label [style.display]="isOptionSelected() ? 'none' : 'block'">
-            Mode</label
-          >
-          <mat-select (selectionChange)="onModeSelectionChange($event)">
-            <mat-option
-              *ngFor="let option of modeOptions"
-              [value]="option.value"
+          <!-- Dropdown menu for mode selection using mat-select -->
+          <div *ngIf="user.id" class="mode-select">
+            <label [style.display]="isOptionSelected() ? 'none' : 'block'">
+              Mode</label
             >
-              {{ option.label }}
-            </mat-option>
-          </mat-select>
+            <mat-select (selectionChange)="onModeSelectionChange($event)">
+              <mat-option
+                *ngFor="let option of modeOptions"
+                [value]="option.value"
+              >
+                {{ option.label }}
+              </mat-option>
+            </mat-select>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="origins">
-      <span *ngFor="let origin of product.origins">
-        {{ origin }}
-      </span>
-    </div>
+      <div class="origins">
+        <span *ngFor="let origin of product.origins">
+          {{ origin }}
+        </span>
+      </div>
 
-    <div class="tags">
-      <a *ngFor="let tag of product.tags" routerLink="/tag/{{ tag }}">
-        {{ tag }}
-      </a>
-    </div>
+      <div class="tags">
+        <a *ngFor="let tag of product.tags" routerLink="/tag/{{ tag }}">
+          {{ tag }}
+        </a>
+      </div>
 
-    <div class="price">
-      <span>
-        {{ product.price | currency : "EUR" }}
-      </span>
-    </div>
+      <div class="price">
+        <span>
+          {{ product.price | currency : "EUR" }}
+        </span>
+      </div>
 
-    <button (click)="addToCart()">Add To Cart</button>
+      <button (click)="addToCart()">Add To Cart</button>
+    </div>
   </div>
 </div>

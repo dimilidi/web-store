@@ -1,5 +1,7 @@
+
 table{
     width: 100%;
+    min-width: 440px;
     border: 1px solid #eeeeee;
     margin-top: 1rem;
     border-radius: 5px;
@@ -30,9 +32,5 @@ table{
 
   
   @media screen and (max-width: 440px) {
-    tr {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+
   }

@@ -1,6 +1,6 @@
 <div class="container">
   <div [ngClass]="isSearchBarVisible ? 'show' : 'hide'">
-    <mat-form-field >
+    <mat-form-field>
       <div class="form-field-container">
         <mat-label>Filter</mat-label>
         <input
@@ -9,12 +9,10 @@
           placeholder="Filter Products"
           #input
         />
-    
       </div>
     </mat-form-field>
   </div>
 
-  
   <div class="mat-elevation-z8 table-container">
     <app-title title="Table of Products"></app-title>
     <table mat-table [dataSource]="dataSource" matSort>
@@ -73,17 +71,17 @@
           No data matching the filter "{{ input.value }}"
         </td>
       </tr>
-      
     </table>
     <button
-    class="add-button"
-    button
-    mat-raised-button
-    color="warn"
-    (click)="openDialog()"
-  >
-    Add product
-  </button>
+      class="add-button"
+      button
+      mat-raised-button
+      color="warn"
+      (click)="openDialog()"
+    >
+      Add product
+      <mat-icon>add</mat-icon>
+    </button>
 
     <mat-paginator
       [pageSizeOptions]="[5, 10, 25, 100]"

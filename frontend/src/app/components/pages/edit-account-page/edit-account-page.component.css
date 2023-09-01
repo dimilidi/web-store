@@ -32,6 +32,7 @@ app-title {
     height: 180px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     position: relative;
 
 }
@@ -47,7 +48,7 @@ img {
 
 .text-input {
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 input {
@@ -128,18 +129,18 @@ input {
 .buttons-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-
+    gap: 0.5rem;
 }
 
 app-button {
-    width: 100%;
+    width: 48%;
+    min-width: 9rem;
   }
 
 .delete-account-container {
- padding: 1rem;
+    margin-top: 0rem;
 }
 
   
@@ -157,15 +158,22 @@ app-button {
 @media screen and (max-width: 700px) {
     .form {
       width: 90%;
-      padding: 1rem;
       max-width: 27rem;
     }
 
     .text-input {
         width: 100%;
-        
-        padding: 0;
+        padding: 0 0 1rem;
     }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    app-button {
+        width: 100%;
+      }
   }
   
   

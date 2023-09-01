@@ -34,6 +34,7 @@ export class DialogComponent implements OnInit {
   file: any;
   fileContent: string = '';
   actionButton: string = 'Save';
+  actionIcon: string = 'save_alt ';
   formTitle: string = 'Add Product Form';
 
   @Output() showCategory = new EventEmitter<Tag>();
@@ -68,6 +69,7 @@ export class DialogComponent implements OnInit {
 
     if (this.editData) {
       this.actionButton = 'Update';
+      this.actionIcon = 'autorenew';
       this.formTitle = 'Edit Product Form'
       this.productForm.controls['name'].setValue(this.editData.name);
       this.productForm.controls['tags'].setValue(this.editData.tags[0]);

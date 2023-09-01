@@ -41,6 +41,10 @@ div button {
   color: white;
   opacity: 0.8;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
   
 div button:hover{

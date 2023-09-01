@@ -1,12 +1,13 @@
 <div class="wrapper">
-  <app-title [title]="user.name ? user.name + '\'s Cart' : 'Your Cart'" />
-
+  
   <app-not-found
-    [visible]="!cart || !cart.items.length"
-    notFoundMessage="Your Cart is empty."
-    resetLinkText="Back to Store"
+  [visible]="!cart || !cart.items.length"
+  notFoundMessage="Your Cart is empty."
+  resetLinkText="Back to Store"
   />
   <div *ngIf="cart && cart.items.length" class="container">
+    <app-title [title]="user.name ? user.name + '\'s Cart' : 'Your Cart'" />
+    <div class="card">
     <ul>
       <li *ngFor="let cartItem of cart.items">
         <div routerLink="/product/{{ cartItem.product.id }}">
@@ -52,5 +53,7 @@
 
       <a routerLink="/checkout">Proceed to Checkout</a>
     </div>
+    </div>
+    
   </div>
 </div>

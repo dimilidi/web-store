@@ -12,9 +12,9 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   cartQuantity = 0;
-  user: User = this.userStateService.currentUser;
+  user!: User;
   capitalizedName = '';
 
   private cartSubscription!: Subscription;
@@ -36,6 +36,13 @@ export class HeaderComponent implements OnDestroy {
     });
   }
 
+  ngOnInit(): void {
+    this.userStateService.userObservable.subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+
 
 
   ngOnDestroy(): void {
@@ -48,7 +55,7 @@ export class HeaderComponent implements OnDestroy {
   }
 
   get isAuth() {
-    return this.user.token;
+    return this.userStateService.currentUser.token;
   }
 
   toggleSearchBar() {
