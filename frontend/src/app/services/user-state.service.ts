@@ -24,9 +24,6 @@ export class UserStateService {
 
   public get currentUser(): User {
     const localUser = this.localStorageService.getUserFromLocalStorage();
-    console.log(localUser);
-    console.log( this.userSubject.value);
-    
     return localUser || this.userSubject.value;
   }
 

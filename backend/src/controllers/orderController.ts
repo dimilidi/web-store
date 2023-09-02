@@ -1,4 +1,5 @@
 import { OrderStatus } from "../constants/order_status";
+import { createSuccess } from "../middlewares/success";
 import { Order } from "../models/Order";
 
 // CREATE ORDER
@@ -18,6 +19,16 @@ export async function createOrder(req: any, res: any) {
     const newOrder = new Order({...requestOrder,user: req.user.id});
     await newOrder.save();
     res.send(newOrder);
+}
+
+
+// GET ALL ORDERS
+export async function getAllOrders(req: any, res: any, next:any) {
+    
+    const allOrders = await Order.find();
+    console.log(allOrders);
+   //return res.status(200).json(allOrders);
+    return next(createSuccess(200, "All Orders", allOrders));
 }
 
 

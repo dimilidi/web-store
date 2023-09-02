@@ -63,6 +63,8 @@ import { ResetPasswordComponent } from './components/pages/reset-password/reset-
 import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
+import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
+import { UsersListComponent } from './components/pages/users-list/users-list.component';
 
 
 @NgModule({
@@ -103,6 +105,9 @@ import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
     ForgottenPasswordComponent,
     FooterComponent,
     IntlTelInputDirective,
+    OrdersListComponent,
+    UsersListComponent,
+
   ],
   imports: [
     NgParticlesModule,

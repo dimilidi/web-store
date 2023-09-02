@@ -31,6 +31,8 @@
             <a routerLink="/account">Profile</a>
             <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
             <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
+            <a *ngIf="user.isAdmin" routerLink="/all-orders">Orders</a>
+            <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
             <a (click)="logout()">Logout</a>
           </div>
         </li>

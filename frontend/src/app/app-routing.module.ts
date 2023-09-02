@@ -18,6 +18,8 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 import { adminGuard } from './auth/guards/admin.guard';
 import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
+import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
+import { UsersListComponent } from './components/pages/users-list/users-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +30,16 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'all-orders',
+    component: OrdersListComponent,
+    canActivate: [authGuard, adminGuard],
+  },
+  {
+    path: 'users',
+    component: UsersListComponent,
     canActivate: [authGuard, adminGuard],
   },
   { path: 'search/:searchTerm', component: HomeComponent },

@@ -9,6 +9,7 @@ import { UserLogin } from '../shared/interfaces/UserLogin';
 import { UserRegister } from '../shared/interfaces/UserRegister';
 import { LocalStorageService } from './local-storage.service';
 import { UserStateService } from './user-state.service';
+import { User } from '../shared/models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +29,7 @@ export class AuthService {
       tap({
         next: (res) => {
           const user = res.data;
-          this.localStorageService.setUserToLocalStorage(user);
+          this.localStorageService.setUserToLocalStorage(user) ;
           this.userStateService.updateUser(user);
           this.toastrService.success(
             `Welcome to Web-Store! ${user.name}`,
