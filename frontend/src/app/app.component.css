@@ -1,8 +1,20 @@
-#phoneInput {
-    width: 300px;
- 
-}
+.app-container {
+    height: 100%;
+    min-height: calc(100vh - 40px) ; 
+    padding-top: 100px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 
-label {
-    margin-left: 100px;
-}
+  }
+  
+  app-navigation {
+    width: 250px; 
+  }
+  
+  .content {
+    flex-grow: 1; 
+  }
+  

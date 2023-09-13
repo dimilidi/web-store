@@ -195,11 +195,8 @@
 
 - unsubscribe on Destroy
 - product lazy loading || home page pagination
-- Password reset option
 - email custom validator
 - Admin Dashboard
-  - CRUD Product -> done
-  - responsiveness
-  - manage users
+
 
 

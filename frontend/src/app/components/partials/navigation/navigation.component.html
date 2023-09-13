@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <nav>
+    <div class="logo-name">
+      <a routerLink="/" class="logo">Web Store</a>
+    </div>
+    <div class="menu-items"></div>
+    <ul class="nav-links">
+      <li>
+        <mat-icon>home</mat-icon>
+      </li>
+      <li>
+        <button class="search-icon" (click)="toggleSearchBar()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </li>
+      <li *ngIf="!isAuth">
+        <a class="login-link" routerLink="/login">Login</a>
+      </li>
+
+      <li *ngIf="isAuth" class="menu-container">
+        <div class="menu">
+          <a routerLink="/account">Profile</a>
+          <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
+          <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
+          <a *ngIf="user.isAdmin" routerLink="/all-orders">Orders</a>
+          <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
+          <a class="logout" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

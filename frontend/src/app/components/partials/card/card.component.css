@@ -129,6 +129,8 @@ img{
     opacity: 0.8; 
     border: none;
     border-radius: 50%;
+    position: absolute;
+    right: 0.4rem;
 }
 
 .add-btn:hover {

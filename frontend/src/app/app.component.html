@@ -1,4 +1,12 @@
-<app-loading />
-<app-header />
-<router-outlet />
-<app-footer />
+<app-loading></app-loading>
+<app-header></app-header>
+
+<div class="app-container">
+  <app-navigation></app-navigation>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

@@ -1,7 +1,7 @@
 <header>
-  <div class="container">
+
     <a routerLink="/" class="logo">Web Store</a>
-    <nav>
+ 
       <ul>
         <li>
           <button class="search-icon" (click)="toggleSearchBar()">
@@ -16,7 +16,7 @@
           <a>
             <div class="role">
               <p>
-                Hey, <span>{{ user.name }}</span>
+               <span>{{ user.name }}</span>
               </p>
               <p *ngIf="user.isAdmin">{{ user.roles[1].role }}</p>
             </div>
@@ -49,6 +49,6 @@
           </a>
         </li>
       </ul>
-    </nav>
-  </div>
+   
+
 </header>

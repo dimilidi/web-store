@@ -65,6 +65,7 @@ import { FooterComponent } from './components/partials/footer/footer.component';
 import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
 import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
 import { UsersListComponent } from './components/pages/users-list/users-list.component';
+import { NavigationComponent } from './components/partials/navigation/navigation.component';
 
 
 
@@ -109,6 +110,7 @@ import { UsersListComponent } from './components/pages/users-list/users-list.com
     IntlTelInputDirective,
     OrdersListComponent,
     UsersListComponent,
+    NavigationComponent,
 
   ],
   imports: [
