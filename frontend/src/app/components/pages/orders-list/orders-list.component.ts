@@ -76,8 +76,6 @@ export class OrdersListComponent implements OnInit {
     let ordersObservable!: Observable<ServerResponse>;
     ordersObservable = this.orderService.getAllOrders();
     ordersObservable?.subscribe((orders) => {
-      console.log('OOOO',orders);
-      
       this.dataSource = new MatTableDataSource(orders.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

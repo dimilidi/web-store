@@ -72,42 +72,6 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  openOrderDialog() {
-    this.dialog
-      .open(DialogComponent, { width: '100%', maxWidth: '400px' })
-      .afterClosed()
-      .subscribe((value) => {
-        if (value === 'save') {
-          this.getAllOrders();
-        }
-      });
-  }
-
-
-
-  getAllOrders() {
-    let ordersObservable!: Observable<ServerResponse>;
-    this.orderService.getAllOrders().pipe(
-      tap({
-        next: (res:any) => {
-          ordersObservable = res.data;
-        },
-        error: (errors:any) => {
-          console.log(errors);
-          
-        }
-      })
-    );
-    ordersObservable?.subscribe((orders) => {
-      console.log('OOOO',orders);
-      
-      this.dataSource = new MatTableDataSource(orders.data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
-
-
 
 
   getProducts() {

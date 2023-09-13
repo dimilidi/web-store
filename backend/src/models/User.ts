@@ -28,7 +28,7 @@ export const UserSchema = new Schema<IUser>({
     phone: {type:String, required: false},
     avatar: { type: String, default: "https://cdn-icons-png.flaticon.com/512/64/64572.png"},
     isAdmin: {type:Boolean, default: false},
-    roles: {type: [Schema.Types.ObjectId], required: true, ref: 'Role'}
+    roles: [{type: Schema.Types.ObjectId, required: true, ref: 'Role'}]
    
 },
 {

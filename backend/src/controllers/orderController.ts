@@ -24,7 +24,6 @@ export async function createOrder(req: any, res: any) {
 
 // GET ALL ORDERS
 export async function getAllOrders(req: any, res: any, next:any) {
-    
     const allOrders = await Order.find();
     console.log(allOrders);
    //return res.status(200).json(allOrders);

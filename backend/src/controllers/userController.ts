@@ -228,7 +228,8 @@ export async function getAllOrders(req: any, res: any) {
 
 // GET ALL USERS
 export async function getAllUsers(req: any, res: any, next: any) {
-  const users = await User.find();
+  const users = await User.find().populate('roles');
+  console.log(users);
   return next(createSuccess(201, "All Users", users));
 }
 
@@ -236,8 +237,7 @@ export async function getAllUsers(req: any, res: any, next: any) {
 export async function getUserById(req: any, res: any, next: any) {
   const user = req.user;
   const singleUser = await User.findById(user.id).populate('roles');
-  console.log(singleUser);
-  
+
   if (!singleUser) return next(createError(404, "User not found"));
   return next(createSuccess(200, "Single User", singleUser));
 }
