@@ -1,7 +1,7 @@
 
 import { environment } from "src/environments/environment";
-const BASE_URL = 'https://web-store-85da.onrender.com';
-//const BASE_URL = 'http://localhost:5000';
+//const BASE_URL = 'https://web-store-85da.onrender.com';
+const BASE_URL = 'http://localhost:5000';
 
 export const USER_KEY = 'User';
 
@@ -33,6 +33,8 @@ export const ORDER_CREATE_URL = ORDERS_URL + '/create';
 export const ORDER_NEW_FOR_CURRENT_USER_URL = ORDERS_URL + '/newOrderForCurrentUser';
 export const ORDER_PAY_URL = ORDERS_URL + '/pay';
 export const ORDER_TRACK_URL = ORDERS_URL + '/track/';
+export const ORDER_UPDATE_URL = ORDERS_URL + '/update/';
+export const ORDER_DELETE_URL = ORDERS_URL + '/delete/';
 
 
 export const FAVOURITES_URL = BASE_URL + '/favourites';

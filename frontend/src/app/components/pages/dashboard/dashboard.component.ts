@@ -3,13 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/services/product.service';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { Product } from 'src/app/shared/models/Product';
 import { ActivatedRoute } from '@angular/router';
 import { DialogComponent } from '../../partials/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/services/data.service';
+import { ServerResponse } from 'src/app/shared/interfaces/ServerResponse';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,6 +40,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
+    private orderService: OrderService,
     private dataService: DataService,
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute
@@ -68,6 +71,44 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
+
+  openOrderDialog() {
+    this.dialog
+      .open(DialogComponent, { width: '100%', maxWidth: '400px' })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === 'save') {
+          this.getAllOrders();
+        }
+      });
+  }
+
+
+
+  getAllOrders() {
+    let ordersObservable!: Observable<ServerResponse>;
+    this.orderService.getAllOrders().pipe(
+      tap({
+        next: (res:any) => {
+          ordersObservable = res.data;
+        },
+        error: (errors:any) => {
+          console.log(errors);
+          
+        }
+      })
+    );
+    ordersObservable?.subscribe((orders) => {
+      console.log('OOOO',orders);
+      
+      this.dataSource = new MatTableDataSource(orders.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+
+
 
   getProducts() {
     let productsObservable: Observable<Product[]>;

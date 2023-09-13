@@ -11,3 +11,129 @@
     flex: 1; 
     overflow: hidden;
 }
+
+
+
+.container {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    height: 100%;
+    min-height: calc(100vh - 100px);
+    max-width: 1200px;
+    flex: 1;
+    overflow: hidden;
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    height: 100%;
+    background-color: blue;
+}
+
+app-title {
+    padding: 0.5rem;
+}
+
+.add-button {
+    align-self: flex-end;
+    margin: 1rem 2rem ;
+}
+
+.table-container {
+    margin-top: 2rem;
+    overflow-y: auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    width: 100%;
+}
+
+.form-field-container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+  
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    z-index: 1;
+}
+  
+
+img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+th {
+    font-weight: 600;
+}
+
+td {
+    padding-block: 0.5rem;
+}
+
+.product-container {
+    position: relative;
+  }
+  
+  .product-name {
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  .product-id {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: none;
+    z-index: 100 !important;
+    font-size: 0.5rem;
+  }
+
+  .bold {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .visible {
+    display: block;
+  }
+  
+
+.mat-mdc-paginator-container {
+    width: 50%;
+}
+
+mat-paginator {
+    padding-block: 1rem;
+}
+
+
+
+
+  @media screen and (max-width: 700px) {
+    .container {
+      width: 100%;
+    }
+
+    table {
+        margin-bottom: 0rem;
+    }
+
+    
+  }

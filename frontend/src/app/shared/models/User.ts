@@ -1,3 +1,5 @@
+import { Role } from "./Role";
+
 export class User {
   data!: any;
   id!: string;
@@ -8,4 +10,5 @@ export class User {
   avatar?: string;
   phone?: string;
   isAdmin!: boolean;
+  roles!: Role[];
 }

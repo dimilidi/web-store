@@ -63,6 +63,39 @@ export async function trackOrder(req: any, res: any) {
 }
 
 
+
+// UPDATE ORDER
+export async function updateOrder(req: any, res: any) {
+    const orderId = req.params.id;
+    const updateData = req.body;
+    
+    const order = await Order.findByIdAndUpdate(orderId, updateData, {
+        new: true, 
+    });
+    
+    if (!order) {
+        return res.status(404).json({ error: "Order not found." });
+    }
+    
+    return res.status(200).json(order);
+}
+
+
+// DELETE ORDER
+export async function deleteOrder(req: any, res: any) {
+    const orderId = req.params.id;
+    
+    const order = await Order.findByIdAndDelete(orderId);
+    
+    if (!order) {
+        return res.status(404).json({ error: "Order not found." });
+    }
+    
+    return res.status(204).json({message: "Order deleted successfully." });
+}
+
+
+
 async function getNewOrderForCurrentUser(req: any) {
     return await Order.findOne({ user: req.user.id, status: OrderStatus.NEW });
 }

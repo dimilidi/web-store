@@ -43,8 +43,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
 
-
-
   ngOnDestroy(): void {
     this.cartSubscription.unsubscribe();
     this.userSubscription.unsubscribe();

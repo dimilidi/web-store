@@ -36,6 +36,7 @@ export class DialogComponent implements OnInit {
   actionButton: string = 'Save';
   actionIcon: string = 'save_alt ';
   formTitle: string = 'Add Product Form';
+  
 
   @Output() showCategory = new EventEmitter<Tag>();
   @ViewChild('UploadFileInput') uploadFileInput!: ElementRef;

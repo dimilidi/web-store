@@ -15,6 +15,11 @@
         <li *ngIf="isAuth" class="menu-container">
           <a>
             <div class="dashboard">
+              <div class="role">
+                <p>Hey, <span>{{ user.name }}</span></p>
+                <p *ngIf="user.isAdmin">{{ user.roles[1].role }}</p>
+              </div>
+
               <img
                 *ngIf="!user.avatar"
                 src="https://cdn-icons-png.flaticon.com/512/64/64572.png"

@@ -235,7 +235,7 @@ export async function getAllUsers(req: any, res: any, next: any) {
 // GET USER BY ID
 export async function getUserById(req: any, res: any, next: any) {
   const user = req.user;
-  const singleUser = await User.findById(user.id);
+  const singleUser = await User.findById(user.id).populate('roles');
   console.log(singleUser);
   
   if (!singleUser) return next(createError(404, "User not found"));
