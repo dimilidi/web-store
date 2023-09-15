@@ -1,32 +1,102 @@
-<div class="wrapper">
-  <nav>
-    <div class="logo-name">
-      <a routerLink="/" class="logo">Web Store</a>
+<nav [ngClass]="{ close: !isSidebarOpen, open: isSidebarOpen }">
+  <a class="logo" routerLink="/">
+    <div class="logo-image">
+      <span>WS</span>
     </div>
-    <div class="menu-items"></div>
-    <ul class="nav-links">
-      <li>
-        <mat-icon>home</mat-icon>
+    <div class="logo-name">Web Store</div>
+  </a>
+
+  <div class="menu-items">
+    <ul class="nav-links" *ngIf="isAuth">
+      <li *ngIf="!user.isAdmin">
+        <a routerLink="/">
+          <span><mat-icon class="icon">home_filled</mat-icon></span>
+          <span class="link-name">Store</span>
+        </a>
       </li>
-      <li>
-        <button class="search-icon" (click)="toggleSearchBar()">
-          <mat-icon>search</mat-icon>
-        </button>
-      </li>
-      <li *ngIf="!isAuth">
-        <a class="login-link" routerLink="/login">Login</a>
+      <li *ngIf="user.isAdmin">
+        <a routerLink="/dashboard">
+          <span><mat-icon class="icon">home_filled</mat-icon></span>
+          <span class="link-name" *ngIf="user.isAdmin">Dashboard</span>
+        </a>
       </li>
 
-      <li *ngIf="isAuth" class="menu-container">
-        <div class="menu">
-          <a routerLink="/account">Profile</a>
-          <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
-          <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
-          <a *ngIf="user.isAdmin" routerLink="/all-orders">Orders</a>
-          <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
-          <a class="logout" (click)="logout()">Logout</a>
-        </div>
+      <li *ngIf="user.isAdmin">
+        <a routerLink="/products">
+          <span><mat-icon class="icon">category</mat-icon></span>
+          <span class="link-name" *ngIf="user.isAdmin">Products</span>
+        </a>
+      </li>
+
+      <li>
+        <a (click)="toggleSearchBar()">
+          <span>
+            <mat-icon class="icon">search</mat-icon>
+          </span>
+          <span class="link-name">Search</span>
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/account">
+          <span>
+            <mat-icon class="icon">person</mat-icon>
+          </span>
+          <span class="link-name">Profile</span>
+        </a>
+      </li>
+
+      <li *ngIf="!user.isAdmin">
+        <a routerLink="/orders">
+          <span>
+            <mat-icon class="icon">shop</mat-icon>
+          </span>
+          <span class="link-name">My Orders</span>
+        </a>
+      </li>
+
+      <li *ngIf="user.isAdmin">
+        <a routerLink="/all-orders">
+          <span>
+            <mat-icon class="icon">shop</mat-icon>
+          </span>
+          <span class="link-name">Orders</span>
+        </a>
+      </li>
+
+      <li *ngIf="user.isAdmin">
+        <a routerLink="/users">
+          <span>
+            <mat-icon class="icon">people</mat-icon>
+          </span>
+          <span class="link-name">Users</span>
+        </a>
       </li>
     </ul>
-  </nav>
-</div>
+
+    <ul class="logout-mode">
+      <li *ngIf="isAuth">
+        <a class="login-link" (click)="logout()">
+          <span><mat-icon class="icon">logout</mat-icon></span>
+
+          <span class="link-name">Logout</span>
+        </a>
+      </li>
+
+      <li *ngIf="!isAuth">
+        <a class="login-link" routerLink="/login">
+          <span><mat-icon class="icon">login</mat-icon></span>
+          <span class="link-name">Login</span>
+        </a>
+      </li>
+
+      <li class="mode">
+        <a>
+          <mat-icon class="icon">mode_night</mat-icon>
+          <span class="link-name">Dark Mode</span>
+        </a>
+        <app-theme-toggle />
+      </li>
+    </ul>
+  </div>
+</nav>

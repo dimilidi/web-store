@@ -4,18 +4,23 @@
 }
 
 header {
-    width: calc(100vw - 250px - 1rem);
+    width: calc(100% - 250px);
+    margin-left: 250px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 0 8px rgb(185, 185, 185);
+    background-color: var(--transparent-light);
+    border-bottom: 1px solid var(--light-color);
     position: fixed;
     top: 0;
     right: 0;
     z-index: 5;
-    background-color: RED;
+    transition: 0.5s ease;
+  }
+
+  .closed-sidebar {
+    width: calc(100% - 73px);
   }
 
   a.login-link  {
@@ -24,21 +29,20 @@ header {
 
   a, button{ 
     height: 100%;
-    padding: 1rem 1.5rem;
-    color:  #3f51b5;
+    padding: 1rem;
+    color:  var(--primary-color);
   }
   
   a:hover, button:hover{
-    background:#3f51b5;
-    color: white;
+    background:var(--primary-color);
+    color: var(--toggle-color);
     cursor: pointer;
   }
-
 
   button {
     border: none;
     outline : none;
-    background-color: white;
+    background-color: transparent;
   }
 
   mat-icon {
@@ -52,7 +56,6 @@ header {
     line-height: 100%;
     display: flex;
     align-items: center;
-   
   }
 
   
@@ -85,13 +88,13 @@ header {
   }
 
   .dashboard img {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     padding: 0.08rem;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 0 2px rgb(185, 185, 185);
-    border: 1px solid #e5e5e5;
+    box-shadow: 0 0 2px var(--shadow-color);
+    border: 1px solid var(--light-color);
   }
   
   .role {
@@ -100,7 +103,7 @@ header {
 
   .role > p, .role p > span {
     text-align: right; 
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .role p > span {
@@ -117,7 +120,7 @@ header {
     border: none;
     outline: none;
     background-color: transparent;
-    color: #3f51b5;
+    color: var(--primary-color);
     position: relative; 
     display: flex;
     align-items: center;
@@ -128,8 +131,8 @@ header {
   .counter {
     height: 22px;
     width: 22px;
-    background: #F50057;
-    color: white;
+    background: var(--accent-color);
+    color: var(--toggle-color);
     border-radius: 100rem;
     font-size: 0.8rem;
     display: flex;
@@ -145,31 +148,31 @@ header {
   .menu-container{
     width: 100%;
     position: relative;
-    color: #616161;
+    color: var(--text-color);
   }
 
 
   .menu{
     width: 100%;
-    position:absolute;
+    position: absolute;
     right: 0;
-    z-index:1;
-    background:whitesmoke;
-    color:  #3f51b5;
+    z-index: 1;
+    background: var(--light-background);
+    color:  var(--primary-color);
     display: none;
   }
 
   .menu-container > a:hover {
-    color: white;
+    color: var(--toggle-color);
   }
 
   .logout:hover {
-    color: white;
+    color: var(--toggle-color);
   }
   
   .menu-container:hover .menu{
     display: block;
-    color:  #3f51b5;
+    color:  var(--primary-color);
   }
 
  
@@ -181,8 +184,12 @@ header {
   .custom-icon {
     height: 100%;
     margin-top: 0.4rem;
-    
   }
+
+ a:hover app-sidebar-toggle {
+    color: white;
+}
+  
 
   @media screen and (max-width: 900px) {
   

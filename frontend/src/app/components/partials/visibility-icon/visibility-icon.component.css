@@ -1,10 +1,15 @@
 .eye-icon {
-    color: #474747;
+    color: var(--title-color);
 }
 
 .eye-icon:hover {
     cursor: pointer;
     opacity: 0.7;
     transition: 0.5s ease-in-out;
+}
+
+mat-icon {
+    display: flex;
+    align-items: center;
 }
   

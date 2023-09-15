@@ -1,54 +1,52 @@
-<header>
+<header [class.closed-sidebar]="!isSidebarOpen">
+  <a ><app-sidebar-toggle /></a>
+  <ul>
+    <li>
+      <button class="search-icon" (click)="toggleSearchBar()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </li>
+    <li *ngIf="!isAuth">
+      <a class="login-link" routerLink="/login">Login</a>
+    </li>
 
-    <a routerLink="/" class="logo">Web Store</a>
- 
-      <ul>
-        <li>
-          <button class="search-icon" (click)="toggleSearchBar()">
-            <mat-icon>search</mat-icon>
-          </button>
-        </li>
-        <li *ngIf="!isAuth">
-          <a class="login-link" routerLink="/login">Login</a>
-        </li>
+    <li>
+      <a *ngIf="!user.isAdmin" class="cart-btn" routerLink="/cart-page">
+        <mat-icon class="custom-icon">shopping_cart</mat-icon>
+        <span class="counter" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+      </a>
+    </li>
 
-        <li *ngIf="isAuth" class="menu-container">
-          <a>
-            <div class="role">
-              <p>
-               <span>{{ user.name }}</span>
-              </p>
-              <p *ngIf="user.isAdmin">{{ user.roles[1].role }}</p>
-            </div>
-            <div class="dashboard">
-              <img
-                *ngIf="!user.avatar"
-                src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
-                alt="profile picture"
-              />
-              <img
-                *ngIf="user.avatar"
-                src="{{ user.avatar }}"
-                alt="profile picture"
-              />
-            </div>
-          </a>
-          <div class="menu">
-            <a routerLink="/account">Profile</a>
-            <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
-            <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
-            <a *ngIf="user.isAdmin" routerLink="/all-orders">Orders</a>
-            <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
-            <a  class="logout" (click)="logout()">Logout</a>
-          </div>
-        </li>
-        <li>
-          <a *ngIf="!user.isAdmin" class="cart-btn" routerLink="/cart-page">
-            <mat-icon class="custom-icon">shopping_cart</mat-icon>
-            <span class="counter" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-          </a>
-        </li>
-      </ul>
+    <li *ngIf="isAuth" class="menu-container">
+      <a>
+        <div class="role">
+          <p>
+            <span>{{ user.name }}</span>
+          </p>
+          <p *ngIf="user.isAdmin">{{ user.roles[1].role }}</p>
+        </div>
+        <div class="dashboard">
+          <img
+            *ngIf="!user.avatar"
+            src="https://cdn-icons-png.flaticon.com/512/64/64572.png"
+            alt="profile picture"
+          />
+          <img
+            *ngIf="user.avatar"
+            src="{{ user.avatar }}"
+            alt="profile picture"
+          />
+        </div>
+      </a>
+      <div class="menu">
+        <a routerLink="/account">Profile</a>
+        <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
+        <a *ngIf="!user.isAdmin" routerLink="/orders">Orders</a>
+        <a *ngIf="user.isAdmin" routerLink="/all-orders">Orders</a>
+        <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
+        <a class="logout" (click)="logout()">Logout</a>
+      </div>
+    </li>
    
-
+  </ul>
 </header>

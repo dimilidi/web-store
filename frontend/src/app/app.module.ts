@@ -66,6 +66,9 @@ import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
 import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
 import { UsersListComponent } from './components/pages/users-list/users-list.component';
 import { NavigationComponent } from './components/partials/navigation/navigation.component';
+import { ThemeToggleComponent } from './components/partials/theme-toggle/theme-toggle.component';
+import { ProductsListComponent } from './components/pages/products-list/products-list.component';
+import { SidebarToggleComponent } from './components/partials/sidebar-toggle/sidebar-toggle.component';
 
 
 
@@ -111,6 +114,9 @@ import { NavigationComponent } from './components/partials/navigation/navigation
     OrdersListComponent,
     UsersListComponent,
     NavigationComponent,
+    ThemeToggleComponent,
+    ProductsListComponent,
+    SidebarToggleComponent,
 
   ],
   imports: [

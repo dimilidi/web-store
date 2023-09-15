@@ -7,9 +7,9 @@
 input {
     width: 100%;
     border: none;
-    border-bottom: 0 solid grey;
+    border-bottom: 0 solid var(--disabled-color);
     transition: border-bottom 0.15s ease-out;
-    background-color: rgba(255, 255, 255, 0.096);
+    background-color: transparent;
     font-size: 1.1rem;
     outline: none;
     z-index: 1;
@@ -17,7 +17,7 @@ input {
   }
   
   input::placeholder{
-    color: #474747;
+    color: var(--title-color);
     font-size: 0.95rem;
   }
   

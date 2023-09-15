@@ -2,7 +2,7 @@
 table{
     width: 100%;
     min-width: 440px;
-    border: 1px solid #eeeeee;
+    border: 1px solid var(--light-background);
     margin-top: 1rem;
     border-radius: 5px;
     padding: 0.5rem 1rem;
@@ -11,7 +11,7 @@ table{
   h3{
     margin-top: 0.5rem;
     margin-left: 0.3rem;
-    color: grey;
+    color: var(--title-color);
   }
   
   a:hover{
@@ -29,8 +29,14 @@ table{
     border-radius: 100rem;
   }
   
-
-  
-  @media screen and (max-width: 440px) {
+  td a {
+    padding: 1rem;
 
   }
+
+  tr {
+    height: 60px;
+  }
+  
+
+  

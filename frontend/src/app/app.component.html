@@ -1,12 +1,12 @@
 <app-loading></app-loading>
-<app-header></app-header>
+<div [class.dark-theme]="isDarkTheme()" [class.light-theme]="isLightTheme()">
+  <app-header></app-header>
 
-<div class="app-container">
-  <app-navigation></app-navigation>
-  <div class="content">
-    <router-outlet></router-outlet>
+  <div class="app-container">
+    <app-navigation [class.close]="!isSidebarOpen"></app-navigation>
+    <div class="content" [class.closed-sidebar]="!isSidebarOpen">
+      <router-outlet ></router-outlet>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
-
-<app-footer></app-footer>
-

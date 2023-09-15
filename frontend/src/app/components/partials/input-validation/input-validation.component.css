@@ -1,6 +1,6 @@
 .error-list{
     width: 100%;
-    color: rgb(245, 0, 87);
+    color: var(--accent-color);
     text-align: center;
     font-size: 0.95rem;
     margin-bottom: 1rem;

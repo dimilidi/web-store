@@ -20,6 +20,7 @@ import { ForgottenPasswordComponent } from './components/pages/forgotten-passwor
 import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
 import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
 import { UsersListComponent } from './components/pages/users-list/users-list.component';
+import { ProductsListComponent } from './components/pages/products-list/products-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -80,6 +81,11 @@ const routes: Routes = [
     path: 'orders',
     component: OrdersPageComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'products',
+    component: ProductsListComponent,
+    canActivate: [authGuard, adminGuard],
   },
   { path: '**', component: NotFoundComponent },
 ];

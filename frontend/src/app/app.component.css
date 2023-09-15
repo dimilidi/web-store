@@ -1,20 +1,34 @@
 .app-container {
     height: 100%;
+    width: 100%;
     min-height: calc(100vh - 40px) ; 
-    padding-top: 100px;
+    padding-top: 60px;
     padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
 
-  }
-  
-  app-navigation {
+
+app-navigation {
     width: 250px; 
-  }
-  
-  .content {
-    flex-grow: 1; 
-  }
-  
+}
+
+.content {
+    width:  calc(100% - 250px);
+    transition:  0.5s ease;
+}
+
+
+
+.closed-sidebar {
+    left: 73px;
+    width: calc(100% - 73px);
+    transition:  0.5s ease;
+}
+
+.close  {
+    width: 73px;
+}
+

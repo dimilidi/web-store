@@ -2,7 +2,7 @@
     position: fixed;
     min-width: 100vw;
     height: 100%;
-    background-color: #ffffffea;
+    background-color: var(--transparent-light);
     z-index: 10000;
     top: 0;
     left: 0;
@@ -18,13 +18,13 @@
   }
   
   img{
-    border-bottom: 10px solid #3f51b5;
+    border-bottom: 10px solid var(--primary-color);
     width: 200px;
     height: 200px;
   }
   
   h1{
-  color: #3f51b5;
+  color: var(--primary-color);
   text-transform: lowercase;
   }
   

@@ -9,7 +9,7 @@ const app = Router();
 
 app.get("/seed", asyncHandler(seedUsers));
 app.post("/login", asyncHandler(login));
-//app.get("/orders", verifyAdmin, asyncHandler(getAllOrders));
+app.get("/orders", verifyUser, asyncHandler(getAllOrders));
 app.get("/", verifyAdmin, asyncHandler(getAllUsers));
 app.get("/user", verifyUser, asyncHandler(getUserById)); 
 app.post("/register", asyncHandler(register));

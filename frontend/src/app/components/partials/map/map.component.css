@@ -24,13 +24,13 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: #ffffff7c;
+    background-color: var(--transparent-strong);
     cursor: pointer;
     z-index: 0;
   }
   
   .find-location:hover{
-    background-color: white;
+    background-color: var(--toggle-color);
   }
   
   @media screen and (max-width: 700px) {

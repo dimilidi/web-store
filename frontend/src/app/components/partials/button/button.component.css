@@ -14,8 +14,9 @@
     outline: none;
     font-weight: 500;
     border-radius: 0.8rem;
+    box-shadow: 0 2px 4px var(--shadow-color); 
     opacity: 0.8;
-    color: gray;
+    color: var(--title-color);
     overflow: hidden;
     display: flex;
     align-items: center;

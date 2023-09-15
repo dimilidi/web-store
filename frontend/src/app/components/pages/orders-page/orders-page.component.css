@@ -1,12 +1,17 @@
+.wrapper {
+  margin-top: 3rem
+}
+
 app-title {
     text-align: center;
 }
 
 .container{
     margin: 1rem auto;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     display: flex;
     flex-wrap: wrap;
+    font-size: 1.2rem;
   }
   
   .content{
@@ -27,21 +32,26 @@ app-title {
   .summary > div{
     padding: 2rem;
     margin: 0.7rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 4px var(--shadow-color); 
     border-radius: 5px;
-    background-color: white;
-
+    background-color: var(--light-color);
   }
   
   .summary span {
-    font-weight: 400;
     margin-left: 0.4rem;
+    font-size: 1em;
+    font-weight: 600;
   }
   
-  h3{
+  h3 {
     margin-top: 0.6rem;
   }
-  
+
+  h3, h2 {
+    font-size: 0.8em;
+  }
+
+
   
 
   
