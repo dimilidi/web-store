@@ -1,5 +1,38 @@
 <section class="dashboard">
-  <div class="top">
-    
+  <div class="dash-content">
+    <div class="overview">
+      <div class="title">
+        <mat-icon>grid_view</mat-icon>
+        <span class="text">Dashboard</span>
+      </div>
+      <div class="boxes">
+        <div class="box box1">
+          <mat-icon>category</mat-icon>
+          <span class="text">Products</span>
+          <span class="number" *ngIf="products">{{ products.length }}</span>
+        </div>
+
+        <div class="box box2">
+          <mat-icon>euro_symbol</mat-icon>
+          <span class="text">Sales</span>
+          <span class="number" *ngIf="sales">{{ sales.length }}</span>
+        </div>
+
+        <div class="box box3">
+          <mat-icon>groups</mat-icon>
+          <span class="text">Customers</span>
+          <span class="number" *ngIf="customers">{{ customers.length }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="activity">
+      <div class="title">
+        <mat-icon>query_builder</mat-icon>
+        <span class="text">Recent Orders</span>
+      </div>
+      <div class="activity-data">
+        <app-orders-table></app-orders-table>
+      </div>
+    </div>
   </div>
 </section>

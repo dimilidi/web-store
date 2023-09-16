@@ -1,7 +1,6 @@
 .container {
-    padding: 2rem;
+    padding: 1rem;
     height: 100%;
-    max-width: 1200px;
     overflow: hidden;
     text-align: center;
     transition: 0.5s ease;
@@ -16,19 +15,10 @@
     height: 100%;
 }
 
-app-title {
-    padding: 0.5rem;
-}
-
-.add-button {
-    align-self: flex-end;
-    margin: 1rem 2rem ;
-}
 
 .table-container {
-    margin-top: 2rem;
     overflow-y: auto;
-    align-self: center;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
 }
@@ -37,10 +27,6 @@ table {
     width: 100%;
 }
 
-.form-field-container {
-    max-width: 1170px;
-    margin: 0 auto;
-}
   
 .mat-mdc-form-field {
     font-size: 14px;
@@ -80,17 +66,14 @@ mat-paginator {
     .container {
         width: 100%;
         padding: 0;
-        margin: 0;
-    }
-
-    .table-container {
-        margin-top: 0;
     }
 
     table {
         margin-bottom: 0rem;
     }
 }
+
+
 
 
 

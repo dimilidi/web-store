@@ -191,6 +191,16 @@ header {
 }
   
 
+  @media screen and (max-width: 700px) {
+    header {
+      width: calc(100% - 73px);
+    }
+
+    .closed-sidebar{
+      width: calc(100% - 250px);
+    }
+  }
+
   @media screen and (max-width: 900px) {
   
     .container {
@@ -209,3 +219,5 @@ header {
       display: none;
     }
   }
+
+ 

@@ -69,6 +69,7 @@ import { NavigationComponent } from './components/partials/navigation/navigation
 import { ThemeToggleComponent } from './components/partials/theme-toggle/theme-toggle.component';
 import { ProductsListComponent } from './components/pages/products-list/products-list.component';
 import { SidebarToggleComponent } from './components/partials/sidebar-toggle/sidebar-toggle.component';
+import { OrdersTableComponent } from './components/partials/orders-table/orders-table.component';
 
 
 
@@ -117,6 +118,7 @@ import { SidebarToggleComponent } from './components/partials/sidebar-toggle/sid
     ThemeToggleComponent,
     ProductsListComponent,
     SidebarToggleComponent,
+    OrdersTableComponent,
 
   ],
   imports: [

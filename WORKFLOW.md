@@ -198,5 +198,7 @@
 - email custom validator
 - Admin Dashboard
 
+** dark mode in LocalStorage **
+
 
 

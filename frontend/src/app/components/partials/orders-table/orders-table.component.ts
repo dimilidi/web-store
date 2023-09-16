@@ -3,21 +3,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/shared/models/Order';
 import { User } from 'src/app/shared/models/User';
-import { Product } from 'src/app/shared/models/Product';
 
 @Component({
-  selector: 'app-orders-list',
-  templateUrl: './orders-list.component.html',
-  styleUrls: ['./orders-list.component.css'],
+  selector: 'app-orders-table',
+  templateUrl: './orders-table.component.html',
+  styleUrls: ['./orders-table.component.css']
 })
-export class OrdersListComponent implements OnInit {
+export class OrdersTableComponent implements OnInit{
   orders!: Order[];
-  products!: Product[];
   users!: User[];
   isSearchBarVisible: boolean = false;
   showProductId: number | null = null;
@@ -98,4 +96,5 @@ export class OrdersListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
 }
