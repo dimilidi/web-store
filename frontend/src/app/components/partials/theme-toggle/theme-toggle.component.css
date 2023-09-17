@@ -29,10 +29,10 @@
     transition: all 0.3s ease-in-out;
 }
 
-.left.switch:before {
+.light.switch:before {
     left: 5px;
   }
   
-  .right.switch:before {
+  .dark.switch:before {
     left: 20px;
   }

@@ -17,12 +17,11 @@ export class AppComponent {
   constructor(private themeService: ThemeService, private sidebarService: SidebarService) {}
 
   ngOnInit() {
-    const currentTheme = this.themeService.getCurrentTheme();
-    if (currentTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.add('light-theme');
-    };
+    const currentTheme = this.themeService.getCurrentTheme() || 'light';
+   this.themeService.getCurrentTheme() || 'light';
+    console.log();
+    
+    
 
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
