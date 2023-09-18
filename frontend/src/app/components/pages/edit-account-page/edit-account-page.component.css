@@ -152,10 +152,18 @@ app-button {
 
  
 @media screen and (max-width: 700px) {
-    .form {
-      width: 90%;
-      max-width: 27rem;
+
+    .wrapper {
+        padding: 0;
+        overflow:visible
     }
+
+    section .form {
+        width: 100%;
+        min-width: 500px;
+        padding: 0;
+      }
+
 
     .text-input {
         width: 100%;
@@ -171,5 +179,4 @@ app-button {
         width: 100%;
       }
   }
-  
-  
+

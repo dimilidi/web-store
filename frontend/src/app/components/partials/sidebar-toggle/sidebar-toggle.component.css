@@ -1,4 +1,9 @@
 
+.menu-icon {
+    padding: 1rem;
+}
+
 .menu-icon:hover {
-    color: white;
+    cursor: pointer;
+    color: var(--toggle-color);
 }

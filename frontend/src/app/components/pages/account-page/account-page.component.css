@@ -86,6 +86,7 @@ label {
 
 app-button {
   width: 100%;
+  max-width: 18rem;
 }
 
 
@@ -145,14 +146,23 @@ app-button {
 
 
 @media screen and (max-width: 700px) {
+  .wrapper {
+    padding: 0;
+  }
+ 
   .form {
-    width: 90%;
-    max-width: 27rem;
+    width: 100%;
+    padding: 0;
   }
 
   .p-wrapper{
     width: 100%;
     max-width: 18rem;
+  }
+
+  .scroller-container {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

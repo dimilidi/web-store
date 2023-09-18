@@ -70,6 +70,7 @@ import { ThemeToggleComponent } from './components/partials/theme-toggle/theme-t
 import { ProductsListComponent } from './components/pages/products-list/products-list.component';
 import { SidebarToggleComponent } from './components/partials/sidebar-toggle/sidebar-toggle.component';
 import { OrdersTableComponent } from './components/partials/orders-table/orders-table.component';
+import { LogoComponent } from './components/partials/logo/logo.component';
 
 
 
@@ -119,6 +120,7 @@ import { OrdersTableComponent } from './components/partials/orders-table/orders-
     ProductsListComponent,
     SidebarToggleComponent,
     OrdersTableComponent,
+    LogoComponent,
 
   ],
   imports: [

@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  HostListener,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
@@ -24,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   toggledProduct!: string;
   CardSize = CardSize;
   isSearchBarVisible: boolean = false;
+  isSmallScreen: boolean = false;
 
   private productsSubscription: Subscription;
   private isSearchBarVisibleSubscription: Subscription;
@@ -34,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private dataService: DataService,
     private route: Router,
-    private userStateService: UserStateService,
+    private userStateService: UserStateService
   ) {
     this.productsSubscription = new Subscription();
     this.isSearchBarVisibleSubscription = new Subscription();
@@ -42,6 +49,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.userStateService.userObservable.subscribe((newUser) => {
       this.user = newUser;
     });
+
+    this.checkScreenSize();
   }
 
   ngOnInit(): void {
@@ -91,8 +100,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.productService
         .getFavoriteProducts(this.user.id)
         .subscribe((favoriteProducts) => {
-          console.log('PRODUCTS',favoriteProducts);
-          
+          console.log('PRODUCTS', favoriteProducts);
+
           favoriteProducts.forEach((product) => {
             this.favoriteProductsSet.add(product.product.id);
           });
@@ -126,5 +135,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   handleFavoriteToggled(product: Product) {
     this.toggleFavourite(product);
     this.getFavouriteProducts();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.isSmallScreen = window.innerWidth < 700; 
   }
 }

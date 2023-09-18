@@ -19,7 +19,5 @@ export class FooterComponent implements OnInit{
     this.isSidebarOpen = isOpen;
   });
   }
-
- 
   
 }

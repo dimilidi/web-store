@@ -1,11 +1,20 @@
 <app-loading></app-loading>
-<div class="wrapper" [class.light-theme]="isLightTheme()" [class.dark-theme]="isDarkTheme()" >
+<div
+  class="wrapper"
+  [class.light-theme]="isLightTheme()"
+  [class.dark-theme]="isDarkTheme()"
+>
   <app-header></app-header>
 
   <div class="app-container">
     <app-navigation [class.close]="!isSidebarOpen"></app-navigation>
-    <div class="content" [class.closed-sidebar]="!isSidebarOpen">
-      <router-outlet ></router-outlet>
+    <div
+      class="content"
+      [class.closed-sidebar]="!isSidebarOpen"
+      [class.overlay]="!isSidebarOpen"
+      (click)="closeSidebar()"
+    >
+      <router-outlet></router-outlet>
     </div>
   </div>
   <app-footer></app-footer>

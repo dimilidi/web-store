@@ -4,13 +4,12 @@ import { SidebarService } from 'src/app/services/sidebar.service';
 @Component({
   selector: 'app-sidebar-toggle',
   templateUrl: './sidebar-toggle.component.html',
-  styleUrls: ['./sidebar-toggle.component.css']
+  styleUrls: ['./sidebar-toggle.component.css'],
 })
 export class SidebarToggleComponent {
-  constructor(private sidebarService: SidebarService ){}
+  constructor(private sidebarService: SidebarService) {}
 
-  toggleSidebar():void {
+  toggleSidebar(): void {
     return this.sidebarService.toggleSidebar();
   }
-
 }

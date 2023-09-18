@@ -10,14 +10,14 @@
     [visible]="!products || !products.length"
     resetLinkText="Reset Search"
   />
-
+  
   <ul class="products-container">
     <li *ngFor="let product of products">
       <app-card
         [product]="product"
         [favoriteProductsSet]="favoriteProductsSet"
         (favoriteToggled)="handleFavoriteToggled(product)"
-        [size]="CardSize.Medium"
+        [size]="isSmallScreen ? CardSize.Small : CardSize.Medium"
       ></app-card>
     </li>
   </ul>

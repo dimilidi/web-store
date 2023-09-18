@@ -15,7 +15,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 5;
+    z-index: 9;
     transition: 0.5s ease;
   }
 
@@ -27,13 +27,13 @@ header {
     height: 60px;
   }
 
-  a, button{ 
+  a, button { 
     height: 100%;
     padding: 1rem;
     color:  var(--primary-color);
   }
   
-  a:hover, button:hover{
+  a:hover, button:hover {
     background:var(--primary-color);
     color: var(--toggle-color);
     cursor: pointer;
@@ -48,14 +48,19 @@ header {
   mat-icon {
     height: 21px;
   }
+
+  .hamburger-menu {
+    padding: 1rem;
+  }
+  
+
+  .hamburger-menu:hover {
+    background-color: var(--primary-color);
+  }
   
   
-  a.logo {
-    font-weight: bold;
-    height: 100%;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
+  app-logo {
+    display:  none;
   }
 
   
@@ -111,39 +116,6 @@ header {
   }
 
 
-  .custom-icon {
-   padding: 0;
-   
-  }
- 
-  .cart-btn {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: var(--primary-color);
-    position: relative; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  
-  .counter {
-    height: 22px;
-    width: 22px;
-    background: var(--accent-color);
-    color: var(--toggle-color);
-    border-radius: 100rem;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 11px;
-    position: absolute;
-    top: 9px;
-    right: 12px;
-  }
   
   .menu-container{
     width: 100%;
@@ -191,33 +163,59 @@ header {
 }
   
 
-  @media screen and (max-width: 700px) {
-    header {
-      width: calc(100% - 73px);
-    }
 
-    .closed-sidebar{
-      width: calc(100% - 250px);
-    }
-  }
-
-  @media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
   
-    .container {
-      width: 100%;
-    }
-
-    a, button, .logo {
-      padding-inline: 1.2rem;
-    }
-
-    .logo {
-      padding-inline: 1rem;
+  .container {
+    width: 100%;
+  }
+  
+  a, button, .logo {
+    padding-inline: 1.2rem;
+  }
+  
+  .logo {
+    padding-inline: 1rem;
     }
 
     .role {
       display: none;
     }
+
+    app-sidebar-toggle {
+      float: right;
+    }
+  }
+  
+  
+  @media screen and (max-width: 700px) {
+    header {
+      width: calc(100% - 73px);
+    }
+  
+    .closed-sidebar{
+      width: calc(100% - 250px);
+    }
   }
 
- 
+
+  @media screen and (max-width: 400px) {
+    header {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .closed-sidebar{
+      width: calc(100% - 250px);
+    }
+
+    .hide {
+      display: none;
+    }
+
+  
+    .hamburger-menu, a.logo {
+      width: 100%;
+    
+    }
+  }

@@ -1,10 +1,5 @@
-<nav [ngClass]="{ close: !isSidebarOpen, open: isSidebarOpen }">
-  <a class="logo" routerLink="/">
-    <div class="logo-image">
-      <span>WS</span>
-    </div>
-    <div class="logo-name">Web Store</div>
-  </a>
+<nav  [ngClass]="{ close: !isSidebarOpen, open: isSidebarOpen }">
+    <app-logo />
 
   <div class="menu-items">
     <ul class="nav-links" *ngIf="isAuth">
@@ -14,6 +9,15 @@
           <span class="link-name">Store</span>
         </a>
       </li>
+
+      <li>
+        <a *ngIf="!user.isAdmin" class="cart-btn" routerLink="/cart-page">
+          <span><mat-icon class="custom-icon icon">shopping_cart</mat-icon></span>
+          <span class="counter icon" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+          <span class="link-name">Cart</span>
+        </a>
+      </li>
+
       <li *ngIf="user.isAdmin">
         <a routerLink="/dashboard">
           <span><mat-icon class="icon">home_filled</mat-icon></span>
@@ -51,7 +55,7 @@
           <span>
             <mat-icon class="icon">shop</mat-icon>
           </span>
-          <span class="link-name">My Orders</span>
+          <span class="link-name">Orders</span>
         </a>
       </li>
 

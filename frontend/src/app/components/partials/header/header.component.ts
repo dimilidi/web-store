@@ -14,7 +14,6 @@ import { User } from 'src/app/shared/models/User';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  cartQuantity = 0;
   user!: User;
   capitalizedName = '';
   isSidebarOpen!: boolean;
@@ -30,13 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private sidebarService: SidebarService
   ) {
-    this.cartService.getCartObservable().subscribe((newCart) => {
-      if (newCart) {
-        this.cartQuantity = newCart.totalCount;
-      } else {
-        this.cartQuantity = 0;
-      }
-    });
+    
   }
 
   ngOnInit(): void {

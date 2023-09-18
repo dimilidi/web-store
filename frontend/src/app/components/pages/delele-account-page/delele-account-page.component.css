@@ -60,8 +60,12 @@ mat-icon {
 
 
 @media screen and (max-width: 700px) {
+    .wrapper {
+        padding: 0;
+    }
+
     section {
-      width: 90%;
+      width: 100%;
       max-width: 27rem;
     }
 

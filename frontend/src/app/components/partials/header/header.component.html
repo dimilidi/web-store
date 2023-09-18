@@ -1,24 +1,21 @@
 <header [class.closed-sidebar]="!isSidebarOpen">
-  <a ><app-sidebar-toggle /></a>
+  <span class="hamburger-menu"><app-sidebar-toggle /></span>
   <ul>
+    <!-- 
     <li>
       <button class="search-icon" (click)="toggleSearchBar()">
         <mat-icon>search</mat-icon>
       </button>
     </li>
+    
     <li *ngIf="!isAuth">
       <a class="login-link" routerLink="/login">Login</a>
     </li>
+    -->
 
-    <li>
-      <a *ngIf="!user.isAdmin" class="cart-btn" routerLink="/cart-page">
-        <mat-icon class="custom-icon">shopping_cart</mat-icon>
-        <span class="counter" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-      </a>
-    </li>
 
-    <li *ngIf="isAuth" class="menu-container">
-      <a>
+    <li *ngIf="isAuth" class="menu-container hide">
+      <a routerLink="/account">
         <div class="role">
           <p>
             <span>{{ user.name }}</span>
@@ -38,6 +35,7 @@
           />
         </div>
       </a>
+      <!-- 
       <div class="menu">
         <a routerLink="/account">Profile</a>
         <a *ngIf="user.isAdmin" routerLink="/dashboard">Dashboard</a>
@@ -46,7 +44,7 @@
         <a *ngIf="user.isAdmin" routerLink="/users">Users</a>
         <a class="logout" (click)="logout()">Logout</a>
       </div>
+      -->
     </li>
-   
   </ul>
 </header>

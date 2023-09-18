@@ -19,15 +19,11 @@ export class AppComponent {
   ngOnInit() {
     const currentTheme = this.themeService.getCurrentTheme() || 'light';
    this.themeService.getCurrentTheme() || 'light';
-    console.log();
-    
-    
 
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
   }
-
 
   
   isDarkTheme(): boolean {
@@ -40,6 +36,12 @@ export class AppComponent {
 
   getThemeClass(): string {
     return this.isDarkTheme() ? 'dark-theme' : 'light-theme';
+  }
+
+  closeSidebar(): void {
+    console.log(this.isSidebarOpen);
+ 
+      this.sidebarService.toggleSidebar();
   }
 
 }

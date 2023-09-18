@@ -1,3 +1,4 @@
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -40,6 +41,7 @@ app-navigation {
 
 
 
+
 @media screen and (max-width: 700px) {
     .content {
         left: 73px;
@@ -60,7 +62,49 @@ app-navigation {
     .close  {
         width: 250px;
     }
-  
+
     
+    .overlay {
+        width: 100%;
+        height: 100%;
+        background-color: var(--transparent-light); 
+        opacity: 0.5; 
+        transition: opacity 0.3s ease;
+        z-index: 8; 
+     
+    }
+  
+
+}
+@media screen and (max-width: 400px) {
+    .content {
+        left: 0px;
+        width: 100%;
+        transition:  0.5s ease;
+    }
+    
+    app-navigation  {
+        width: 0px;
+    }
+
+    .closed-sidebar {
+        left: 250px;
+        width: calc(100% - 250px);
+        transition:  0.5s ease;
+    }
+
+    .close  {
+        width: 250px;
+    }
+    
+    .overlay {
+        width: 100%;
+        height: 100%;
+        background-color: var(--transparent-light); 
+        opacity: 0.5; 
+        transition: opacity 0.3s ease;
+        z-index: 8; 
+    }
+  
 }
 

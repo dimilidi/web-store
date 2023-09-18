@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
 import { DataService } from 'src/app/services/data.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -15,26 +16,35 @@ import { User } from 'src/app/shared/models/User';
 })
 export class NavigationComponent implements OnInit {
   user!: User;
+  cartQuantity = 0;
   private userSubscription!: Subscription;
-  isSidebarOpen: boolean = false; 
+  isSidebarOpen!: boolean; 
   private sidebarSubscription!: Subscription;
 
   constructor(
     private dataService: DataService,
     private userStateService: UserStateService,
     private authService: AuthService,
-    private sidebarService: SidebarService
-  ) {}
+    private sidebarService: SidebarService,
+    private cartService: CartService,
+  ) {this.cartService.getCartObservable().subscribe((newCart) => {
+    if (newCart) {
+      this.cartQuantity = newCart.totalCount;
+    } else {
+      this.cartQuantity = 0;
+    }
+  });}
 
   ngOnInit(): void {
     this.userStateService.userObservable.subscribe((user) => {
       this.user = user;
     });
 
+    
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
-
+    
   }
 
   ngOnDestroy(): void {

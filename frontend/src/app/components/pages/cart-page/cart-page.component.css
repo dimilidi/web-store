@@ -1,8 +1,7 @@
 .wrapper { 
   height: 100%;
-  min-height: calc(100vh - 60px) ; 
   width: 80%;
-  margin: 0 auto;
+  margin: 3rem auto;
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
@@ -29,7 +28,6 @@ app-title {
 .card {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: flex-start;
   width: 100%;
   margin: 0.5rem auto;
@@ -46,6 +44,7 @@ a:hover {
 }
 
 ul{
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex:3 0;
@@ -56,17 +55,18 @@ ul{
   margin: 0.5rem;
   padding: 0;
   max-width: 800px;
-  background-color: var(--toggle-color);
-  
+  background-color: var(--transparent-strong);
 }
   
 ul li{
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   border-bottom: 1px solid var(--light-color);
   padding: 1rem;
+  gap: 1rem;
 }
 
 ul li:last-child{
@@ -103,6 +103,7 @@ li select{
   border-bottom: 1px solid var(--light-color);
   font-size: 1.1rem;
   font-weight: 100;
+  
 }
 
 li .remove-button{
@@ -120,6 +121,10 @@ li .remove-button:hover{
   cursor: pointer;
 }
 
+.item-price {
+  color: var(--disabled-color);
+}
+
 .checkout{
   display: flex;
   flex-direction: column;
@@ -132,7 +137,8 @@ li .remove-button:hover{
   width: 30rem;
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color: var(--toggle-color);
+  background-color: var(--transparent-strong);
+  color: var(--title-color);
 
 }
 
@@ -203,8 +209,13 @@ li .remove-button:hover{
   .wrapper {
     width: 100%;
   }
+
+  .container {
+    padding: 0;
+  }
+
   ul li {
     flex-direction: column;
-    gap: 5px;
+    gap: 1rem;
   }
 }

@@ -24,13 +24,21 @@ p {
 
 @media screen and (max-width: 700px) {
     footer {
-      width: calc(100% - 73px);
-      margin-left: 73px;
+        width: calc(100% - 73px);
+        margin-left: 73px;
     }
-
+    
     .closed-sidebar{
-        width: calc(100% - 250px);
-      }
+        width: calc(100% - 73px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    footer {
+        width: 100%;
+        margin-left: 0px;
+    }
+    
 }
 
 
