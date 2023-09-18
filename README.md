@@ -114,7 +114,8 @@ Admin Dashboard allows special users to:
 - [ ] Add new feature for reviewing a product
 - [ ] Implement cancel order functionality
 - [ ] Improve mobile version layout
-- []  Expand Admin Dashboard with new functionalities
+- [ ]  Expand Admin Dashboard with new functionalities
+- [ ] Code optimisation according to best practices
 
 ## 7. Setup
 
