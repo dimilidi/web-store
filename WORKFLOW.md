@@ -198,7 +198,7 @@
 - email custom validator
 - Admin Dashboard
 
-** sidebar ststus <open / close> in LocalStorage **
+
 
 
 

@@ -16,7 +16,7 @@
   align-items: center;
   flex-wrap: wrap;
   border-radius: 0.5rem;
-  background-color: var(--toggle-color);
+  background-color: #fff;
   box-shadow: 0 2px 4px var(--shadow-color); 
 }
 
@@ -74,7 +74,7 @@ img{
 }
 
 .favorite{
-  color: var(--primary-color);
+  color: #3f51b5;
   font-size: 2.5rem;
 }
 
@@ -132,7 +132,7 @@ img{
 .price{
   font-size: 1.8rem;
   margin: 2rem 2rem 2rem 0;
-  color: var(--text-color);
+  color: var(--disabled-color);
 }
 
 .price::before{
@@ -141,11 +141,14 @@ img{
 }
 
 button{
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--toggle-color);
   background: var(--primary-color);
   border: none;
   font-size: 1.2rem;
-  padding: 1rem;
   border-radius: 10rem;
   outline: none;
 }
@@ -153,4 +156,10 @@ button{
 button:hover{
   opacity: 0.9;
   cursor: pointer;
+}
+
+button > span {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
 }

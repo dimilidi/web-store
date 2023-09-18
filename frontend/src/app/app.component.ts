@@ -39,9 +39,11 @@ export class AppComponent {
   }
 
   closeSidebar(): void {
-    console.log(this.isSidebarOpen);
- 
+    if(!this.isSidebarOpen){
       this.sidebarService.toggleSidebar();
+
+    }
+ 
   }
 
 }

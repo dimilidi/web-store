@@ -28,7 +28,7 @@
 Project is: _in progress_ 
 The project is currently in progress and actively being developed. I am continuously adding new features and fixing any bugs to ensure a seamless user experience.
 
-This project is the final project of a one-month MEAN Stack course by SoftUni. It is going to be officially presented on 13.08.2023. 
+This project is the final project of a one-month MEAN Stack course by SoftUni. It has been officially presented in August 2023. 
 <br/>
 
 ## 2. Features
@@ -37,9 +37,12 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 
 **For Not Logged In Users:**
 
-- View products without the need to log in
+- Browse products without the need to log in
 - Filter and search products
+- View Product Details
 - Opportunity to Sign Up
+- Use the application in desktop and mobile version
+- Switch into Dark Mode 
 
 
 **For Logged In Users:**
@@ -52,6 +55,15 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 - Mark their location on the map by order checkout
 - Monitor made orders and their status
 - Manage a user profile, including the ability to provide contact information (phone), add a profile photo and delete profile account
+- Ability to reset passwords
+
+**For Admins:**
+
+Admin Dashboard allows special users to:
+- Create, View, Edit and Delete Products
+- Have overview of all users 
+- Track all orders made on Web Store
+- Filter, Sort, Paginate data in the Products, Orders and Users Tables
  <br />
 
 
@@ -101,10 +113,8 @@ This project is the final project of a one-month MEAN Stack course by SoftUni. I
 - [ ] Confirmation process during sign-up, which can be enhanced by implementing a confirmation link.
 - [ ] Add new feature for reviewing a product
 - [ ] Implement cancel order functionality
-- [ ] Improve mobile version layout.
-- [ ] Ability to reset passwords
-- [ ] Add Admin Dashboard and implement more CRUD operations on Products and Users
-
+- [ ] Improve mobile version layout
+- []  Expand Admin Dashboard with new functionalities
 
 ## 7. Setup
 
