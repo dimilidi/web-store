@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -20,6 +20,7 @@ export class NavigationComponent implements OnInit {
   private userSubscription!: Subscription;
   isSidebarOpen!: boolean; 
   private sidebarSubscription!: Subscription;
+  isSmallScreen = false;
 
   constructor(
     private dataService: DataService,
@@ -44,12 +45,26 @@ export class NavigationComponent implements OnInit {
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
+
+    this.checkScreenSize();
     
   }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
+
+
+  checkScreenSize() {
+    this.isSmallScreen = window.innerWidth <= 700; // Adjust the threshold as needed
+  }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isSmallScreen = window.innerWidth <= 400; 
+  }
+
 
   logout() {
     this.authService.logout().subscribe();
@@ -63,5 +78,8 @@ export class NavigationComponent implements OnInit {
     this.dataService.toggleSearchBar();
   }
 
- 
+  closeMenu() {
+    this.sidebarService.toggleSidebar();
+  }
+
 }

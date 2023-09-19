@@ -50,15 +50,8 @@ header {
   }
 
   .hamburger-menu {
-    padding: 1rem;
+    line-height: 50%;
   }
-  
-
-  .hamburger-menu:hover {
-    background-color: var(--primary-color);
-    color: var(--toggle-color);
-  }
-  
   
   app-logo {
     display:  none;
@@ -70,6 +63,7 @@ header {
     display: flex;
     align-items: center;
     list-style-type: none; 
+    overflow: hidden;
   }
 
   li {
@@ -217,6 +211,6 @@ header {
   
     .hamburger-menu, a.logo {
       width: 100%;
-    
     }
+
   }
