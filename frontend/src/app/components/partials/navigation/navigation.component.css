@@ -25,7 +25,6 @@ nav.close li a .link-name{
 }
 
 
-
 ul {
     padding: 0rem;
     width: 100%;
@@ -36,6 +35,7 @@ li {
     color:var(--primary-color);
     list-style: none;
 }
+
 
 li:hover {
     background:var(--primary-color);
@@ -51,6 +51,7 @@ a {
     gap: 1rem;
     font-size: 1.2rem;  
     color: var(--primary-color);
+    
 }
 
 a:hover {
@@ -177,6 +178,12 @@ mat-icon {
         opacity: 1;
         pointer-events: auto;
     }
+
+    nav.open a {
+    margin-left: -250px;
+} 
+       
+    
 
 }
 

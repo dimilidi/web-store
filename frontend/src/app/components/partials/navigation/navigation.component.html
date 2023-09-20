@@ -32,14 +32,6 @@
         </a>
       </li>
 
-      <li (click)="isSmallScreen && closeMenu()">
-        <a (click)="toggleSearchBar()">
-          <span>
-            <mat-icon class="icon">search</mat-icon>
-          </span>
-          <span class="link-name">Search</span>
-        </a>
-      </li>
 
       <li (click)="isSmallScreen && closeMenu()">
         <a routerLink="/account">
@@ -79,6 +71,15 @@
     </ul>
 
     <ul class="logout-mode">
+      <li (click)="isSmallScreen && closeMenu()">
+        <a (click)="toggleSearchBar()">
+          <span>
+            <mat-icon class="icon">search</mat-icon>
+          </span>
+          <span class="link-name">Search</span>
+        </a>
+      </li>
+      
       <li *ngIf="isAuth">
         <a class="login-link" (click)="logout()">
           <span><mat-icon class="icon">logout</mat-icon></span>
