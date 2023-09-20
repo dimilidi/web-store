@@ -100,12 +100,12 @@ Admin Dashboard allows special users to:
 ## 4. Screenshots
 
 <img src='./frontend/src/assets/screen_1.jpg'  height='250' />
-<img src='./frontend/src/assets/screen_2.jpg' width='430' height='250' />
-<img src='./frontend/src/assets/screen_3.jpg' width='430' height='250' />
-<img src='./frontend/src/assets/screen_4.jpg' width='430' height='250' />
-<img src='./frontend/src/assets/screen_5.jpg' width='430' height='250' />
-<img src='./frontend/src/assets/screen_6.jpg' width='430' height='250' />
-<img src='./frontend/src/assets/screen_7.jpg' width='430' height='250' />
+<img src='./frontend/src/assets/screen_2.jpg'  height='250' />
+<img src='./frontend/src/assets/screen_3.jpg'  height='250' />
+<img src='./frontend/src/assets/screen_4.jpg'  height='250' />
+<img src='./frontend/src/assets/screen_5.jpg'  height='250' />
+<img src='./frontend/src/assets/screen_6.jpg'  height='250' />
+<img src='./frontend/src/assets/screen_7.jpg'  height='250' />
 
 
 ## 6. Room for Improvement

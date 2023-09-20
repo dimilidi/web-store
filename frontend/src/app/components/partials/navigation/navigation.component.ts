@@ -62,7 +62,7 @@ export class NavigationComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isSmallScreen = window.innerWidth <= 400; 
+    this.isSmallScreen = window.innerWidth <= 700; 
   }
 
 
@@ -79,7 +79,9 @@ export class NavigationComponent implements OnInit {
   }
 
   closeMenu() {
-    this.sidebarService.toggleSidebar();
+    if(!this.isSidebarOpen){
+      this.sidebarService.toggleSidebar();
+    }
   }
 
 }
