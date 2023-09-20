@@ -54,7 +54,6 @@ a:hover .logo-name {
 
 
 @media screen and (max-width: 700px) {
-
     .logo-name{
         opacity: 0;
         pointer-events: none;
@@ -72,4 +71,13 @@ a:hover .logo-name {
         opacity: 1;
         pointer-events: auto;
     }
+
+    a:hover .logo-name {
+        color: var(--text-color);
+    }
+
+    a:hover {
+        background-color: transparent;
+    }
+           
 }
