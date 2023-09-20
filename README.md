@@ -106,7 +106,7 @@ Admin Dashboard allows special users to:
 <img src='./frontend/src/assets/screen_5.jpg'  height='250' />
 <img src='./frontend/src/assets/screen_6.jpg'  height='250' />
 <img src='./frontend/src/assets/screen_7.jpg'  height='250' />
-<div style="width: 700px; display: flex; justify-content: space-between;">
+<div style="width: 1700px; display: flex; justify-content: space-between;">
   <img src='./frontend/src/assets/screen_8.jpg'  height='250' />
   <img src='./frontend/src/assets/screen_9.jpg'  height='250' />
   <img src='./frontend/src/assets/screen_10.jpg' height='250' />
