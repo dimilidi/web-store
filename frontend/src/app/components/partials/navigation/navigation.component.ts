@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -21,6 +22,7 @@ export class NavigationComponent implements OnInit {
   isSidebarOpen!: boolean; 
   private sidebarSubscription!: Subscription;
   isSmallScreen = false;
+  displaySearchIcon = false;
 
   constructor(
     private dataService: DataService,
@@ -28,25 +30,38 @@ export class NavigationComponent implements OnInit {
     private authService: AuthService,
     private sidebarService: SidebarService,
     private cartService: CartService,
-  ) {this.cartService.getCartObservable().subscribe((newCart) => {
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    this.cartService.getCartObservable().subscribe((newCart) => {
     if (newCart) {
       this.cartQuantity = newCart.totalCount;
     } else {
       this.cartQuantity = 0;
     }
-  });}
+  });
+
+
+  this.router.events.subscribe((event) => {
+    if (event instanceof NavigationEnd) {
+      this.checkRoute(this.activatedRoute);
+    }
+  });
+
+ }
 
   ngOnInit(): void {
     this.userStateService.userObservable.subscribe((user) => {
       this.user = user;
     });
 
-    
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
 
     this.checkScreenSize();
+
+    this.checkRoute(this.activatedRoute);
     
   }
 
@@ -55,8 +70,21 @@ export class NavigationComponent implements OnInit {
   }
 
 
+  checkRoute(activatedRoute: ActivatedRoute) {
+    const currentRoutePath = this.router.url;
+    console.log(currentRoutePath);
+    
+
+    this.displaySearchIcon = currentRoutePath =='/' 
+                            || currentRoutePath.includes('/dashboard')
+                            || currentRoutePath.includes('/products')
+                            || currentRoutePath.includes('/all-orders')
+                            || currentRoutePath.includes('/users');
+  }
+
+
   checkScreenSize() {
-    this.isSmallScreen = window.innerWidth <= 700; // Adjust the threshold as needed
+    this.isSmallScreen = window.innerWidth <= 700; 
   }
 
 

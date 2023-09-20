@@ -71,7 +71,7 @@
     </ul>
 
     <ul class="logout-mode">
-      <li (click)="isSmallScreen && closeMenu()">
+      <li *ngIf="displaySearchIcon"  (click)="isSmallScreen && closeMenu()">
         <a (click)="toggleSearchBar()">
           <span>
             <mat-icon class="icon">search</mat-icon>
