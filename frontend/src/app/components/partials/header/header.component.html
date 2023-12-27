@@ -20,7 +20,7 @@
           <p>
             <span>{{ user.name }}</span>
           </p>
-          <p *ngIf="user.isAdmin">{{ user.roles[1].role }}</p>
+          <p *ngIf="user?.isAdmin">Admin</p>
         </div>
         <div class="dashboard">
           <img

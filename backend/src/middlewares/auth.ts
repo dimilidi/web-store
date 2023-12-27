@@ -18,18 +18,20 @@ export async function verifyToken(req: any, res: any, next: any) {
   next();
 }
 
+
 export function verifyUser(req: any, res: any, next: any) {
-    verifyToken(req, res, (token: any) => {
-     const user = req.user;
-      
-    if (req.user || req.user.isAdmin) {
+  verifyToken(req, res, (token: any) => {
+    const user = req.user;
+
+    if (user || user.isAdmin) {
       req.user = user;
       next();
     } else {
-      return next(createError(403, "You are not authorised."));
+      return next(createError(403, "You are not authorized."));
     }
   });
 }
+
 
 
 export function verifyAdmin(req: any, res: any, next: any) {

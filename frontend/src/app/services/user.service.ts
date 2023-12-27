@@ -50,7 +50,7 @@ export class UserService {
           this.localStorageService.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
           this.userStateService.updateUser(res.data);
-          //this.userObservable = res.data;//!!!!!!!!!!!!!
+          // this.userObservable = res.data;//!!!!!!!!!!!!!
           console.log('userService', res.data);
         },
         error: (error) => {
