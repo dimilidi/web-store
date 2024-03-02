@@ -51,7 +51,7 @@ export class UserService {
           // notify all observables that new user is created
           this.userStateService.updateUser(res.data);
           // this.userObservable = res.data;//!!!!!!!!!!!!!
-          console.log('userService', res.data);
+          console.log('userService', res.data.name);
         },
         error: (error) => {
           this.toastrService.error(error.error, 'Getting user data failed');
