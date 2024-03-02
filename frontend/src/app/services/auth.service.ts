@@ -57,6 +57,7 @@ export class AuthService {
           );
         },
         error: (errorResponse) => {
+          console.error('Registration error:', errorResponse);
           this.toastrService.error(errorResponse.error, 'Register Failed');
         },
       })
