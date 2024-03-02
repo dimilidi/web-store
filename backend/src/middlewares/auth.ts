@@ -1,6 +1,7 @@
 import { verify } from "jsonwebtoken";
 import { createError } from "./error";
 import User, { TokenPayload } from "../models/User";
+import { log } from "console";
 
 export async function verifyToken(req: any, res: any, next: any) {
   const token = req.headers.access_token as string;
@@ -9,15 +10,16 @@ export async function verifyToken(req: any, res: any, next: any) {
   try {
     const user = verify(token, process.env.TOKEN_KEY!);
     console.log(user);
-    
+
     req.user = user;
   } catch (error) {
+    console.log("-------------------- BOOM ---------------");
+
     return next(createError(403, "Token is not valid."));
   }
 
   next();
 }
-
 
 export function verifyUser(req: any, res: any, next: any) {
   verifyToken(req, res, (token: any) => {
@@ -31,8 +33,6 @@ export function verifyUser(req: any, res: any, next: any) {
     }
   });
 }
-
-
 
 export function verifyAdmin(req: any, res: any, next: any) {
   verifyToken(req, res, () => {

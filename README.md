@@ -3,7 +3,7 @@
  <br/>
 
 
-**Web Store** is a modern, user-friendly web store that provides a variety of products from different categories. The website is built with the latest technologies, including MEAN Stack and is designed to be accessible to all. 
+**Web Store** is a  user-friendly web store that provides a variety of products from different categories. The website is built with the latest technologies, including MEAN Stack and is designed to be accessible to all. 
  <br/>
  <br/>
  This project is a result of my efforts during a 1-month Angular Course. This course has been a valuable learning experience that has prepared me for future projects and opportunities.
@@ -28,7 +28,7 @@
 Project is: _in progress_ 
 The project is currently in progress and actively being developed. I am continuously adding new features and fixing any bugs to ensure a seamless user experience.
 
-This project is the final project of a one-month MEAN Stack course by SoftUni. It has been officially presented in August 2023. 
+This project is the final project of an Angular course by SoftUni. It has been officially presented in August 2023. 
 <br/>
 
 ## 2. Features

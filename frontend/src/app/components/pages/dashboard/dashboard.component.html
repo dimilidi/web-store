@@ -22,6 +22,7 @@
           <mat-icon>groups</mat-icon>
           <span class="text">Customers</span>
           <span class="number" *ngIf="customers">{{ customers.length }}</span>
+          <span class="number" *ngIf="customers == null">{{ 0 }}</span>
         </div>
       </div>
     </div>
