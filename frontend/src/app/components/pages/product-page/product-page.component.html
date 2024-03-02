@@ -14,15 +14,17 @@
           {{ product.name }}
         </span>
         <span
-          class=" 
-        material-icons favorite {{
-            user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
-          }}"
+          class="material-icons favorite"
+          [ngClass]="{
+            favorite: user.id && favoriteProductsSet.has(product.id),
+            not: !(user.id && favoriteProductsSet.has(product.id))
+          }"
           (click)="toggleFavourite(product)"
         >
           favorite
         </span>
       </div>
+
       <div class="rating">
         <div class="stars">
           <!-- In "rate" mode, show stars given by the current user -->
