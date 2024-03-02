@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { ServerResponse } from '../shared/interfaces/ServerResponse';
 import { HttpClient } from '@angular/common/http';
@@ -20,15 +20,25 @@ import { LocalStorageService } from './local-storage.service';
   providedIn: 'root',
 })
 export class UserService {
+  private userSubject = new BehaviorSubject<User>(
+    this.localStorageService.getUserFromLocalStorage()
+  );
+  public userObservable: Observable<User>;
+  
+
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private userStateService: UserStateService
+    private userStateService: UserStateService,
   ) {
+    this.userObservable = this.userSubject.asObservable(),
     this.refreshUserDataPeriodically();
+    
   }
+
+
 
   private refreshUserDataPeriodically(): void {
     // Set up a timer to refresh user data every 15 minutes
@@ -42,16 +52,15 @@ export class UserService {
     return this.http.get<ServerResponse>(USERS_URL);
   }
 
-
   getUserById(): Observable<User> {
     return this.http.get<any>(USER_BY_ID_URL).pipe(
       tap({
         next: (res: any) => {
           this.localStorageService.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
-          this.userStateService.updateUser(res.data);
-          // this.userObservable = res.data;//!!!!!!!!!!!!!
-          console.log('userService', res.data.name);
+        //  this.userStateService.updateUser(res.data);
+          this.userObservable = res.data;//!!!!!!!!!!!!!
+          console.log('userService', res.data);
         },
         error: (error) => {
           this.toastrService.error(error.error, 'Getting user data failed');
