@@ -11,7 +11,7 @@ app.get("/seed", asyncHandler(seedUsers));
 app.post("/login", asyncHandler(login));
 app.get("/orders", verifyUser, asyncHandler(getAllOrders));
 app.get("/", verifyAdmin, asyncHandler(getAllUsers));
-app.get("/user",  asyncHandler(getUserById)); 
+app.get("/user", verifyUser, asyncHandler(getUserById)); 
 app.post("/register", asyncHandler(register));
 app.post("/register-admin", asyncHandler(registerAdmin));
 app.put("/edit-account", verifyUser,  asyncHandler(editAccount));
