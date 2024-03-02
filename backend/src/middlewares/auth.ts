@@ -19,8 +19,8 @@ export async function verifyToken(req: any, res: any, next: any) {
   next();
 }
 
-export function verifyUser(req: any, res: any, next: any) {
-  verifyToken(req, res, (token: any) => {
+export async function verifyUser(req: any, res: any, next: any) {
+  await verifyToken(req, res, (token: any) => {
     const user = req.user;
 
     if (user ) {

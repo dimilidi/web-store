@@ -8,7 +8,7 @@ export interface TokenPayload extends JwtPayload {
   }
 
 export interface IUser {
-  id: null;
+  id: "";
   email: string;
   password: string;
   name: string;
