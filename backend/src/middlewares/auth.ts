@@ -24,7 +24,7 @@ export function verifyUser(req: any, res: any, next: any) {
     const user = req.user;
 
     if (user ) {
-      //req.user = user;
+      req.user = user;
       next();
     } else {
       return next(createError(403, "You are not authorized."));
