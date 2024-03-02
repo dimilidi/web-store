@@ -13,8 +13,6 @@ export async function verifyToken(req: any, res: any, next: any) {
 
     req.user = user;
   } catch (error) {
-    console.log("-------------------- BOOM ---------------");
-
     return next(createError(403, "Token is not valid."));
   }
 
@@ -25,7 +23,7 @@ export function verifyUser(req: any, res: any, next: any) {
   verifyToken(req, res, (token: any) => {
     const user = req.user;
 
-    if (user || user.isAdmin) {
+    if (user ) {
       req.user = user;
       next();
     } else {
