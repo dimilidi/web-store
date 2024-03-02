@@ -1,5 +1,5 @@
 <app-not-found
-  [visible]="!product?.id"
+  [visible]="!product.id"
   notFoundMessage="Product Not Found"
   resetLinkText="Back To Home"
 />
@@ -14,17 +14,15 @@
           {{ product.name }}
         </span>
         <span
-          class="material-icons favorite"
-          [ngClass]="{
-            favorite: user.id && favoriteProductsSet.has(product.id),
-            not: !(user.id && favoriteProductsSet.has(product.id))
-          }"
+          class=" 
+        material-icons favorite {{
+            user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
+          }}"
           (click)="toggleFavourite(product)"
         >
           favorite
         </span>
       </div>
-
       <div class="rating">
         <div class="stars">
           <!-- In "rate" mode, show stars given by the current user -->

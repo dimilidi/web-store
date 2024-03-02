@@ -7,10 +7,14 @@
       {{ product.name }}
     </a>
 
-    <span class="material-icons favorite" [ngClass]="{ 'favorite': user.id && favoriteProductsSet?.has(product.id), 'not': !(user.id && favoriteProductsSet?.has(product.id)) }" (click)="toggleFavourite(product)">
+    <span
+      class="  material-icons favorite {{
+        user.id && favoriteProductsSet?.has(product.id) ? 'favorite' : 'not'
+      }}"
+      (click)="toggleFavourite(product)"
+    >
       favorite
     </span>
-    
     <div class="stars">
       <app-star-rating
         [averageRating]="product.averageRating"

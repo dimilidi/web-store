@@ -12,32 +12,39 @@ export async function verifyToken(req: any, res: any, next: any) {
     console.log(user);
 
     req.user = user;
+    next();
   } catch (error) {
     return next(createError(403, "Token is not valid."));
   }
-
-  next();
 }
 
-export function verifyUser(req: any, res: any, next: any) {
-  verifyToken(req, res, (token: any) => {
+export async function verifyUser(req: any, res: any, next: any) {
+  try {
+    await verifyToken(req, res, next);
     const user = req.user;
 
-    if (user ) {
-      //req.user = user;
+    if (user) {
       next();
     } else {
       return next(createError(403, "You are not authorized."));
     }
-  });
+  } catch (error) {
+    console.log(error);
+    return next(createError(500, "Internal Server Error"));
+  }
 }
 
-export function verifyAdmin(req: any, res: any, next: any) {
-  verifyToken(req, res, () => {
+export async function verifyAdmin(req: any, res: any, next: any) {
+  try {
+    await verifyToken(req, res, next);
+
     if (req.user?.isAdmin) {
       next();
     } else {
       return next(createError(403, "You are not authorised."));
     }
-  });
+  } catch (error) {
+    console.log(error);
+    return next(createError(500, "Internal Server Error"));
+  }
 }
