@@ -10,6 +10,7 @@ import { createError } from "../middlewares/error";
 import { createSuccess } from "../middlewares/success";
 import UserToken from "../models/UserToken";
 import nodemailer from "nodemailer";
+import { log } from "console";
 
 interface TokenPayload extends JwtPayload {
   id: string;
@@ -35,7 +36,7 @@ export async function login(req: Request, res: Response, next: any) {
 
   if (user && (await checkPassword(password, user))) {
     const { roles } = user;
-  
+
     return next(
       createSuccess(
         200,
@@ -199,6 +200,7 @@ export async function editAccount(req: any, res: Response) {
 // LOGOUT
 export const logout = async (req: any, res: any) => {
   res.status(204).json();
+  console.log("------ LOG OUT --------------");
 };
 
 // DELETE ACCOUNT
@@ -228,7 +230,7 @@ export async function getAllOrders(req: any, res: any) {
 
 // GET ALL USERS
 export async function getAllUsers(req: any, res: any, next: any) {
-  const users = await User.find().populate('roles');
+  const users = await User.find().populate("roles");
   console.log(users);
   return next(createSuccess(201, "All Users", users));
 }
@@ -236,7 +238,7 @@ export async function getAllUsers(req: any, res: any, next: any) {
 // GET USER BY ID
 export async function getUserById(req: any, res: any, next: any) {
   const user = req.user;
-  const singleUser = await User.findById(user.id).populate('roles');
+  const singleUser = await User.findById(user.id).populate("roles");
 
   if (!singleUser) return next(createError(404, "User not found"));
   return next(createSuccess(200, "Single User", singleUser));

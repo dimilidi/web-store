@@ -16,7 +16,7 @@ app.post("/register", asyncHandler(register));
 app.post("/register-admin", asyncHandler(registerAdmin));
 app.put("/edit-account", verifyUser,  asyncHandler(editAccount));
 app.delete('/delete-account', verifyUser, asyncHandler(deleteAccount));
-app.post('/logout', verifyUser, asyncHandler(logout));
+app.post('/logout',  asyncHandler(logout));
 app.post('/send-email', asyncHandler(sendEmail));
 app.post('/reset-password', asyncHandler(resetPassword));
 
