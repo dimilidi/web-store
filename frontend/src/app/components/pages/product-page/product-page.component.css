@@ -8,10 +8,30 @@
   overflow: hidden;
 }
 
+.back-navigation {
+  padding-top: 2rem;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 70rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: var(--disabled-color);
+  transition: color 0.3s ease;
+}
+
+.link {
+  color: inherit;
+}
+
+.back-navigation:hover {
+  color: var(--primary-color);
+}
+
 .box {
   width: 80%;
   max-width: 70rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;

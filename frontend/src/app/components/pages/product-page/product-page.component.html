@@ -4,7 +4,13 @@
   resetLinkText="Back To Home"
 />
 
+<div class="back-navigation">
+  <mat-icon>chevron_left</mat-icon>
+  <a routerLink ="/"  class="link">Back to Strore</a>
+</div>
+
 <div *ngIf="product?.id" class="container">
+  
   <div class="box">
     <img [src]="product.imageUrl" [alt]="product.name" />
 

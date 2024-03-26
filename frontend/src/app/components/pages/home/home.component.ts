@@ -1,6 +1,5 @@
 import {
   Component,
-  HostBinding,
   HostListener,
   OnDestroy,
   OnInit,
@@ -9,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
-import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/shared/models/Product';
 import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
