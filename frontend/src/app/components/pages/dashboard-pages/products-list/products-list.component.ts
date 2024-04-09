@@ -6,20 +6,19 @@ import { ProductService } from 'src/app/services/product.service';
 import { Observable, Subscription, tap } from 'rxjs';
 import { Product } from 'src/app/shared/models/Product';
 import { ActivatedRoute } from '@angular/router';
-import { DialogComponent } from '../../partials/dialog/dialog.component';
+import { DialogComponent } from '../../../partials/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/services/data.service';
 import { ServerResponse } from 'src/app/shared/interfaces/ServerResponse';
 import { OrderService } from 'src/app/services/order.service';
 
-
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.css']
+  styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent implements OnInit{
+export class ProductsListComponent implements OnInit {
   isSearchBarVisible: boolean = false;
 
   private isSearchBarVisibleSubscription: Subscription;
@@ -37,7 +36,6 @@ export class ProductsListComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
   constructor(
     public dialog: MatDialog,
     private productService: ProductService,
@@ -45,14 +43,16 @@ export class ProductsListComponent implements OnInit{
     private dataService: DataService,
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute
-  ) {this.isSearchBarVisibleSubscription = new Subscription();}
+  ) {
+    this.isSearchBarVisibleSubscription = new Subscription();
+  }
 
   ngOnInit(): void {
     this.getProducts();
 
-    this.dataService.isSearchBarVisible$.subscribe((isVisible:boolean) => {
+    this.dataService.isSearchBarVisible$.subscribe((isVisible: boolean) => {
       console.log(isVisible);
-      
+
       this.isSearchBarVisible = isVisible;
     });
   }
@@ -60,7 +60,6 @@ export class ProductsListComponent implements OnInit{
   ngOnDestroy(): void {
     //this.isSearchBarVisibleSubscription.unsubscribe();
   }
-
 
   openDialog() {
     this.dialog
@@ -72,8 +71,6 @@ export class ProductsListComponent implements OnInit{
         }
       });
   }
-
-
 
   getProducts() {
     let productsObservable: Observable<Product[]>;
@@ -107,7 +104,7 @@ export class ProductsListComponent implements OnInit{
 
   editProduct(row: any) {
     this.dialog
-      .open(DialogComponent, { data: row, width: '100%', maxWidth: '400px'  })
+      .open(DialogComponent, { data: row, width: '100%', maxWidth: '400px' })
       .afterClosed()
       .subscribe((value) => {
         if (value === 'update') {

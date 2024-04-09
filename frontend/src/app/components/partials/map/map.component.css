@@ -16,17 +16,18 @@
   
   .find-location{
     position: absolute;
-    margin: auto;
-    width: 15rem;
-    min-height: 3rem;
-    font-size: 1.2rem;
-    top: 0;
-    left: 0;
+    margin: 0 auto;
+    width: 10rem;
+    min-height: 2rem;
+    font-size: 1rem;
+    top: 10;
+    left: 60;
     right: 0;
     z-index: 1000;
     background-color: var(--transparent-strong);
     cursor: pointer;
-    z-index: 0;
+    
+
   }
   
   .find-location:hover{

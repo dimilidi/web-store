@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, pipe, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';

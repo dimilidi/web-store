@@ -23,57 +23,54 @@ import { MatSortModule } from '@angular/material/sort';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './components/pages/home/home.component';
+import { HomeComponent } from './components/pages/common-pages/home/home.component';
 import { SearchComponent } from './components/partials/search/search.component';
-import { ProductPageComponent } from './components/pages/product-page/product-page.component';
+import { ProductPageComponent } from './components/pages/store-pages/product-page/product-page.component';
 import { TagsComponent } from './components/partials/tags/tags.component';
 import { RouterModule } from '@angular/router';
-import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { CartPageComponent } from './components/pages/store-pages/cart-page/cart-page.component';
 import { TitleComponent } from './components/partials/title/title.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
-import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { LoginPageComponent } from './components/pages/common-pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { InputContainerComponent } from './components/partials/input-container/input-container.component';
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import TextInputComponent from './components/partials/text-input/text-input.component';
 import { ButtonComponent } from './components/partials/button/button.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
-import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { RegisterPageComponent } from './components/pages/common-pages/register-page/register-page.component';
+import { CheckoutPageComponent } from './components/pages/store-pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { PaymentPageComponent } from './components/pages/payment-page/payment-page.component';
+import { PaymentPageComponent } from './components/pages/store-pages/payment-page/payment-page.component';
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { StarRatingComponent } from './components/partials/star-rating/star-rating.component';
-import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
-import { EditAccountPageComponent } from './components/pages/edit-account-page/edit-account-page.component';
-import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
-import { AccountPageComponent } from './components/pages/account-page/account-page.component';
-import { DeleleAccountPageComponent } from './components/pages/delele-account-page/delele-account-page.component';
+import { OrderTrackPageComponent } from './components/pages/store-pages/order-track-page/order-track-page.component';
+import { EditAccountPageComponent } from './components/pages/common-pages/edit-account-page/edit-account-page.component';
+import { OrdersPageComponent } from './components/pages/store-pages/orders-page/orders-page.component';
+import { AccountPageComponent } from './components/pages/common-pages/account-page/account-page.component';
+import { DeleleAccountPageComponent } from './components/pages/common-pages/delele-account-page/delele-account-page.component';
 import { ParticalBackgroundComponent } from './components/partials/partical-background/partical-background.component';
-import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
+import { DashboardComponent } from './components/pages/dashboard-pages/dashboard/dashboard.component';
 import { DialogComponent } from './components/partials/dialog/dialog.component';
 import { VisibilityIconComponent } from './components/partials/visibility-icon/visibility-icon.component';
 import { CardComponent } from './components/partials/card/card.component';
-import { ResetPasswordComponent } from './components/pages/reset-password/reset-password.component';
-import { ForgottenPasswordComponent } from './components/pages/forgotten-password/forgotten-password.component';
+import { ResetPasswordComponent } from './components/pages/common-pages/reset-password/reset-password.component';
+import { ForgottenPasswordComponent } from './components/pages/common-pages/forgotten-password/forgotten-password.component';
 import { FooterComponent } from './components/partials/footer/footer.component';
 import { IntlTelInputDirective } from './directives/intl-tel-input.directive';
-import { OrdersListComponent } from './components/pages/orders-list/orders-list.component';
-import { UsersListComponent } from './components/pages/users-list/users-list.component';
+import { OrdersListComponent } from './components/pages/dashboard-pages/orders-list/orders-list.component';
+import { UsersListComponent } from './components/pages/dashboard-pages/users-list/users-list.component';
 import { NavigationComponent } from './components/partials/navigation/navigation.component';
 import { ThemeToggleComponent } from './components/partials/theme-toggle/theme-toggle.component';
-import { ProductsListComponent } from './components/pages/products-list/products-list.component';
+import { ProductsListComponent } from './components/pages/dashboard-pages/products-list/products-list.component';
 import { SidebarToggleComponent } from './components/partials/sidebar-toggle/sidebar-toggle.component';
 import { OrdersTableComponent } from './components/partials/orders-table/orders-table.component';
 import { LogoComponent } from './components/partials/logo/logo.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -121,7 +118,6 @@ import { LogoComponent } from './components/partials/logo/logo.component';
     SidebarToggleComponent,
     OrdersTableComponent,
     LogoComponent,
-
   ],
   imports: [
     NgParticlesModule,

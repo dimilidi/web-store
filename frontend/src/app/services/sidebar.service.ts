@@ -7,9 +7,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SidebarService {
   private isSidebarOpenSubject = new BehaviorSubject<boolean>(true);
 
-  constructor() {   this.isSidebarOpenSubject.next(this.getSidebarStatusFromLocalStorage());}
+  constructor() {
+    this.isSidebarOpenSubject.next(this.getSidebarStatusFromLocalStorage());
+  }
 
-  toggleSidebar() {
+  toggleSidebar(): void {
     const currentStatus = this.isSidebarOpenSubject.value;
     this.setSidebarStatus(!currentStatus);
   }
@@ -18,17 +20,13 @@ export class SidebarService {
     return this.isSidebarOpenSubject.asObservable();
   }
 
-  private setSidebarStatus(isOpen: boolean) {
+  setSidebarStatus(isOpen: boolean): void { // Changed method name
     localStorage.setItem('isOpen', JSON.stringify(isOpen));
     this.isSidebarOpenSubject.next(isOpen);
   }
 
-  getSidebarStatusFromLocalStorage() {
+  private getSidebarStatusFromLocalStorage(): boolean {
     const isOpenString = localStorage.getItem('isOpen');
-    if (isOpenString !== null) {
-      return JSON.parse(isOpenString);
-    } else {
-      return false;
-    }
+    return isOpenString !== null ? JSON.parse(isOpenString) : false;
   }
 }

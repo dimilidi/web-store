@@ -19,7 +19,7 @@ export class NavigationComponent implements OnInit {
   user!: User;
   cartQuantity = 0;
   private userSubscription!: Subscription;
-  isSidebarOpen!: boolean; 
+  isSidebarOpen!: boolean;
   private sidebarSubscription!: Subscription;
   isSmallScreen = false;
   displaySearchIcon = false;
@@ -31,68 +31,62 @@ export class NavigationComponent implements OnInit {
     private sidebarService: SidebarService,
     private cartService: CartService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) {
     this.cartService.getCartObservable().subscribe((newCart) => {
-    if (newCart) {
-      this.cartQuantity = newCart.totalCount;
-    } else {
-      this.cartQuantity = 0;
-    }
-  });
+      if (newCart) {
+        this.cartQuantity = newCart.totalCount;
+      } else {
+        this.cartQuantity = 0;
+      }
+    });
 
-
-  this.router.events.subscribe((event) => {
-    if (event instanceof NavigationEnd) {
-      this.checkRoute(this.activatedRoute);
-    }
-  });
-
- }
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.checkRoute(this.activatedRoute);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.userStateService.userObservable.subscribe((user) => {
       this.user = user;
     });
 
-    this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
-      this.isSidebarOpen = isOpen;
-    });
+    this.sidebarSubscription = this.sidebarService
+      .isSidebarOpen()
+      .subscribe((isOpen) => {
+        this.isSidebarOpen = isOpen;
+      });
 
     this.checkScreenSize();
 
     this.checkRoute(this.activatedRoute);
-    
   }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
 
-
   checkRoute(activatedRoute: ActivatedRoute) {
     const currentRoutePath = this.router.url;
-    console.log(currentRoutePath);
-    
 
-    this.displaySearchIcon = currentRoutePath =='/' 
-                            || currentRoutePath.includes('/dashboard')
-                            || currentRoutePath.includes('/products')
-                            || currentRoutePath.includes('/all-orders')
-                            || currentRoutePath.includes('/users');
+    this.displaySearchIcon =
+      currentRoutePath == '/' ||
+      currentRoutePath.includes('/dashboard') ||
+      currentRoutePath.includes('/products') ||
+      currentRoutePath.includes('/all-orders') ||
+      currentRoutePath.includes('/users');
   }
-
 
   checkScreenSize() {
-    this.isSmallScreen = window.innerWidth <= 700; 
+    this.isSmallScreen = window.innerWidth <= 700;
   }
-
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isSmallScreen = window.innerWidth <= 700; 
+    this.isSmallScreen = window.innerWidth <= 700;
   }
-
 
   logout() {
     this.authService.logout().subscribe();
@@ -107,9 +101,8 @@ export class NavigationComponent implements OnInit {
   }
 
   closeMenu() {
-    if(!this.isSidebarOpen){
+    if (!this.isSidebarOpen) {
       this.sidebarService.toggleSidebar();
     }
   }
-
 }

@@ -98,8 +98,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.productService
         .getFavoriteProducts(this.user.id)
         .subscribe((favoriteProducts) => {
-          console.log('PRODUCTS', favoriteProducts);
-
           favoriteProducts.forEach((product) => {
             this.favoriteProductsSet.add(product.product.id);
           });

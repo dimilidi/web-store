@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { Subscription } from 'rxjs';
@@ -8,24 +8,32 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'frontend';
-  isSidebarOpen!: boolean;
+  isSidebarOpen: boolean = false;
   private sidebarSubscription!: Subscription;
 
-
-  constructor(private themeService: ThemeService, private sidebarService: SidebarService) {}
+  constructor(
+    private themeService: ThemeService,
+    private sidebarService: SidebarService
+  ) {}
 
   ngOnInit() {
-    const currentTheme = this.themeService.getCurrentTheme() || 'light';
-   this.themeService.getCurrentTheme() || 'light';
+    this.initializeTheme();
+    this.subscribeToSidebar();
+  }
 
+  initializeTheme(): void {
+    const currentTheme = this.themeService.getCurrentTheme() || 'light';
+    this.themeService.setCurrentTheme(currentTheme);
+  }
+
+  subscribeToSidebar(): void {
     this.sidebarSubscription = this.sidebarService.isSidebarOpen().subscribe((isOpen) => {
       this.isSidebarOpen = isOpen;
     });
   }
 
-  
   isDarkTheme(): boolean {
     return this.themeService.getCurrentTheme() === 'dark';
   }
@@ -39,11 +47,8 @@ export class AppComponent {
   }
 
   closeSidebar(): void {
-    if(!this.isSidebarOpen){
+    if (!this.isSidebarOpen) {
       this.sidebarService.toggleSidebar();
-
     }
- 
   }
-
 }

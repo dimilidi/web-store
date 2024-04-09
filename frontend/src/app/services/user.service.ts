@@ -10,7 +10,6 @@ import {
   USER_UPDATE_URL,
 } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
-import { UserRegister } from '../shared/interfaces/UserRegister';
 import { Router } from '@angular/router';
 import { EditInput } from '../shared/interfaces/EditInput';
 import { UserStateService } from './user-state.service';
@@ -24,29 +23,24 @@ export class UserService {
     this.localStorageService.getUserFromLocalStorage()
   );
   public userObservable: Observable<User>;
-  
 
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private userStateService: UserStateService,
+    private userStateService: UserStateService
   ) {
-    this.userObservable = this.userSubject.asObservable(),
-    this.refreshUserDataPeriodically();
-    
+    (this.userObservable = this.userSubject.asObservable()),
+      this.refreshUserDataPeriodically();
   }
-
-
 
   private refreshUserDataPeriodically(): void {
     // Set up a timer to refresh user data every 15 minutes
     setInterval(() => {
       this.getUserById().subscribe();
-    }, 15 * 60 * 1000); // 15 minutes
+    }, 15 * 60 * 1000);
   }
-
 
   getAllUsers(): Observable<ServerResponse> {
     return this.http.get<ServerResponse>(USERS_URL);
@@ -58,9 +52,8 @@ export class UserService {
         next: (res: any) => {
           this.localStorageService.setUserToLocalStorage(res.data);
           // notify all observables that new user is created
-        //  this.userStateService.updateUser(res.data);
-          this.userObservable = res.data;//!!!!!!!!!!!!!
-          console.log('userService', res.data);
+          //  this.userStateService.updateUser(res.data);
+          this.userObservable = res.data;
         },
         error: (error) => {
           this.toastrService.error(error.error, 'Getting user data failed');

@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { phoneNumberValidator } from '../../../shared/validators/phone_number_validator';
+import { phoneNumberValidator } from '../../../../shared/validators/phone_number_validator';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -45,9 +45,8 @@ export class EditAccountPageComponent implements OnInit {
     this.buildForm();
   }
 
-
   buildForm() {
-     const avatarFormControl = new FormControl(this.user.avatar);
+    const avatarFormControl = new FormControl(this.user.avatar);
 
     this.editAccountForm = this.formBuilder.group({
       name: [this.user.name, [Validators.required, Validators.minLength(5)]],
