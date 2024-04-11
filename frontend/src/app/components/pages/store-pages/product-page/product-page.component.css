@@ -241,35 +241,6 @@ button > span {
   margin-right: 0.5rem;
 }
 
-
-@media screen and (max-width: 700px) {
-  .close-aside {
-    right: 50px;
-  }
-}
-
-
-
-@media screen and (max-width: 900px) {
-  img {
-    height: fit-content;
-  }
-
-  .box {
-    box-shadow: none;
-  }
-
-  .box > *{
-    min-width: 20rem;
-    max-width: 20rem;
-  }
-
-  .details {
-    padding: 1rem;
-  }
-
-}
-
 @media screen and (max-width: 950px) {
   .aside-container {
     flex-direction: row;
@@ -293,5 +264,46 @@ button > span {
   .back-navigation.margin-top {
     margin-top: 10rem; 
   }
+}
 
+@media screen and (max-width: 900px) {
+  img {
+    height: fit-content;
+  }
+
+  .box {
+    box-shadow: none;
+  }
+
+  .box > *{
+    min-width: 20rem;
+    max-width: 20rem;
+  }
+
+  .details {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .close-aside {
+    right: 80px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .close-aside {
+    right: 50px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .close-aside {
+    right: 1px;
+  }
+
+  .aside-container {
+    padding: 10px;
+    width: 88%;
+  }
 }
