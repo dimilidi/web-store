@@ -20,6 +20,7 @@
           {{ product.name }}
         </span>
         <span
+          *ngIf="isAuth"
           class=" 
         material-icons favorite {{
             user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'

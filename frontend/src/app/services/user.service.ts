@@ -51,8 +51,6 @@ export class UserService {
       tap({
         next: (res: any) => {
           this.localStorageService.setUserToLocalStorage(res.data);
-          // notify all observables that new user is created
-          //  this.userStateService.updateUser(res.data);
           this.userObservable = res.data;
         },
         error: (error) => {

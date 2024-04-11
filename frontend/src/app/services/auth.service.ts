@@ -10,6 +10,7 @@ import { UserRegister } from '../shared/interfaces/UserRegister';
 import { LocalStorageService } from './local-storage.service';
 import { UserStateService } from './user-state.service';
 import { User } from '../shared/models/User';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class AuthService {
     private toastrService: ToastrService,
     private router: Router,
     private localStorageService: LocalStorageService,
-    private userStateService : UserStateService
+    private userStateService: UserStateService,
   ) {}
 
   login(userLogin: UserLogin): Observable<ServerResponse> {
@@ -69,6 +70,7 @@ export class AuthService {
       tap({
         next: () => {
           this.localStorageService.clearUserData(this.userStateService);
+          this.localStorageService.getUserFromLocalStorage();
           this.toastrService.success('Logged out successfully', 'Logout');
           this.router.navigate(['/']);
         },

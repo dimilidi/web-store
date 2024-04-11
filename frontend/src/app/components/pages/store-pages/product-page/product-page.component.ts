@@ -114,4 +114,8 @@ export class ProductPageComponent implements  OnInit {
         },
       });
   }
+
+  get isAuth() {
+    return this.userStateService.currentUser.token;
+  }
 }

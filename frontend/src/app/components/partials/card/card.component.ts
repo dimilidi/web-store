@@ -59,4 +59,8 @@ export class CardComponent {
     this.favoriteToggled.emit();
   }
 
+  get isAuth() {
+    return this.userStateService.currentUser.token;
+  }
+
 }

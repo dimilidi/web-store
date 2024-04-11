@@ -8,7 +8,8 @@
     </a>
 
     <span
-      class="  material-icons favorite {{
+      *ngIf="isAuth"
+      class="material-icons favorite {{
         user.id && favoriteProductsSet.has(product.id) ? 'favorite' : 'not'
       }}"
       (click)="toggleFavourite(product)"
