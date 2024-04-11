@@ -13,21 +13,18 @@
     z-index: 0;
     
   }
-  
-  .find-location{
+
+  .find-location {
     position: absolute;
-    margin: 0 auto;
     width: 10rem;
     min-height: 2rem;
     font-size: 1rem;
-    top: 10;
-    left: 60;
-    right: 0;
+    top: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
     z-index: 1000;
     background-color: var(--transparent-strong);
     cursor: pointer;
-    
-
   }
   
   .find-location:hover{
