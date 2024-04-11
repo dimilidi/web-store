@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { DataService } from 'src/app/services/data.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserStateService } from 'src/app/services/user-state.service';
 import { CartItem } from 'src/app/shared/models/CartItem';
 import { Product } from 'src/app/shared/models/Product';
+import { Tag } from 'src/app/shared/models/Tag';
 import { User } from 'src/app/shared/models/User';
 
 @Component({
@@ -12,7 +15,7 @@ import { User } from 'src/app/shared/models/User';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
 })
-export class ProductPageComponent implements  OnInit {
+export class ProductPageComponent implements OnInit {
   user: User = this.userStateService.currentUser;
   product!: Product;
   favoriteProductsSet: Set<string> = new Set<string>();
@@ -22,18 +25,20 @@ export class ProductPageComponent implements  OnInit {
   selectedMode: string = 'View';
   modeOptions: { value: string; label: string }[] = [
     { value: 'View', label: 'View' },
-    { value: 'Rate', label: 'Rate' }
+    { value: 'Rate', label: 'Rate' },
   ];
+  tag!: Tag;
+  isSearchBarVisible: boolean = false;
+  isSmallScreen: boolean = false;
 
-  ngOnInit():void {
-    this.getFavouriteProducts();
-  }
+  private isSearchBarVisibleSubscription: Subscription;
 
   constructor(
     activatedRoute: ActivatedRoute,
     private userStateService: UserStateService,
     private productService: ProductService,
     private cartService: CartService,
+    private dataService: DataService,
     private router: Router
   ) {
     activatedRoute.params.subscribe((params) => {
@@ -42,6 +47,20 @@ export class ProductPageComponent implements  OnInit {
           this.product = serverProduct;
         });
     });
+
+    this.isSearchBarVisibleSubscription = new Subscription();
+  }
+
+  ngOnInit(): void {
+    this.getFavouriteProducts();
+
+    this.dataService.isSearchBarVisible$.subscribe((isVisible) => {
+      this.isSearchBarVisible = isVisible;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.isSearchBarVisibleSubscription.unsubscribe();
   }
 
   changeQuantity(cartItem: CartItem, quantityInString: string) {
@@ -61,10 +80,6 @@ export class ProductPageComponent implements  OnInit {
   updateStars(stars: number, productId: string) {
     this.productService.updateProductStars(stars, productId).subscribe({
       next: (updatedProduct: Product) => {
-        console.log(updatedProduct.stars);
-        console.log(updatedProduct);
-
-
         // Update local product data with new stars and average rating
         this.product.stars = updatedProduct.stars;
         this.product.numRatings = updatedProduct.numRatings;
@@ -86,21 +101,23 @@ export class ProductPageComponent implements  OnInit {
     return this.isOptionSelectedFlag;
   }
 
-
   getFavouriteProducts() {
     if (this.user.id) {
-      this.productService.getFavoriteProducts(this.user.id).subscribe((favoriteProducts) => {
-        favoriteProducts.forEach((product) => {          
-          this.favoriteProductsSet.add(product.product.id);
+      this.productService
+        .getFavoriteProducts(this.user.id)
+        .subscribe((favoriteProducts) => {
+          favoriteProducts.forEach((product) => {
+            this.favoriteProductsSet.add(product.product.id);
+          });
         });
-      });
     }
   }
 
   toggleFavourite(product: Product) {
     if (!this.user.id) return;
 
-    return this.productService.toggleFavorite(product.id, this.user.id)
+    return this.productService
+      .toggleFavorite(product.id, this.user.id)
       .subscribe({
         next: (response) => {
           if (response.product === undefined) {
@@ -117,5 +134,13 @@ export class ProductPageComponent implements  OnInit {
 
   get isAuth() {
     return this.userStateService.currentUser.token;
+  }
+
+  onShowCategory(event: any): void {
+    this.tag = event;
+  }
+
+  toggleSearchBar() {
+    this.dataService.toggleSearchBar();
   }
 }
