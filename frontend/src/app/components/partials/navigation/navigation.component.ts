@@ -75,7 +75,9 @@ export class NavigationComponent implements OnInit {
       currentRoutePath == '/' ||
       currentRoutePath.includes('/dashboard') ||
       currentRoutePath.includes('/products') ||
-      currentRoutePath.includes('/all-orders') ||
+      currentRoutePath.includes('/product') ||
+      currentRoutePath.includes('/products') ||
+      currentRoutePath.includes('/tag') ||
       currentRoutePath.includes('/users');
   }
 

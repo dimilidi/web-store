@@ -1,17 +1,26 @@
-<app-dashboard  *ngIf="user?.isAdmin && user.id != '' "></app-dashboard>
+<app-dashboard *ngIf="user?.isAdmin && user.id != ''"></app-dashboard>
 
 <div *ngIf="!user?.isAdmin" class="wrapper">
-  <aside   [ngClass]="isSearchBarVisible ? 'aside' : 'hide'">
-    <app-search />
-    <app-tags (showCategory)="onShowCategory($event)" />
-  </aside>
+  <div [ngClass]="isSearchBarVisible ? 'aside-container' : 'hide'">
+    <aside class="aside">
+      <app-search />
+      <app-tags (showCategory)="onShowCategory($event)" />
+    </aside>
+
+    <span class="close-aside" (click)="toggleSearchBar()">
+      <mat-icon>close</mat-icon>
+    </span>
+  </div>
 
   <app-not-found
     [visible]="!products || !products.length"
     resetLinkText="Reset Search"
   />
-  
-  <ul class="products-container">
+
+  <ul
+    class="products-container"
+    [ngClass]="isSearchBarVisible ? 'margin-top' : ''"
+  >
     <li *ngFor="let product of products">
       <app-card
         [product]="product"

@@ -20,7 +20,7 @@ export class SidebarService {
     return this.isSidebarOpenSubject.asObservable();
   }
 
-  setSidebarStatus(isOpen: boolean): void { // Changed method name
+  setSidebarStatus(isOpen: boolean): void { 
     localStorage.setItem('isOpen', JSON.stringify(isOpen));
     this.isSidebarOpenSubject.next(isOpen);
   }

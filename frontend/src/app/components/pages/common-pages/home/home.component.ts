@@ -141,4 +141,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   private checkScreenSize() {
     this.isSmallScreen = window.innerWidth < 700; 
   }
+
+  toggleSearchBar() {
+    this.dataService.toggleSearchBar();
+  }
+  
 }
