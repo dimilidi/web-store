@@ -62,7 +62,6 @@ export async function register(req: Request, res: Response, next: any) {
   const encryptedPassword = await bcrypt.hash(password, 10);
 
   const newUser: IUser = {
-    id: "",
     name,
     email: email.toLowerCase(),
     password: encryptedPassword,
@@ -95,7 +94,6 @@ export async function registerAdmin(req: Request, res: Response, next: any) {
   const encryptedPassword = await bcrypt.hash(password, 10);
 
   const newUser: IUser = {
-    id: "",
     name,
     email: email.toLowerCase(),
     password: encryptedPassword,

@@ -8,7 +8,7 @@ export interface TokenPayload extends JwtPayload {
   }
 
 export interface IUser {
-  id: "";
+  id?: string;
   email: string;
   password: string;
   name: string;
@@ -29,7 +29,6 @@ export const UserSchema = new Schema<IUser>({
     avatar: { type: String, default: "https://cdn-icons-png.flaticon.com/512/64/64572.png"},
     isAdmin: {type:Boolean, default: false},
     roles: [{type: Schema.Types.ObjectId, required: true, ref: 'Role'}]
-   
 },
 {
     timestamps: true,
